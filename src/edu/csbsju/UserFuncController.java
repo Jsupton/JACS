@@ -2,6 +2,9 @@ package edu.csbsju;
 import java.util.ArrayList;
 
 /**
+ * This class is the controller for all the functions of a User.
+ * This class deals with shifting data and calling the Database, as well
+ * as sending data back to the UserInterface to display to the User.
  * @author saschmidgall
  * @version 02-26-17
  */

@@ -96,8 +96,9 @@ public class DBController {
 	 {
 	  return null;
 	 }
+	 
 	 /**
-	  * 
+	  * Changes the details of a user
 	  * @param u User we would like to change details of
 	  * @param a Account information we would like details of
 	  */
@@ -174,7 +175,8 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * 
+	  * Allows the user to confirm the changes that they have made
+	  * when changing information regarding Account details.
 	  */
 	 public void confirmChange()
 	 {

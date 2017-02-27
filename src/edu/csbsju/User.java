@@ -4,6 +4,9 @@ package edu.csbsju;
 import java.util.ArrayList;
 
 /**
+ * This class acts as a User object. They are able to perform
+ * different functionalities than an Admin can, thus this class allows 
+ * User to perform those action.
  * @author saschmidgall
  * @version 02-26-17
  */

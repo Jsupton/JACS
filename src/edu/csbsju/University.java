@@ -3,6 +3,8 @@ package edu.csbsju;
 import java.util.*;
 
 /**
+ * This Class is a class that models a university object. I takes
+ * the attributes specified below and created a university object from them
  * @author ajdehn
  * @version 02-26-17
  */
@@ -96,204 +98,271 @@ public class University {
 	}
 
 	/**
+	 * gets the name of the university
 	 * @return the universityName
 	 */
 	public String getUniversityName() {
 		return universityName;
 	}
+	
 	/**
+	 * sets the name of the university
 	 * @param universityName the universityName to set
 	 */
 	public void setUniversityName(String universityName) {
 		this.universityName = universityName;
 	}
+	
 	/**
+	 * gets the location of the university
 	 * @return the location
 	 */
 	public String getLocation() {
 		return location;
 	}
+	
 	/**
+	 * sets the location of the university
 	 * @param location the location to set
 	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 	/**
+	 * gets the state that the university it in
 	 * @return the state
 	 */
 	public String getState() {
 		return state;
 	}
+	
 	/**
+	 * sets the state that the university is in
 	 * @param state the state to set
 	 */
 	public void setState(String state) {
 		this.state = state;
 	}
+	
 	/**
+	 * gets the control of the university
 	 * @return the control
 	 */
 	public String getControl() {
 		return control;
 	}
+	
 	/**
+	 * sets the control of the university
 	 * @param control the control to set
 	 */
 	public void setControl(String control) {
 		this.control = control;
 	}
+	
 	/**
+	 * gets the number of students at the university
 	 * @return the numberOfStudents
 	 */
 	public int getNumberOfStudents() {
 		return numberOfStudents;
 	}
+	
 	/**
+	 * sets the number of students at the university
 	 * @param numberOfStudents the numberOfStudents to set
 	 */
 	public void setNumberOfStudents(int numberOfStudents) {
 		this.numberOfStudents = numberOfStudents;
 	}
+	
 	/**
+	 * gets the percent female at the university
 	 * @return the percentFemale
 	 */
 	public int getPercentFemale() {
 		return percentFemale;
 	}
+	
 	/**
+	 * sets the percent female at the university
 	 * @param percentFemale the percentFemale to set
 	 */
 	public void setPercentFemale(int percentFemale) {
 		this.percentFemale = percentFemale;
 	}
+	
 	/**
+	 * gets the Verbal SAT scores at a university
 	 * @return the satVerbal
 	 */
 	public int getSatVerbal() {
 		return satVerbal;
 	}
+	
 	/**
+	 * sets the verbal SAT scores at a university
 	 * @param satVerbal the satVerbal to set
 	 */
 	public void setSatVerbal(int satVerbal) {
 		this.satVerbal = satVerbal;
 	}
+	
 	/**
+	 * gets that Math SAT scores at a university
 	 * @return the satMath
 	 */
 	public int getSatMath() {
 		return satMath;
 	}
+	
 	/**
+	 * sets the math SAT scores at a university
 	 * @param satMath the satMath to set
 	 */
 	public void setSatMath(int satMath) {
 		this.satMath = satMath;
 	}
+	
 	/**
+	 * gets the expenses of a university
 	 * @return the expenses
 	 */
 	public Double getExpenses() {
 		return expenses;
 	}
+	
 	/**
+	 * sets the exepenses at a specified university
 	 * @param expenses the expenses to set
 	 */
 	public void setExpenses(Double expenses) {
 		this.expenses = expenses;
 	}
+	
 	/**
+	 * gets the financial aid at a university
 	 * @return the financialAid
 	 */
 	public Double getFinancialAid() {
 		return financialAid;
 	}
+	
 	/**
+	 * sets the financial aid at a university
 	 * @param financialAid the financialAid to set
 	 */
 	public void setFinancialAid(Double financialAid) {
 		this.financialAid = financialAid;
 	}
+	
 	/**
+	 * gets the number of Applicants at a university
 	 * @return the numberOfApplicants
 	 */
 	public int getNumberOfApplicants() {
 		return numberOfApplicants;
 	}
+	
 	/**
+	 * sets the number of applicants at a university
 	 * @param numberOfApplicants the numberOfApplicants to set
 	 */
 	public void setNumberOfApplicants(int numberOfApplicants) {
 		this.numberOfApplicants = numberOfApplicants;
 	}
+	
 	/**
+	 * gets the percent admitted at a university
 	 * @return the percentAdmitted
 	 */
 	public Double getPercentAdmitted() {
 		return percentAdmitted;
 	}
+	
 	/**
+	 * sets the percent admitted at a university
 	 * @param percentAdmitted the percentAdmitted to set
 	 */
 	public void setPercentAdmitted(Double percentAdmitted) {
 		this.percentAdmitted = percentAdmitted;
 	}
+	
 	/**
+	 * gets the percent enrolled at a university
 	 * @return the percentEnrolled
 	 */
 	public Double getPercentEnrolled() {
 		return percentEnrolled;
 	}
+	
 	/**
+	 * sets the percent enrolled at a university
 	 * @param percentEnrolled the percentEnrolled to set
 	 */
 	public void setPercentEnrolled(Double percentEnrolled) {
 		this.percentEnrolled = percentEnrolled;
 	}
+	
 	/**
+	 * gets the academic scale of a university
 	 * @return the academicScale
 	 */
 	public int getAcademicScale() {
 		return academicScale;
 	}
+	
 	/**
+	 * sets the Academic scale of a university
 	 * @param academicScale the academicScale to set
 	 */
 	public void setAcademicScale(int academicScale) {
 		this.academicScale = academicScale;
 	}
+	
 	/**
+	 * gets the Social Scale at a university
 	 * @return the socialScale
 	 */
 	public int getSocialScale() {
 		return socialScale;
 	}
+	
 	/**
+	 * sets the social Scale at a university
 	 * @param socialScale the socialScale to set
 	 */
 	public void setSocialScale(int socialScale) {
 		this.socialScale = socialScale;
 	}
+	
 	/**
+	 * gets the "Quality of life" at a university
 	 * @return the qualityOfLife
 	 */
 	public int getQualityOfLife() {
 		return qualityOfLife;
 	}
+	
 	/**
+	 * sets the "Quality of life" at a university
 	 * @param qualityOfLife the qualityOfLife to set
 	 */
 	public void setQualityOfLife(int qualityOfLife) {
 		this.qualityOfLife = qualityOfLife;
 	}
+	
 	/**
+	 * gets all the Emphases at a university
 	 * @return the emphases
 	 */
 	public ArrayList<String> getEmphases() {
 		return emphases;
 	}
+	
 	/**
+	 * Sets the Emphases of a university
 	 * @param emphases the emphases to set
 	 */
 	public void setEmphases(ArrayList<String> emphases) {
@@ -301,6 +370,7 @@ public class University {
 	}
 	
 	/**
+	 * Adds an emphasis to a university
 	 * @param emp the emphases to add
 	 */
 	public void addEmphasis(String emp){
@@ -308,6 +378,7 @@ public class University {
 	}
 	
 	/**
+	 * removes an emphasis from the Arraylist 
 	 * @param emp the emphases to remove
 	 */
 	public void removeEmphasis(String emp){

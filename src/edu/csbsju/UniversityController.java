@@ -6,6 +6,7 @@ package edu.csbsju;
  * @version 02-26-17
  */
 public class UniversityController {
+	
 	private University university;
 	
 	/**
@@ -16,6 +17,7 @@ public class UniversityController {
 	{
 
 	}
+	
 	/**
 	 * Allows changes to be made to details of a university
 	 * @param u University to be edited
@@ -24,6 +26,7 @@ public class UniversityController {
 	{
 		
 	}
+	
 	/**
 	 * Shows details of a university
 	 * @param u University object requested

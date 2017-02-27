@@ -90,7 +90,7 @@ public class DBController {
  /**
   * 
   */
- public void changeStudentDetails(Full Criteria, Account a)
+ public void changeStudentDetails(User u, Account a)
  {
 	 
  }

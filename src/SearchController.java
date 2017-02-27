@@ -1,5 +1,5 @@
 
-package JACS;
+package JACS.src;
 
 import java.util.*;
 /**
@@ -12,24 +12,24 @@ import java.util.*;
  */
 public class SearchController {
 
-	/**
-	 * Default Constructor
-	 */
-	public SearchController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+ /**
+  * Default Constructor
+  */
+ public SearchController() {
+  super();
+  // TODO Auto-generated constructor stub
+ }
 
-	/**
-	 * This method allows the user to search for a specific university. It takes 
-	 * in a Universtiy object as a parameter. The attributes for the university object are
-	 * the search criteria that the user input. The search criteria is used to search the 
-	 * Database. All universities that match the attributes of the search criteria are 
-	 * gathered into an arrayList.
-	 * @return ArrayList<University>
-	 */
-	public ArrayList<University> search(University u){
-		return null;
-	}
-	
+ /**
+  * This method allows the user to search for a specific university. It takes 
+  * in a Universtiy object as a parameter. The attributes for the university object are
+  * the search criteria that the user input. The search criteria is used to search the 
+  * Database. All universities that match the attributes of the search criteria are 
+  * gathered into an arrayList.
+  * @return ArrayList<University>
+  */
+ public ArrayList<Integer> search(University u){
+  return null;
+ }
+ 
 }

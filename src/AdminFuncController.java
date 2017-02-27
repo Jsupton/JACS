@@ -1,5 +1,7 @@
 package JACS;
 
+import java.util.*;
+
 public class AdminFuncController {
 	/**
 	 * a variable for admin

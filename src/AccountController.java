@@ -1,4 +1,8 @@
 
+package JACS;
+
+import java.util.*;
+
 /**
  * This Class acts as a controller class for an Account object. This
  * Class does the techinical work and deals with interchanging data
@@ -6,14 +10,13 @@
  * @author jsupton
  * @verson 02-26-17
  */
-public class AccountController extends Account {
+public class AccountController {
 
 	/**
 	 * 
 	 */
 	public AccountController() {
 		// TODO Auto-generated constructor stub
-		super();
 	}
 	
 	/**
@@ -51,7 +54,7 @@ public class AccountController extends Account {
 	 * @param name String, a name of a university
 	 * @return University a university object
 	 */
-	public University getUniversity(String name){
+	public University getAUniversity(String name){
 		return null;
 	}
 	
@@ -82,7 +85,7 @@ public class AccountController extends Account {
 	 * It gathers all of the attributes for an account objet and then displays
 	 * that information for the user to see
 	 */
-	public void displayStudent(Account a){
+	public void displayAccount(Account a){
 		
 	}
 	
@@ -96,14 +99,7 @@ public class AccountController extends Account {
 	 */
 	public void editAccount(String p, String ln, String fn){
 		
-	}
-	
-	/**
-	 * 
-	 */
-	public void save(){
-		
-	}
+	} 
 	
 	/**
 	 * This method is a method that asks the user if they would like to 

@@ -1,11 +1,15 @@
 
+package JACS.bin;
+
+import java.util.*;
+
 /**
  * This class is the class that encompasses the similarities of a User 
  * and an Administrator. Account represents a user object, with corresponding
  * instance variables such as name, username, password and other fields. These
  * attributes allow the user to log into the system. This Class has two 
  * subclasses, which are User and Administrator.
- * @author jsupton
+ * @author jsupton 
  * @version 02-25-17
  */
 public class Account {

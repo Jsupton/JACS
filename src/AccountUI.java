@@ -1,11 +1,19 @@
+
+package JACS;
+
+import java.util.*;
+
 /**
- * @author jsupton
- * 
+ * This class is used as a user interface to pass data to the Account Controller
+ * and to pass back data to the user. This class deals with displaying information
+ * to the User.
+ * @author jsupton 
+ * @version 02-26-17
  */
 public class AccountUI {
 
 	/**
-	 * 
+	 * Default Constructor
 	 */
 	public AccountUI() {
 		// TODO Auto-generated constructor stub
@@ -22,9 +30,14 @@ public class AccountUI {
 	}
 	
 	/**
-	 * 
+	 * This method takes an Account object as a parameter. The method uses the
+	 * Account object and gets the type of that Account object. It acts as a 
+	 * transfer method to transfer the Account type to display the correct UI 
+	 * for the Account user. The method returns the type of the Account.
+	 * @param a Account object
+	 * @return char a character representing the type of the Account
 	 */
-	public void returnType(char t){
+	public char returnType(Account a){
 		
 	}
 	
@@ -32,12 +45,15 @@ public class AccountUI {
 	 * This method does not take any parameters. It logs the current
 	 * Account object out of the system.
 	 */
-	public void logOff(){
+	public void logout(){
 		
 	}
 	
 	/**
-	 * 
+	 * This method is used when there is an error in the login process. This
+	 * method displays an error message for the user when there is an error
+	 * when logging in. This error is often because the user input a wrong
+	 * username or password
 	 */
 	public void displayLoginError(){
 		
@@ -53,13 +69,6 @@ public class AccountUI {
 	}
 	
 	/**
-	 * 
-	 */
-	public void displayAccount(){
-		
-	}
-	
-	/**
 	 * This method takes a university name as a parameter and uses that
 	 * to search the database and then it returns either null if the university
 	 * was not found in the system, or it creates a university object out of the
@@ -67,7 +76,7 @@ public class AccountUI {
 	 * @param name String, a name of a university
 	 * @return University a university object
 	 */
-	public University getUniversity(String name){
+	public University getAUniversity(String name){
 		return null;
 	}
 	
@@ -95,10 +104,10 @@ public class AccountUI {
 	
 	/**
 	 * This Method displays all of the information about a specified Account object.
-	 * It gathers all of the attributes for an account objet and then displays
+	 * It gathers all of the attributes for an account object and then displays
 	 * that information for the user to see
 	 */
-	public void displayStudent(Account a){
+	public void displayAccount(Account a){
 		
 	}
 	
@@ -115,30 +124,12 @@ public class AccountUI {
 	}
 	
 	/**
-	 * 
-	 */
-	public void save(){
-		
-	}
-	
-	/**
 	 * This method is a method that asks the user if they would like to 
 	 * continue on making the changes to this Account object, whether it is
 	 * a User changing their own account information or an Admin changing
 	 * another person's Account information.
 	 */
 	public void confirmEdit(){
-		
-	}
-	
-	/**
-	 * This method determines if the current account object is active or not
-	 * Each account object has an attribute that states whether the Account is
-	 * active or deactivated. If the account if Active this method will return 
-	 * true, otherwise it will return false.
-	 * @return Boolean, true if the Account object is active
-	 */
-	public boolean isActive(Account a){
 		
 	}
 	

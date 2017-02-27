@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jacs;
+package JACS;
 
 /**
  * @author cjzins

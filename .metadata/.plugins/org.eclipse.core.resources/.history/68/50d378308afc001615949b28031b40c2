@@ -1,0 +1,31 @@
+
+
+public class UniversityController {
+	private University university;
+	
+	/**
+	 * Adds a university to the database
+	 * @param u University to be added
+	 */
+	public void addUniversity(University u)
+	{
+
+	}
+	/**
+	 * 
+	 * @param u University object with edited information
+	 */
+	public void editUniversity(University u)
+	{
+		
+	}
+	/**
+	 * Specify a university to be displayed by in the User Interface
+	 * @param u University object to be displayed
+	 */
+	public void displayUniversity(University u)
+	{
+		
+	}
+
+}

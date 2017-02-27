@@ -1,5 +1,5 @@
 
-package JACS.src;
+package edu.csbsju;
 
 import java.util.*;
 

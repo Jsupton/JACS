@@ -11,25 +11,25 @@ import java.util.*;
  * @version 02-26-17
  */
 public class SearchController {
-
- /**
-  * Default Constructor
-  */
- public SearchController() {
-  super();
-  // TODO Auto-generated constructor stub
- }
-
- /**
-  * This method allows the user to search for a specific university. It takes 
-  * in a Universtiy object as a parameter. The attributes for the university object are
-  * the search criteria that the user input. The search criteria is used to search the 
-  * Database. All universities that match the attributes of the search criteria are 
-  * gathered into an arrayList.
-  * @return ArrayList<University>
-  */
- public ArrayList<Integer> search(University u){
-  return null;
- }
- 
+	
+	 /**
+	  * Default Constructor
+	  */
+	 public SearchController() {
+	  // TODO Auto-generated constructor stub
+	 }
+	
+	 /**
+	  * This method allows the user to search for a specific university. It takes 
+	  * in a University object as a parameter. The attributes for the university object are
+	  * the search criteria that the user input. The search criteria is used to search the 
+	  * Database. All universities that match the attributes of the search criteria are 
+	  * gathered into an arrayList.
+	  * @return ArrayList<University>
+	  */
+	 public ArrayList<University> search(University u){
+		 ArrayList<University> s = new ArrayList();
+	  return s;
+	 }
+	 
 }

@@ -44,10 +44,10 @@ public class UserUI {
 	}
 	/**
 	 * searches for a users universities
-	 * @param u user object
+	 * @param u university object
 	 * @return list of users saved schools
 	 */
-	public ArrayList<University> search(User u)
+	public ArrayList<University> search(University u)
 	{
 		return null;
 	}

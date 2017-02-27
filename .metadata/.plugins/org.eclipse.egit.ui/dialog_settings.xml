@@ -3,6 +3,32 @@
 	<list key="RepositorySelectionPage.UsedUris">
 		<item value="https://github.com/Jsupton/JACS"/>
 	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="ajdehn &lt;ajdehn@linpe208vm1.ad.csbsju.edu&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="ajdehn &lt;ajdehn@linpe208vm1.ad.csbsju.edu&gt;"/>
+	</list>
 	<section name="GitImportWizard">
+	</section>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="656" key="DIALOG_WIDTH"/>
+		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="449" key="DIALOG_HEIGHT"/>
+		<item value="214" key="DIALOG_X_ORIGIN"/>
+		<item value="609" key="DIALOG_Y_ORIGIN"/>
+		<list key="sashWeights">
+			<item value="600"/>
+			<item value="400"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item value="808" key="DIALOG_WIDTH"/>
+		<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="393" key="DIALOG_HEIGHT"/>
+		<item value="138" key="DIALOG_X_ORIGIN"/>
+		<item value="646" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="GitCommitMessageComponent">
 	</section>
 </section>

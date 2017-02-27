@@ -3,13 +3,14 @@ package edu.csbsju;
 import java.util.ArrayList;
 
 /**
+ * Class used to communicate with the Database
  * @author ajdehn
- *
+ * @version 02-26-17
  */
 public class DBController {
 	 
 	 /**
-	  * Checks if a username exists in the database
+	  * Checks if a specific username exists in the database
 	  * @param u the name of the username
 	  * @return returns true if user with that name exists in the database
 	  */
@@ -19,9 +20,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * finds the password
-	  * @param 
-	  * @return
+	  * Finds the password
+	  * @param u Username that we need the password for
+	  * @return Password of the User with specified username
 	  */
 	 public String findPassword(String u)
 	 {
@@ -31,7 +32,7 @@ public class DBController {
 	 /**
 	  * Returns the type of an account
 	  * @param a Account being checked
-	  * @return type of account
+	  * @return type of account (Admin or User)
 	  */
 	 public char determineType(Account a)
 	 {
@@ -41,7 +42,7 @@ public class DBController {
 	 /**
 	  * Gets a university object with a university name
 	  * @param universityName Name of the university being searched
-	  * @return University object with given University Name
+	  * @return University object with given university name
 	  */
 	 public University detailedUniversityInformation(String universityName)
 	 {
@@ -49,7 +50,7 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Lets user know if the search criteria is empty
+	  * Determines whether or not search criteria is empty
 	  * @param criteria Information for the search provided by the user
 	  * @return True if there is some criteria provided
 	  */
@@ -70,7 +71,7 @@ public class DBController {
 	 /**
 	  * Finds a list of universities that match our criteria
 	  * @param criteria
-	  * @return
+	  * @return a list of Universities that match our criteria.
 	  */
 	 public ArrayList<University> search(University u)
 	 {
@@ -79,7 +80,7 @@ public class DBController {
 	 
 	 /**
 	  * Provides a list all universities in the database
-	  * @return
+	  * @return List of all universities that are in the database
 	  */
 	 public ArrayList<University> getAllUniversities()
 	 {
@@ -88,16 +89,17 @@ public class DBController {
 	 
 	 /**
 	  * Returns an account related to a username
-	  * @param username
-	  * @return
+	  * @param username User name to be searched in the database.
+	  * @return Account object related to provided user name.
 	  */
 	 public Account findAccount(String username)
 	 {
 	  return null;
 	 }
-	 
 	 /**
 	  * 
+	  * @param u User we would like to change details of
+	  * @param a Account information we would like details of
 	  */
 	 public void changeStudentDetails(User u, Account a)
 	 {
@@ -106,8 +108,8 @@ public class DBController {
 	 
 	 /**
 	  * Returns a university object with that specific name
-	  * @param name
-	  * @return
+	  * @param name name of university being searched for.
+	  * @return University object
 	  */
 	 public University getAUniversity(String name)
 	 {
@@ -124,7 +126,7 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * 
+	  * Shows sends a university to our user
 	  */
 	 public void displayUniversity()
 	 {
@@ -132,10 +134,10 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * 
+	  * Edits the account details of a provided account
 	  * @param fn Fist name of the user
 	  * @param ln Last name of the user
-	  * @param p 
+	  * @param p Password of user
 	  */
 	 public void editAccount(String fn,String ln,String p)
 	 {
@@ -143,8 +145,8 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * 
-	  * @param u
+	  * Adds a university to the database
+	  * @param u Object to be added to the database
 	  */
 	 public void addUniversity(University u)
 	 {
@@ -152,8 +154,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * 
-	  * @param u
+	  * Add a university to a Users saved list
+	  * @param u University object to be saved
+	  * @param a Account that this university is to be saved to
 	  */
 	 public void addUniversity(University u, Account a)
 	 {

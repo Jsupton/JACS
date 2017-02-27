@@ -11,26 +11,43 @@ import java.util.*;
  */
 public class AdminFuncController {
 
-  //a variable for admin
-	Admin admin;
- 
- /**
-  * This method calls on the database and gets all of the accounts that are
-  * in the system. It then returns an arrayList of those accounts
-  * @return an array list of the accounts
-  */
- public ArrayList getAccounts(){
-	 ArrayList<Account> a = new ArrayList();
-	 return a;
- }
- /**
-  * This method calls on the database and gets all of the universities that are
-  * in the system. It then returns an arrayList of those Universities
-  * @return and array list of universities
-  */
- public ArrayList getUniversities(){
-	 ArrayList<University> u = new ArrayList();
-	 return u;
- }
- 
-}
+	  //a variable for admin
+		Admin admin;
+		
+	/**
+	 * This default constructor initiates the Admin to null
+	 */
+	public AdminFuncController() {
+		super();
+		this.admin = null;
+	}
+	
+	 /**
+	  * This constructor initiates the Admin instance variable
+	  * to a specific Admin object
+	  * @param admin
+	  */
+	 public AdminFuncController(Admin admin) {
+			super();
+			this.admin = admin;
+		}
+	/**
+	  * This method calls on the database and gets all of the accounts that are
+	  * in the system. It then returns an arrayList of those accounts
+	  * @return an array list of the accounts
+	  */
+	 public ArrayList getAccounts(){
+		 ArrayList<Account> a = new ArrayList();
+		 return a;
+	 }
+	 /**
+	  * This method calls on the database and gets all of the universities that are
+	  * in the system. It then returns an arrayList of those Universities
+	  * @return and array list of universities
+	  */
+	 public ArrayList getUniversities(){
+		 ArrayList<University> u = new ArrayList();
+		 return u;
+	 }
+	 
+	}

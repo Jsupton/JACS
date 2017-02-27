@@ -33,7 +33,7 @@ public class UserUI {
 		
 	}
 	
-	public ArrayList<University> search(User u)
+	public ArrayList<University> search(University u)
 	{
 		return null;
 	}

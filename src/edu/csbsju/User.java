@@ -5,16 +5,36 @@ import java.util.ArrayList;
 
 /**
  * @author saschmidgall
- *
+ * @version 02-26-17
  */
-public class User {
+public class User extends Account {
 
+	
 	/**
-	 * constructs an object of type user
+	 * this constructor creates an user object using the constructor
+	 * from User, which user extends
+	 * @param firstName the name of an admin
+	 * @param lastName the lastname of an admin
+	 * @param username the admin's username
+	 * @param password the admin's password
+	 * @param status the status of the admin
+	 * @param type the type of the admin
 	 */
-	public User() {
+	public User(String firstName, String lastName, String username, String password, char status, char type) {
+		super(firstName, lastName, username, password, status, type);
 		// TODO Auto-generated constructor stub
 	}
+
+	/**
+	 * this constructor creates an user object using the constructor
+	 * from User, which user extends
+	 * @param firstName
+	 */
+	public User(String firstName) {
+		super(firstName);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * displays details of student
 	 * @param name string name of student to display
@@ -23,6 +43,7 @@ public class User {
 	{
 		
 	}
+	
 	/**
 	 * displays schools saved
 	 * @param name String representing student name
@@ -31,6 +52,7 @@ public class User {
 	{
 		
 	}
+	
 	/**
 	 * displays error if displays fails
 	 */
@@ -38,6 +60,7 @@ public class User {
 	{
 
 	}
+	
 	/**
 	 * saves the schools
 	 */
@@ -54,7 +77,7 @@ public class User {
 	}
 	/**
 	 * gets the saved schools
-	 * @return arrayList of Universitys
+	 * @return arrayList of Universities
 	 */
 	public ArrayList<University> getSavedSchools()
 	{

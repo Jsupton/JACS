@@ -15,6 +15,24 @@ public class AdminUI {
 	Admin admin;
 	
 	/**
+	 * This default constructor initiates the Admin to null
+	 */
+	public AdminUI() {
+		super();
+		this.admin = null;
+	}
+	
+	/**
+	 * This constructor initiates the Admin instance variable
+	 * to a specific Admin object
+	 * @param admin
+	 */
+	public AdminUI(Admin admin) {
+		super();
+		this.admin = admin;
+	}
+
+	/**
 	 * This method is used to get all the universities that reside in the database.
 	 * This method will call the AdminFuncController.
 	 * @return an array list of the universitys
@@ -27,8 +45,9 @@ public class AdminUI {
 	/**
 	  * This method is responsible for displaying all of the universities
 	  * to the Admin.
+	  * @param u an arrayList of University Objects
 	  */
-	 public void displayUniversities(){
+	 public void displayUniversities(ArrayList<University> u){
 	  
 	 }
 	 
@@ -39,7 +58,7 @@ public class AdminUI {
 	  */
 	 public ArrayList<Account> displayAccounts(){
 		 ArrayList<Account> a = new ArrayList();
-	  return a;
+		 return a;
 	 }
 	 
 	 /**

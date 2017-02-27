@@ -2,24 +2,20 @@ package edu.csbsju;
 import java.util.ArrayList;
 
 /**
- * 
- */
-
-/**
  * @author saschmidgall
- *
+ * @version 02-26-17
  */
 public class UserFuncController {
 
-	/**
-	 * @param u user object
-	 */
+	//@param u user object
 	User u;
+	
 	/**
 	 * default constructor
 	 */
 	public UserFuncController() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.u = null;
 	}
 	
 	/**
@@ -30,6 +26,7 @@ public class UserFuncController {
 		super();
 		this.u = u;
 	}
+	
 	/**
 	 * adds a university to saved schools list
 	 * @param uni university object
@@ -49,6 +46,7 @@ public class UserFuncController {
 	{
 		
 	}
+	
 	/**
 	 * searches for a school
 	 * @param uni university to search for
@@ -58,6 +56,7 @@ public class UserFuncController {
 	{
 		return null;
 	}
+	
 	/**
 	 * view university details
 	 * @param u university to view
@@ -66,6 +65,7 @@ public class UserFuncController {
 	{
 		
 	}
+	
 	/**
 	 * view student profile
 	 * @param u user object to view
@@ -74,6 +74,7 @@ public class UserFuncController {
 	{
 		
 	}
+	
 	/**
 	 * edit a student profile	
 	 * @param u user to edit
@@ -82,4 +83,13 @@ public class UserFuncController {
 	{
 		
 	}
-}	
+	
+	/**
+	 * Displays the student's saved schools
+	 * @param u user to view saved schools
+	 */
+	public void viewSavedSchools(User u){
+		
+	}
+	
+}

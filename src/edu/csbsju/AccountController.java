@@ -155,7 +155,7 @@ public class AccountController {
 	  * true, otherwise it will return false.
 	  * @return Boolean, true if the Account object is active
 	  */
-	 public boolean isActive(Account a){
+	 public boolean isActive(){
 		 if(a.getType() == ('Y'))
 			 return true;
 		 else
@@ -195,8 +195,8 @@ public class AccountController {
 	 public static void main(String args[]){
 		 Account a = new Account("Jacob","Upton","Jsupton","02101997",'U','Y');
 		 AccountController ac = new AccountController(a);
-		 System.out.println(a.getMembershipDetials());
-		 if(ac.isActive(a))
+		 System.out.println(a.displayStudent());
+		 if(ac.isActive())
 			 System.out.println("Active?: TRUE");
 		 else
 			 System.out.println("Active?: FALSE");

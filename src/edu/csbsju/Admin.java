@@ -52,5 +52,21 @@ public class Admin extends Account{
 	public void displayUniversities(){
 		
 	}
+	
+	/**
+	 * Sets the status of the account
+	 * @param status the status of the account
+	 */
+	public void setStatus(char status) {
+		super.status = status;
+	}
+
+	/**
+	 * Sets the type of the account
+	 * @param firstName the type of the account
+	 */
+	public void setType(char type) {
+		super.type = type;
+	}
 
 }

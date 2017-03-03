@@ -18,6 +18,10 @@ public class UserFuncController extends AccountController {
 	  * This instance variable is a DatabaseController Object
 	  */
 	 private DBController d;
+	 /**
+	  * searchController instance varibale
+	  */
+	 private SearchController s;
 	
 	/**
 	 * default constructor

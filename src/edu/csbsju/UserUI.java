@@ -15,10 +15,6 @@ public class UserUI extends AccountUI{
 	 * This is a UserFuncController instance variable
 	 */
 	private UserFuncController userFunc;
-	/**
-	 * This is a DatabaseController instance Variable
-	 */
-	private DBController d;
 	
 	/**
 	 * default constructor for a user interface

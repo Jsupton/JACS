@@ -38,12 +38,12 @@ public class Account {
 	  * This instance variable is a String that represents the 
 	  * status (active or deactive) of the Account object
 	  */
-	 private char status;
+	 protected char status;
 	 /**
 	  * This instance variable is a String that represents the 
 	  * type (admin or user) of the Account object
 	  */
-	 private char type;
+	 protected char type;
 	 
 	 /**
 	  * This constructor takes in the 6 parameters of an Account object from the user
@@ -111,6 +111,47 @@ public class Account {
 	 public char getStatus() {
 		 return status;
 	 }
+	 
+	 /**
+	  * Gets the firstname of the account
+	  * @return firstname 
+	  */
+	public String getFirstName() {
+		return firstName;
+	}
+
+	/**
+	 * Sets the firstname of the account
+	 * @param firstName the firstname of the account
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * gets the lastname of the Account
+	 * @return lastname
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * Sets the lastname of the account
+	 * @param lastName the lastname of the account
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * Sets the password of the account
+	 * @param password the password of the account
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	
 	 /**
 	  * The method allows the user to log out of the system
@@ -133,7 +174,7 @@ public class Account {
 	  * This method gets all the details for the Account object
 	  * This method acts like a toString method.
 	  */
-	 public String getMembershipDetials(){
+	 public String displayStudent(){
 	  return "Account [firstName=" + firstName + ", lastName=" + lastName + 
 	    ", username=" + username + ", status=" + status + ", type=" + type + "]";
 	 }

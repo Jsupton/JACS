@@ -19,6 +19,10 @@ public class AdminFuncController extends AccountController {
 	 * This is a DBController object used to access the Database
 	 */
 	private DBController d;
+	/**
+	 * This is a searchController object 
+	 */
+	private SearchController s;
 		
 	/**
 	 * This default constructor initiates the Admin to null
@@ -103,7 +107,7 @@ public class AdminFuncController extends AccountController {
 	  */
 	 public void viewAccount(String name){
 		 Account a = this.findAccount(name);
-		 a.getMembershipDetials();
+		 a.displayStudent();
 	 }
 	 
 	}

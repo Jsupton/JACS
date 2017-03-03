@@ -9,27 +9,29 @@ import java.util.*;
  * @author cjzins
  * @version 02-26-17
  */
-public class AdminUI {
+public class AdminUI extends AccountUI{
 
-	//a variable for admin
-	Admin admin;
+	/**
+	 * a AdminFuncController object instance variable
+	 */
+	private AdminFuncController adminFunc;
 	
 	/**
 	 * This default constructor initiates the Admin to null
 	 */
 	public AdminUI() {
 		super();
-		this.admin = null;
+		this.adminFunc = null;
 	}
 	
 	/**
-	 * This constructor initiates the Admin instance variable
-	 * to a specific Admin object
-	 * @param admin
+	 * This constructor initiates the AdminFuncController instance variable
+	 * to a specific AdminFuncController object
+	 * @param admin AdminFuncController instance variable
 	 */
-	public AdminUI(Admin admin) {
+	public AdminUI(AdminFuncController admin) {
 		super();
-		this.admin = admin;
+		this.adminFunc = admin;
 	}
 
 	/**
@@ -37,9 +39,8 @@ public class AdminUI {
 	 * This method will call the AdminFuncController.
 	 * @return an array list of the universitys
 	 */
-	public ArrayList<University> getUniversities(){
-		ArrayList<University> u = new ArrayList();
-		return u;
+	public void getUniversities(){
+		super.getUniversities();
 	 }
 	 
 	/**
@@ -47,18 +48,24 @@ public class AdminUI {
 	  * to the Admin.
 	  * @param u an arrayList of University Objects
 	  */
-	 public void displayUniversities(ArrayList<University> u){
-	  
+	 public void displayUniversities(){
+		 super.displayUniversities();
 	 }
 	 
 	 /**
 	  * This is a method used to display the accounts of all of the Account
 	  * objects that are in the database.
-	  * @return an array list of accounts
 	  */
-	 public ArrayList<Account> displayAccounts(){
-		 ArrayList<Account> a = new ArrayList();
-		 return a;
+	 public void displayAccounts(){
+		 adminFunc.displayAccounts();
+	 }
+	 
+	 /**
+	  * This is a method used to display the accounts of all of the Account
+	  * objects that are in the database.
+	  */
+	 public void getAccounts(){
+		 adminFunc.getAccounts();
 	 }
 	 
 	 /**
@@ -67,7 +74,7 @@ public class AdminUI {
 	  * @param an university that is being added
 	  */
 	 public void addUniversity(University u){
-	  
+		 
 	 }
 	 
 	 /**
@@ -75,8 +82,28 @@ public class AdminUI {
 	  * an error when searching the database.
 	  * @return a String representing the error
 	  */
-	 public String getSearchError(){
-	   return null;
+	 public void getSearchError(){
+	   
 	 }
+	 
+	 /**
+	  * This method if a void method that takes an account object in as a parameter
+	  * It uses the account object and changes the status of the Account object to 
+	  * deactivated.
+	  * @param a Account object
+	  */
+	 public void deactivate(){
+		 adminFunc.deactivate();
+	 }
+	 
+	 /**
+	  * This Method displays all of the information about a specified Account object.
+	  * It gathers all of the attributes for an account object and then displays
+	  * that information for the user to see
+	  */
+	 public void viewAccount(String name){
+		 
+	 }
+	 
 }
 	

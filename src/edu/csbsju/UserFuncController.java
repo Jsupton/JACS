@@ -8,10 +8,16 @@ import java.util.ArrayList;
  * @author saschmidgall
  * @version 02-26-17
  */
-public class UserFuncController {
+public class UserFuncController extends AccountController {
 
-	//@param u user object
-	User u;
+	/**
+	 * This instance variable is a User object
+	 */
+	 private User u;
+	 /**
+	  * This instance variable is a DatabaseController Object
+	  */
+	 private DBController d;
 	
 	/**
 	 * default constructor
@@ -33,9 +39,8 @@ public class UserFuncController {
 	/**
 	 * adds a university to saved schools list
 	 * @param uni university object
-	 * @param u user object
 	 */
-	public void addUniversityToSavedSchools(University uni, User u)
+	public void addUniversityToSavedSchools(University uni)
 	{
 		
 	}
@@ -43,9 +48,8 @@ public class UserFuncController {
 	/**
 	 * removes university from saved schools list
 	 * @param uni university object to remove
-	 * @param u user object to remove from
 	 */
-	public void removeUniversityFromSavedSchools(University uni, User u)
+	public void removeUniversityFromSavedSchools(University uni)
 	{
 		
 	}
@@ -60,38 +64,43 @@ public class UserFuncController {
 		return null;
 	}
 	
-	/**
-	 * view university details
-	 * @param u university to view
-	 */
-	public void viewUniversityDetails(University u)
-	{
-		
-	}
 	
 	/**
 	 * view student profile
-	 * @param u user object to view
 	 */
-	public void viewStudentProfile(User u)
+	public void displayStudentDetails()
 	{
 		
 	}
 	
 	/**
 	 * edit a student profile	
-	 * @param u user to edit
 	 */
-	public void editStudentProfile(User u)
+	public void editStudentProfile()
 	{
 		
 	}
 	
 	/**
 	 * Displays the student's saved schools
-	 * @param u user to view saved schools
 	 */
-	public void viewSavedSchools(User u){
+	public void getSavedSchools(){
+		
+	}
+	
+	/**
+	 * prints the error if search fails
+	 */
+	public void getSearchError()
+	{
+		System.out.println("There was an error while searching.");
+	}
+	
+	/**
+	 * displays the error if display schools fails
+	 */
+	public void displaySavedSchoolsError()
+	{
 		
 	}
 	

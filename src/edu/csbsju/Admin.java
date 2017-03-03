@@ -43,14 +43,14 @@ public class Admin extends Account{
 	 * a method to display all of the accounts
 	 */
 	public void displayAccounts(){
-  
+		
 	}
 	
 	/**
 	 * displays all of the universities
 	 */
 	public void displayUniversities(){
-  
+		
 	}
 
 }

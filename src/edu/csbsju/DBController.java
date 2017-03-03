@@ -63,7 +63,7 @@ public class DBController {
 	  * Obtain a list of all users in the database
 	  * @return A list of all Users that exist in the database
 	  */
-	 public ArrayList<User> getUsers()
+	 public ArrayList<Account> getAccounts()
 	 {
 	  return null;
 	 }
@@ -140,9 +140,9 @@ public class DBController {
 	  * @param ln Last name of the user
 	  * @param p Password of user
 	  */
-	 public void editAccount(String fn,String ln,String p)
+	 public boolean editAccount(String fn,String ln,String p)
 	 {
-		 
+		 return false;
 	 }
 	 
 	 /**
@@ -188,7 +188,7 @@ public class DBController {
 	  * @param u
 	  * @return true if this user is active
 	  */
-	 public boolean isActive(User u)
+	 public boolean isActive(Account a)
 	 {
 	  return true;
 	 }
@@ -197,7 +197,7 @@ public class DBController {
 	  * Used to deactivate a given user
 	  * @param u User that you would like to deactivate
 	  */
-	 public void deactivate(User u)
+	 public void deactivate(Account a)
 	 {
 	  
 	 }

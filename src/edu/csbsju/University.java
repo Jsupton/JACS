@@ -10,23 +10,91 @@ import java.util.*;
  */
 public class University {
 	
+	/**
+	 * This string instance variable represents the name of a
+	 * specific university
+	 */
 	private String universityName;
+	/**
+	 * This string instance variable represents the Location of a
+	 * specific university
+	 */
 	private String location;
+	/**
+	 * This string instance variable represents the state that a
+	 * specific university is in
+	 */
 	private String state;
+	/**
+	 * This string instance variable represents the Control of a
+	 * specific university
+	 */
 	private String control;
+	/**
+	 * This string instance variable represents the Number of students
+	 * at a specific university
+	 */
 	private int numberOfStudents;
+	/**
+	 * This string instance variable represents the percent female at a
+	 * specific university
+	 */
 	private int percentFemale;
+	/**
+	 * This string instance variable represents the Verbal SAT scores of a
+	 * specific university
+	 */
 	private int satVerbal;
+	/**
+	 * This string instance variable represents the math SAT scores of a
+	 * specific university
+	 */
 	private int satMath;
+	/**
+	 * This string instance variable represents the Expenses of a
+	 * specific university
+	 */
 	private Double expenses;
+	/**
+	 * This string instance variable represents the Financial Aid of a
+	 * specific university
+	 */
 	private Double financialAid;
+	/**
+	 * This string instance variable represents the Number of applicants of a
+	 * specific university
+	 */
 	private int numberOfApplicants;
+	/**
+	 * This string instance variable represents the Percent Admitted of a
+	 * specific university
+	 */
 	private Double percentAdmitted;
+	/**
+	 * This string instance variable represents the percent Enrolled of a
+	 * specific university
+	 */
 	private Double percentEnrolled;
+	/**
+	 * This string instance variable represents the Academic Scale at a
+	 * specific university
+	 */
 	private int academicScale;
+	/**
+	 * This string instance variable represents the Social Scale at a
+	 * specific university
+	 */
 	private int socialScale;
+	/**
+	 * This string instance variable represents the Quality of life at a
+	 * specific university
+	 */
 	private int qualityOfLife;
-	private ArrayList<String> emphases;
+	/**
+	 * This string instance variable represents the Emphases of a
+	 * specific university
+	 */
+	private List<String> emphases;
 	
 	/**
 	 * General Constructor making a University Object
@@ -51,7 +119,7 @@ public class University {
 	public University(String universityName, String location, String state, String control, int numberOfStudents,
 			int percentFemale, int satVerbal, int satMath, Double expenses, Double financialAid, int numberOfApplicants,
 			Double percentAdmitted, Double percentEnrolled, int academicScale, int socialScale, int qualityOfLife,
-			ArrayList<String> emphases) {
+			List<String> emphases) {
 		super();
 		this.universityName = universityName;
 		this.location = location;
@@ -357,16 +425,8 @@ public class University {
 	 * gets all the Emphases at a university
 	 * @return the emphases
 	 */
-	public ArrayList<String> getEmphases() {
+	public List<String> getEmphases() {
 		return emphases;
-	}
-	
-	/**
-	 * Sets the Emphases of a university
-	 * @param emphases the emphases to set
-	 */
-	public void setEmphases(ArrayList<String> emphases) {
-		this.emphases = emphases;
 	}
 	
 	/**
@@ -384,6 +444,27 @@ public class University {
 	public void removeEmphasis(String emp){
 		
 	}
+
+
+	public void printString() {
+		System.out.println( "University [universityName=" + universityName + "\nlocation=" + location + "\nstate=" + state
+				+ "\ncontrol=" + control + "\nnumberOfStudents=" + numberOfStudents + "\npercentFemale=" + percentFemale
+				+ "\nsatVerbal=" + satVerbal + "\nsatMath=" + satMath + "\nexpenses=" + expenses + "\nfinancialAid="
+				+ financialAid + "\nnumberOfApplicants=" + numberOfApplicants + "\npercentAdmitted=" + percentAdmitted
+				+ "\npercentEnrolled=" + percentEnrolled + "\nacademicScale=" + academicScale + "\nsocialScale="
+				+ socialScale + "\nqualityOfLife=" + qualityOfLife + "\nemphases=" + emphases + "]\n");
+	}
+
+	//Fake main method to test Class
+	public static void main(String args[]){
+		ArrayList<String> l = new ArrayList<String>();
+		l.add("Beer");
+		l.add("Popcorn");
+		University u = new University("St. John's University","Minnesota","RURAL","MATH",2112,0,1300,1350,52433.0,25000.0,1000,68.0,98.0,5,5,5,l);
+		u.printString();
+		
+	}
+	
 	
 
 }

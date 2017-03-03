@@ -7,6 +7,9 @@ package edu.csbsju;
  */
 public class UniversityController {
 	
+	/**
+	 * This instance variable represents a university object
+	 */
 	private University university;
 	
 	/**

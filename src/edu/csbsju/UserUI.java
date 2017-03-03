@@ -9,96 +9,101 @@ import java.util.ArrayList;
  * @author saschmidgall
  *
  */
-public class UserUI {
+public class UserUI extends AccountUI{
 
+	/**
+	 * This is a UserFuncController instance variable
+	 */
+	private UserFuncController userFunc;
+	/**
+	 * This is a DatabaseController instance Variable
+	 */
+	private DBController d;
+	
 	/**
 	 * default constructor for a user interface
 	 */
 	public UserUI() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.userFunc = null;
 	}
+	
+	/**
+	 * default constructor for a user interface
+	 * @param u UserFuncController object parameter 
+	 */
+	public UserUI(UserFuncController u) {
+		super();
+		this.userFunc = u;
+	}
+	
 	/**
 	 * allows user to logon
 	 * @param u string representing username
 	 * @param p string representing password
 	 */
-	public void logon(String u, String p)
+	public void logOn(String u, String p)
 	{
-		
+		super.logOn(u,p);
 	}
-	/**
-	 * gets the student profile
-	 * @return user object of student
-	 */
-	public User getStudentProfile()
-	{
-		return null;	
-	}
+	
 	/**
 	 * display student details
-	 * @param name string representing name of student
 	 */
-	public void displayStudentDetails(String name)
+	public void displayStudentDetails()
 	{
 		
 	}
+	
 	/**
 	 * searches for a users universities
 	 * @param u university object
-	 * @return list of users saved schools
 	 */
-	public ArrayList<University> search(University u)
+	public void searchForSchools(University u)
 	{
-		return null;
+		
 	}
+	
 	/**
 	 * gets the saved schools
-	 * @param u user object
-	 * @return list of saved schools
 	 */
-	public ArrayList<University> getSavedSchools(User u)
-	{
-		return null;
-	}
-	/**
-	 * displays the searched universities
-	 * @param alu an arrayList of Universities
-	 * @return arrayList of universities
-	 */
-	public ArrayList<University> displaySearchedUniversities(ArrayList<University> alu)
-	{
-		return null;
-	}
-	/**
-	 * gets the error if search fails
-	 * @return string representing error
-	 */
-	public String getSearchError()
-	{
-		return null;
-	}
-	/**
-	 * edits the student profile
-	 * @param u user to edit
-	 */
-	public void editStudentProfile(User u)
-	{
-		
-	}
-	/**
-	 * displays the error if display schools fails
-	 */
-	public void displaySavedSchoolsError()
-	{
-		
-	}
-	/**
-	 * saves the user schools
-	 * @param u user object
-	 * @param uni school to save
-	 */
-	public void saveUserSchool(User u, University uni)
+	public void getSavedSchools()
 	{
 	
+	}
+	
+	/**
+	 * edits the student profile
+	 */
+	public void editStudentProfile()
+	{
+		
+	}
+	
+	/**
+	 * displays the error if display schools fails
+	 * @param name the name of a university
+	 */
+	public void viewUniversityDetials(String name)
+	{
+		super.displayUniversity(name);
+	}
+	
+	/**
+	 * saves the user schools
+	 * @param uni school to save
+	 */
+	public void addUniversityToSavedSchools(University uni)
+	{
+	
+	}
+	
+	/**
+	 * removes university from saved schools list
+	 * @param uni university object to remove
+	 */
+	public void removeUniversityFromSavedSchools(University uni)
+	{
+		
 	}
 }

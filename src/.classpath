@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/net/people/classes/CS230/handouts/project/DBLibraryCode/csci230databaselibrary.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

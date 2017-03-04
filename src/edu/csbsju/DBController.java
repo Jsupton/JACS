@@ -2,13 +2,15 @@ package edu.csbsju;
 
 import java.util.ArrayList;
 
+import dblibrary.project.csci230.*;
+
 /**
  * Class used to communicate with the Database
  * @author ajdehn
  * @version 02-26-17
  */
 public class DBController {
-	 
+	private UniversityDBLibrary univDBlib;
 	 /**
 	  * Checks if a specific username exists in the database
 	  * @param u the name of the username
@@ -16,7 +18,19 @@ public class DBController {
 	  */
 	 public boolean checkUsername(String u)
 	 {
-	  return false;
+		 String[][] users = univDBlib.user_getUsers();
+		 boolean found = false;
+		 int count = 0;
+		 while(!found && count<users.length)
+		 {
+			 if(users[count][2].equals(u))
+			 {
+				 return true;
+			 }
+			 count++;
+		 }
+		 
+		 return false;
 	 }
 	 
 	 /**
@@ -26,7 +40,19 @@ public class DBController {
 	  */
 	 public String findPassword(String u)
 	 {
-	  return null;
+		 String[][] users = univDBlib.user_getUsers();
+		 boolean found = false;
+		 int count = 0;
+		 while(!found && count<users.length)
+		 {
+			 if(users[count][2].equals(u))
+			 {
+				 return users[count][3];
+			 }
+			 count++;
+		 }
+		 
+		 return "Not Found";
 	 }
 	 
 	 /**
@@ -94,7 +120,30 @@ public class DBController {
 	  */
 	 public Account findAccount(String username)
 	 {
-	  return null;
+		 String firstName = null;
+		 String lastName = null;
+		 String password = null;
+		 char status = 0;
+		 char type = 0;
+		 
+		 String[][] users = univDBlib.user_getUsers();
+		 boolean found = false;
+		 int count = 0;
+		 while(!found && count<users.length)
+		 {
+			 if(users[count][2].equals(username))
+			 {
+				 firstName = users[count][0];
+				 lastName = users[count][1];
+				 password = users[count][2];
+				 status = users[count][4].charAt(0);
+				 type = users[count][5].charAt(0);
+			 }
+			 count++;
+		 }
+		 Account acct = new 
+				 Account(firstName, lastName, username, password, status, type);
+	  return acct;
 	 }
 	 
 	 /**

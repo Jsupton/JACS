@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="/net/people/classes/CS230/handouts/project/DBLibraryCode" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="/net/home/ajdehn/git/JACS/src" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="javadoc">
 		<item value="public" key="access"/>
@@ -51,6 +52,9 @@
 		<item value="598" key="DIALOG_HEIGHT"/>
 		<item value="189" key="DIALOG_X_ORIGIN"/>
 		<item value="512" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item value="2" key="pageIndex"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

@@ -27,7 +27,7 @@ public class AccountController {
 	 public AccountController() {
 		 super();
 		 this.a = null;
-		 this.d = null;
+		 this.d = new DBController();
 	 }
 	 
 	 /**
@@ -37,7 +37,18 @@ public class AccountController {
 	 public AccountController(Account a) {
 		 super();
 		 this.a = a;
-		 this.d = null;
+		 this.d = new DBController("jacs","jacs","csci230");
+	 }
+	 
+	 /**
+	  * This is a default constructor
+	  * @param a Account object parameter 
+	  * @param DBCOntroller object
+	  */
+	 public AccountController(Account a, DBController d) {
+		 super();
+		 this.a = a;
+		 this.d = d;
 	 }
 	 
 	 /**
@@ -46,7 +57,7 @@ public class AccountController {
 	  * @param u String, a username for the Account object
 	  * @param p String, a password for the Account object
 	  */
-	 public void logOn(String u, String p){
+	 public Account logOn(String u, String p){
 		 boolean b = d.checkUsername(u);
 		 if(b){
 			 String p2 = d.findPassword(u);
@@ -55,14 +66,20 @@ public class AccountController {
 				 for(Account x:l){
 					 if(x.getUsername().equals(u)){
 						 this.a = x;
+						 return a;
 					 }
 				 }
+				 return null;
 			 }
-			 else
+			 else{
 				 a.displayLoginError();
+				 return null;
+			 }
 		 }
-		 else
+		 else{
 			 a.displayLoginError();
+			 return null;
+		 }
 	 }
 	 
 	 /**
@@ -78,8 +95,8 @@ public class AccountController {
 	  * universities for the user to view or for an admin to edit.
 	  * @return ArrayList<University> An array list of university objects
 	  */
-	 public List<University> getUniversities(){
-		 List<University> l = new ArrayList<University>();
+	 public ArrayList<University> getUniversities(){
+		 ArrayList<University> l = new ArrayList<University>();
 		 l = d.getAllUniversities();
 		 return l;
 	 }
@@ -90,7 +107,7 @@ public class AccountController {
 	  * them on the screen for the user.
 	  */
 	 public void displayUniversities(){
-		 List<University> a = this.getUniversities();
+		 ArrayList<University> a = this.getUniversities();
 		 for(University u: a){
 			 u.printString();
 		 }
@@ -105,8 +122,8 @@ public class AccountController {
 	  * @return University a university object
 	  */
 	 public University getAUniversity(String name){
-		 University u = d.detailedUniversityInformation(name);
-	  return u;
+		 University u = d.getAUniversity(name);
+		 return u;
 	 }
 	 
 	 /**
@@ -117,7 +134,7 @@ public class AccountController {
 	  */
 	 public void displayUniversity(String name){
 		 University u = this.getAUniversity(name);
-		u.printString();
+		 u.printString();
 	 }
 	 
 	 /**
@@ -189,17 +206,26 @@ public class AccountController {
 	 }
 	 
 	 /**
+	  * displays the account
+	  * @param args
+	  */
+	 public Account displayAccount(){
+		 return a;
+	 }
+	 
+	 /**
 	  * MAIN METHOD
 	  * @param args
 	  */
 	 public static void main(String args[]){
 		 Account a = new Account("Jacob","Upton","Jsupton","02101997",'U','Y');
 		 AccountController ac = new AccountController(a);
-		 System.out.println(a.displayStudent());
+		 a.displayStudent();
 		 if(ac.isActive())
 			 System.out.println("Active?: TRUE");
 		 else
 			 System.out.println("Active?: FALSE");
+		 ac.displayUniversities();
 	 }
 
 }

@@ -19,9 +19,17 @@ public class AdminUI extends AccountUI{
 	/**
 	 * This default constructor initiates the Admin to null
 	 */
+	public AdminUI(Admin a) {
+		super();
+		this.adminFunc = new AdminFuncController(a);
+	}
+	
+	/**
+	 * This default constructor initiates the Admin to null
+	 */
 	public AdminUI() {
 		super();
-		this.adminFunc = null;
+		this.adminFunc = new AdminFuncController();
 	}
 	
 	/**

@@ -21,7 +21,15 @@ public class UserUI extends AccountUI{
 	 */
 	public UserUI() {
 		super();
-		this.userFunc = null;
+		this.userFunc = new UserFuncController();
+	}
+	
+	/**
+	 * default constructor for a user interface
+	 */
+	public UserUI(User u) {
+		super();
+		this.userFunc = new UserFuncController(u);
 	}
 	
 	/**
@@ -38,9 +46,10 @@ public class UserUI extends AccountUI{
 	 * @param u string representing username
 	 * @param p string representing password
 	 */
-	public void logOn(String u, String p)
+	public Account logOn(String u, String p)
 	{
-		super.logOn(u,p);
+		Account b = super.logOn(u,p);
+		return b;
 	}
 	
 	/**
@@ -48,7 +57,7 @@ public class UserUI extends AccountUI{
 	 */
 	public void displayStudentDetails()
 	{
-		
+		userFunc.displayStudentDetails();
 	}
 	
 	/**

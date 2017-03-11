@@ -24,7 +24,7 @@ public class User extends Account {
 	 * @param type the type of the admin
 	 */
 	public User(String firstName, String lastName, String username, String password, char status, char type) {
-		super(firstName, lastName, username, password, status, type);
+		super(firstName, lastName, username, password, type, status);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -35,16 +35,17 @@ public class User extends Account {
 	 */
 	public User(String firstName) {
 		super(firstName);
-		// TODO Auto-generated constructor stub
 	}
+	
+		// TODO Auto-generated constructor stub
 
 	/**
 	 * displays details of student
 	 * @param name string name of student to display
 	 */
-	public void displayStudentDetails(String name)
+	public void displayStudent()
 	{
-		
+		super.displayStudent();
 	}
 	
 	/**

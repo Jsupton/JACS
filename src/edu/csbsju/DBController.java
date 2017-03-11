@@ -10,7 +10,31 @@ import dblibrary.project.csci230.*;
  * @version 02-26-17
  */
 public class DBController {
+	
+	/**
+	 * This instance is a variable that helps us access the UniversityDBLibrary 
+	 * jar that is connected to the project
+	 */
 	private UniversityDBLibrary univDBlib;
+	
+	/**
+	 * Default Constructor
+	 */
+	 public DBController(){
+		 this.univDBlib = new UniversityDBLibrary("jacs","jacs","csci230");
+	 }
+	 
+	 /**
+	  * This constructor takes in the 3 necessities that are required to log onto
+	  * the UniversityDBLibrary class
+	  * @param a Database
+	  * @param b Username
+	  * @param c Password
+	  */
+	 public DBController(String a, String b, String c){
+		 this.univDBlib = new UniversityDBLibrary(a,b,c);
+	 }
+	 
 	 /**
 	  * Checks if a specific username exists in the database
 	  * @param u the name of the username
@@ -91,7 +115,22 @@ public class DBController {
 	  */
 	 public ArrayList<Account> getAccounts()
 	 {
-	  return null;
+		 int i,j;
+		 String[][] x = univDBlib.user_getUsers();
+		 ArrayList<Account> s = new ArrayList<Account>();
+		 for(i = 0; i<x.length; i++){
+			 String firstName = x[i][0];
+			 String lastName = x[i][1];
+			 String username = x[i][2];
+			 String password = x[i][3];
+			 String z = x[i][4];
+			 char status = z.charAt(0);
+			 String y = x[i][5];
+			 char type = y.charAt(0);
+			 Account a = new Account(firstName, lastName, username, password, status, type);
+			 s.add(a);
+		 }
+		 return s;
 	 }
 	 
 	 /**
@@ -110,7 +149,42 @@ public class DBController {
 	  */
 	 public ArrayList<University> getAllUniversities()
 	 {
-	  return null;
+		 int i,j,h;
+		 String[][] x = univDBlib.university_getUniversities();
+		 String[][] y = univDBlib.university_getNamesWithEmphases();
+		 ArrayList<University> s = new ArrayList<University>();
+		 for(i = 0;i<x.length;i++){
+			String universityName = x[i][0];
+			String location = x[i][1];
+			String state = x[i][2];
+			String control = x[i][3];
+			int numberOfStudents = Integer.parseInt(x[i][4]);
+			int percentFemale = Integer.parseInt(x[i][5]);
+			int satVerbal = Integer.parseInt(x[i][6]);
+			int satMath = Integer.parseInt(x[i][7]);
+			double expenses = Double.parseDouble(x[i][8]);
+			double financialAid = Double.parseDouble(x[i][9]);
+			int numberOfApplicants = Integer.parseInt(x[i][10]);
+			double percentAdmitted = Double.parseDouble(x[i][11]);
+			double percentEnrolled = Double.parseDouble(x[i][12]);
+			int academicScale = Integer.parseInt(x[i][13]);
+			int socialScale = Integer.parseInt(x[i][14]);
+			int qualityOfLife = Integer.parseInt(x[i][15]);
+			ArrayList<String> emphases = new ArrayList<String>();
+			for(h = 0;h<y.length;h++){
+				if(y[h][0].equals(universityName)){
+				for(j = 1;j<y[0].length;j++){
+						emphases.add(y[h][j]);
+					}
+				}
+			}
+			University u = new University(universityName,location,state,control,numberOfStudents,
+					percentFemale,satVerbal,satMath,expenses,financialAid,numberOfApplicants,percentAdmitted,
+					percentEnrolled,academicScale,socialScale,qualityOfLife,emphases);
+			s.add(u);
+		 }
+		 
+	  return s;
 	 }
 	 
 	 /**
@@ -141,8 +215,7 @@ public class DBController {
 			 }
 			 count++;
 		 }
-		 Account acct = new 
-				 Account(firstName, lastName, username, password, status, type);
+		 Account acct = new Account(firstName, lastName, username, password, type, status);
 	  return acct;
 	 }
 	 
@@ -163,7 +236,14 @@ public class DBController {
 	  */
 	 public University getAUniversity(String name)
 	 {
-	  return null;
+		 ArrayList<University> x = this.getAllUniversities();
+		 University match = null;
+		 for(University u:x){
+				 if(u.getUniversityName().equals(name)){
+					 match = u;
+				 }
+		 }
+	  return match;
 	 }
 	 
 	 /**
@@ -251,5 +331,17 @@ public class DBController {
 	  
 	 }
 	
-	 
+	 public static void main(String args[]){
+		 DBController d = new DBController();
+		 ArrayList<University> p = d.getAllUniversities();
+		 ArrayList<Account> c = d.getAccounts();
+		 for(Account a: c){
+			 a.displayStudent();
+		 }
+		 //for(University u: p){
+		//	 u.printString();
+		// }
+		 
+		 
+	 }
 }

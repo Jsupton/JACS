@@ -3,6 +3,8 @@ package edu.csbsju;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 /**
  * This class is used as a user interface to pass data to the Account Controller
  * and to pass back data to the user. This class deals with displaying information
@@ -22,7 +24,15 @@ public class AccountUI {
 	  */
 	 public AccountUI() {
 		 super();
-		 this.accountFunc = null;
+		 this.accountFunc = new AccountController();
+	 }
+	 
+	 /**
+	  * Default Constructor
+	  */
+	 public AccountUI(Account a) {
+		 super();
+		 this.accountFunc = new AccountController(a);
 	 }
 	 
 	 /**
@@ -40,8 +50,14 @@ public class AccountUI {
 	  * @param u String, a username for the Account object
 	  * @param p String, a password for the Account object
 	  */
-	 public void logOn(String u, String p){
-		 accountFunc.logOn(u,p);
+	 public Account logOn(String u, String p){
+		 Account a = accountFunc.logOn(u,p);
+		 if(a != null){
+			 JOptionPane.showMessageDialog(null,"Successful Login");
+		 }
+		 else
+			 JOptionPane.showMessageDialog(null,"Unsuccessful Login");
+		 return a;
 	 }
 	 
 	 /**
@@ -52,8 +68,8 @@ public class AccountUI {
 	  * @param a Account object
 	  * @return char a character representing the type of the Account
 	  */
-	 public void returnType(){
-		 accountFunc.returnType();
+	 public char returnType(){
+		 return accountFunc.returnType();
 	 }
 	 
 	 /**
@@ -126,6 +142,22 @@ public class AccountUI {
 		 
 	 }
 	 
+	 /**
+	  * displays the account
+	  * @param args
+	  */
+	 public Account displayAccount(){
+		 Account a = accountFunc.displayAccount();
+		 return a;
+	 }
+	 
+	 public static void main(String args[])
+	 {
+		 AccountUI a = new AccountUI();
+		 //a.displayUniversities();
+		 String x = "AUGSBURG";
+		 a.displayUniversity(x);
+	 }
 	 
 
 }

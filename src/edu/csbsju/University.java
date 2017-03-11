@@ -39,7 +39,7 @@ public class University {
 	 * This string instance variable represents the percent female at a
 	 * specific university
 	 */
-	private int percentFemale;
+	private double percentFemale;
 	/**
 	 * This string instance variable represents the Verbal SAT scores of a
 	 * specific university
@@ -54,12 +54,12 @@ public class University {
 	 * This string instance variable represents the Expenses of a
 	 * specific university
 	 */
-	private Double expenses;
+	private double expenses;
 	/**
 	 * This string instance variable represents the Financial Aid of a
 	 * specific university
 	 */
-	private Double financialAid;
+	private double financialAid;
 	/**
 	 * This string instance variable represents the Number of applicants of a
 	 * specific university
@@ -69,12 +69,12 @@ public class University {
 	 * This string instance variable represents the Percent Admitted of a
 	 * specific university
 	 */
-	private Double percentAdmitted;
+	private double percentAdmitted;
 	/**
 	 * This string instance variable represents the percent Enrolled of a
 	 * specific university
 	 */
-	private Double percentEnrolled;
+	private double percentEnrolled;
 	/**
 	 * This string instance variable represents the Academic Scale at a
 	 * specific university
@@ -116,14 +116,14 @@ public class University {
 	 * @param qualityOfLife Quality of life of a university
 	 * @param emphases empases of a university
 	 */
-	public University(String universityName, String location, String state, String control, int numberOfStudents,
-			int percentFemale, int satVerbal, int satMath, Double expenses, Double financialAid, int numberOfApplicants,
-			Double percentAdmitted, Double percentEnrolled, int academicScale, int socialScale, int qualityOfLife,
+	public University(String universityName, String state, String location, String control, int numberOfStudents,
+			double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+			double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife,
 			List<String> emphases) {
 		super();
 		this.universityName = universityName;
-		this.location = location;
 		this.state = state;
+		this.location = location;
 		this.control = control;
 		this.numberOfStudents = numberOfStudents;
 		this.percentFemale = percentFemale;
@@ -249,7 +249,7 @@ public class University {
 	 * gets the percent female at the university
 	 * @return the percentFemale
 	 */
-	public int getPercentFemale() {
+	public double getPercentFemale() {
 		return percentFemale;
 	}
 	
@@ -257,7 +257,7 @@ public class University {
 	 * sets the percent female at the university
 	 * @param percentFemale the percentFemale to set
 	 */
-	public void setPercentFemale(int percentFemale) {
+	public void setPercentFemale(double percentFemale) {
 		this.percentFemale = percentFemale;
 	}
 	
@@ -297,7 +297,7 @@ public class University {
 	 * gets the expenses of a university
 	 * @return the expenses
 	 */
-	public Double getExpenses() {
+	public double getExpenses() {
 		return expenses;
 	}
 	
@@ -305,7 +305,7 @@ public class University {
 	 * sets the exepenses at a specified university
 	 * @param expenses the expenses to set
 	 */
-	public void setExpenses(Double expenses) {
+	public void setExpenses(double expenses) {
 		this.expenses = expenses;
 	}
 	
@@ -313,7 +313,7 @@ public class University {
 	 * gets the financial aid at a university
 	 * @return the financialAid
 	 */
-	public Double getFinancialAid() {
+	public double getFinancialAid() {
 		return financialAid;
 	}
 	
@@ -321,7 +321,7 @@ public class University {
 	 * sets the financial aid at a university
 	 * @param financialAid the financialAid to set
 	 */
-	public void setFinancialAid(Double financialAid) {
+	public void setFinancialAid(double financialAid) {
 		this.financialAid = financialAid;
 	}
 	

@@ -74,7 +74,7 @@ public class UserFuncController extends AccountController {
 	 */
 	public void displayStudentDetails()
 	{
-		
+		u.displayStudent();
 	}
 	
 	/**

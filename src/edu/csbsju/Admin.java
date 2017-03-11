@@ -24,7 +24,7 @@ public class Admin extends Account{
 	 * @param type the type of the admin
 	 */
 	public Admin(String firstName, String lastName, String username, String password, char status, char type) {
-		super(firstName, lastName, username, password, status, type);
+		super(firstName, lastName, username, password, type,status);
 		// TODO Auto-generated constructor stub
 	}
 

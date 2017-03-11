@@ -55,7 +55,7 @@ public class Account {
 	  * @param status Char, The status (active or deactivated) of the account object
 	  * @param type Char, The type (User or admin) of the account object
 	  */
-	 public Account(String firstName, String lastName, String username, String password, char status, char type) {
+	 public Account(String firstName, String lastName, String username, String password, char type, char status) {
 	  super(); 
 	  this.firstName = firstName;
 	  this.lastName = lastName;
@@ -174,9 +174,9 @@ public class Account {
 	  * This method gets all the details for the Account object
 	  * This method acts like a toString method.
 	  */
-	 public String displayStudent(){
-	  return "Account [firstName=" + firstName + ", lastName=" + lastName + 
-	    ", username=" + username + ", status=" + status + ", type=" + type + "]";
+	 public void displayStudent(){
+	  System.out.println("FirstName=" + firstName + "\nLastName=" + lastName + 
+	    "\nUsername=" + username + "\nPassword=" + password+"\nType=" + type + "\nStatus=" + status);
 	 }
 	 
 	 /**

@@ -1,6 +1,7 @@
 package edu.csbsju;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dblibrary.project.csci230.*;
 
@@ -280,7 +281,24 @@ public class DBController {
 	  */
 	 public void addUniversity(University u)
 	 {
-	  
+		 String school = u.getUniversityName();
+		 String state = u.getState();
+		 String location = u.getLocation();
+		 String control = u.getControl();
+		 int numberOfStudents = u.getNumberOfStudents();
+		 double percentFemale = u.getPercentFemale();
+		 int satVerbal = u.getSatVerbal();
+		 int satMath = u.getSatMath();
+		 double expenses = u.getExpenses();
+		 double financialAid = u.getFinancialAid();
+		 int numberOfApplicants = u.getNumberOfApplicants();
+		double percentAdmitted = u.getPercentAdmitted();
+		double percentEnrolled = u.getPercentEnrolled();
+		int academicScale = u.getAcademicScale();
+		int socialScale = u.getSocialScale();
+		int qualityOfLife = u.getQualityOfLife();
+
+		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale)
 	 }
 	 
 	 /**
@@ -290,7 +308,9 @@ public class DBController {
 	  */
 	 public void addUniversity(University u, Account a)
 	 {
-	  
+		 String school = u.getUniversityName();
+		 String userName = a.getUsername();
+		 univDBlib.user_saveSchool(userName, school);
 	 }
 	 
 	 /**
@@ -300,7 +320,9 @@ public class DBController {
 	  */
 	 public void removeUniversity(University u ,Account a)
 	 {
-	  
+		 String school = u.getUniversityName();
+		 String userName = a.getUsername();
+		 univDBlib.user_removeSchool(userName, school);
 	 }
 	 
 	 /**
@@ -319,7 +341,7 @@ public class DBController {
 	  */
 	 public boolean isActive(Account a)
 	 {
-	  return true;
+		 return
 	 }
 	 
 	 /**
@@ -328,7 +350,12 @@ public class DBController {
 	  */
 	 public void deactivate(Account a)
 	 {
-	  
+		this.firstName = firstName;
+		  this.lastName = lastName;
+		  this.username = username;
+		  this.password = password;
+		  this.status = status;
+		  this.type = type;
 	 }
 	
 	 public static void main(String args[]){

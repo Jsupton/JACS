@@ -85,8 +85,8 @@ public class AccountUI {
 	  * universities for the user to view or for an admin to edit.
 	  * @return ArrayList<University> An array list of university objects
 	  */
-	 public void getUniversities(){
-		 accountFunc.getUniversities();
+	 public ArrayList<University> getUniversities(){
+		 return accountFunc.getUniversities();
 	 }
 	 
 	 /**
@@ -139,8 +139,8 @@ public class AccountUI {
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
 	  */
-	 public void confirmEdit(){
-		 
+	 public boolean confirmEdit(){
+		 return accountFunc.confirmEdit();
 	 }
 	 
 	 /**
@@ -151,14 +151,5 @@ public class AccountUI {
 		 Account a = accountFunc.displayAccount();
 		 return a;
 	 }
-	 
-	 public static void main(String args[])
-	 {
-		 AccountUI a = new AccountUI();
-		 //a.displayUniversities();
-		 String x = "AUGSBURG";
-		 a.displayUniversity(x);
-	 }
-	 
 
 }

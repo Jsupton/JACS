@@ -36,8 +36,6 @@ public class User extends Account {
 	public User(String firstName) {
 		super(firstName);
 	}
-	
-		// TODO Auto-generated constructor stub
 
 	/**
 	 * displays details of student

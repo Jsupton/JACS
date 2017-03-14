@@ -1,7 +1,6 @@
 
 package edu.csbsju;
 
-import java.util.*;
 
 /**
  * This class is the class that encompasses the similarities of a User 
@@ -71,10 +70,10 @@ public class Account {
 	  * constructor and all other instance variables are set to a null value.
 	  * @param username String, The Username of the account object
 	  */
-	 public Account(String firstName) {
-	  this.firstName = firstName;
+	 public Account(String userName) {
+	  this.firstName = null;
 	  this.lastName = null;
-	  this.username = null;
+	  this.username = userName;
 	  this.password = null;
 	  this.status = '\0';
 	  this.type = '\0';

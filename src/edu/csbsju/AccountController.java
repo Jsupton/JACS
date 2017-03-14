@@ -163,8 +163,15 @@ public class AccountController {
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
 	  */
-	 public void confirmEdit(){
-		 
+	 public boolean confirmEdit(){
+		  String answer = JOptionPane.showInputDialog("Are You sure you want to confirm change? (Y/N)");
+		  if(answer == "y"|| answer == "Y"){
+			  return true;
+		  }
+		  else{
+			  JOptionPane.showMessageDialog(null,"The changes were not saved");
+			  return false;
+		  }
 	 }
 	 
 	 /**

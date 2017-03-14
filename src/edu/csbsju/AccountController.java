@@ -68,6 +68,7 @@ public class AccountController {
 				 for(Account x:l){
 					 if(x.getUsername().equals(u)){
 						 this.a = x;
+						 a.logOn(a);
 						 return a;
 					 }
 				 }
@@ -89,7 +90,7 @@ public class AccountController {
 	  * Account object out of the system.
 	  */
 	 public void logOff(){
-	  
+		 a.logOff();
 	 }
 	 
 	 /**
@@ -148,7 +149,7 @@ public class AccountController {
 	  * @param fn String representing the Account's first name
 	  */
 	 public void editAccount(String p, String ln, String fn){
-		 boolean b = d.editAccount(fn, ln, p);
+		 boolean b = d.editAccount(fn, ln, p, a.getType());
 		 if(b){
 			 System.out.println("Successful Change");
 		 }

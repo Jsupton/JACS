@@ -77,7 +77,7 @@ public class AccountUI {
 	  * Account object out of the system.
 	  */
 	 public void logout(){
-	  
+	    accountFunc.logOff();
 	 }
 	 
 	 /**

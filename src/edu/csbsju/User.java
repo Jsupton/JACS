@@ -55,44 +55,6 @@ public class User extends Account {
 		
 	}
 	
-	/**
-	 * displays error if displays fails
-	 */
-	public void displaySavedSchoolsError()
-	{
-
-	}
-	
-	/**
-	 * saves the schools
-	 */
-	public void saveSchool()
-	{
-		
-	}
-	/**
-	 * edit profile
-	 */
-	public void editProfile()
-	{
-		
-	}
-	/**
-	 * gets the saved schools
-	 * @return arrayList of Universities
-	 */
-	public ArrayList<University> getSavedSchools()
-	{
-		return null;
-	}
-	/**
-	 * removes a saved school
-	 * @param u university object
-	 */
-	public void removeSavedSchool(University u)
-	{
-		
-	}
 	
 	/**
 	 * displays search results

@@ -157,7 +157,12 @@ public class Account {
 	  * The Current Account information is cleared
 	  */
 	 public void logOff(){
-	  
+		 this.username = null;
+		 this.firstName = null;
+		 this.lastName = null;
+		 this.password = null;
+		 this.status = '\0';
+		 this.type = '\0';
 	 }
 	 
 	 /**
@@ -165,8 +170,13 @@ public class Account {
 	  * The current user's Account information creates a new Account
 	  * object and their detailed information is loaded into the instance variables
 	  */
-	 public void logOn(){
-	  
+	 public void logOn(Account a){
+		 this.username = a.getUsername();
+		 this.firstName = a.getFirstName();
+		 this.lastName = a.getLastName();
+		 this.password = a.getPassword();
+		 this.status = a.getStatus();
+		 this.type = a.getType();
 	 }
 	 
 	 /**
@@ -185,7 +195,23 @@ public class Account {
 	  * @param t char, The type (admin or user) of the Account object
 	  */
 	 public void displayMenu(char t){
-		 
+		 if(t == 'u'){
+				System.out.println();
+		  	    System.out.println("--------------------------------------------------------");
+			    System.out.println("\tS: Search For Schools");
+			    System.out.println("\tM: Manage My Saved Schools");
+			    System.out.println("\tP: Manage My Profile");
+			    System.out.println("\tQ: To Quit");
+			    System.out.println();
+		 }
+		 else if(t == 'a'){
+				System.out.println();
+		  	    System.out.println("--------------------------------------------------------");
+			    System.out.println("\tU: Manage Universities");
+			    System.out.println("\tZ: Manage Users");
+			    System.out.println("\tQ: To Quit");
+			    System.out.println();
+			}
 	 }
 	 
 	 /**

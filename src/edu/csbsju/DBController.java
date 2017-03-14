@@ -270,7 +270,7 @@ public class DBController {
 	  * @param ln Last name of the user
 	  * @param p Password of user
 	  */
-	 public boolean editAccount(String fn,String ln,String p)
+	 public boolean editAccount(String fn,String ln,String p,char type)
 	 {
 		 return false;
 	 }
@@ -316,10 +316,10 @@ public class DBController {
 		 while(!found && i<savedSchools.length)
 		 {
 			 
-			 if(username.equals(String[i][0]))
+			 if(username.equals(savedSchools[i][0]))
 			 {
 				 found = true;
-				 for(int j=0; j<)
+				// for(int j=0; j<)
 			 }
 		 }
 	 }
@@ -329,7 +329,7 @@ public class DBController {
 	  * @param u University object to be saved
 	  * @param a Account that this university is to be saved to
 	  */
-	 public void addUniversity(University u, Account a)
+	 public void addUniversityToSavedSchools(University u, Account a)
 	 {
 		 String school = u.getUniversityName();
 		 String userName = a.getUsername();
@@ -341,7 +341,7 @@ public class DBController {
 	  * @param u University object that needs to be removed
 	  * @param a Account that needs to be added 
 	  */
-	 public void removeUniversity(University u ,Account a)
+	 public void removeUniversityFromSavedSchools(University u ,Account a)
 	 {
 		 String school = u.getUniversityName();
 		 String userName = a.getUsername();
@@ -375,9 +375,50 @@ public class DBController {
 	 public void deactivate(Account a)
 	 {
 
-		 univDBlib.user_editUser(a.getUsername, a.getFirstName(), a.getLastName(),
+		 univDBlib.user_editUser(a.getUsername(), a.getFirstName(), a.getLastName(),
 				 a.getPassword(), a.getType(), 'n');
 
+	 }
+	 
+	 /**
+	  * This method is used to edit the account
+	  * @param firstname the firstname of the new account
+	  * @param lastname the lastname of the new account
+	  * @param username the username of the new account
+	  * @param password the password of the new account
+	  * @param type the type of the new account
+	  * @param status the status of the new account
+	  */
+	 public void addAccount(String firstname,String lastname, String username, String password, char type, char status){
+		 
+	 }
+	 
+	 /**
+	  * This method allows an admin to be able to edit a university object
+	  * The changes are sent to the Database to save the changes
+	  * @param universityName The name of a university
+	  * @param location The location of a university
+	  * @param state The state of a university
+	  * @param control The control of a university
+	  * @param numberOfStudents the number of students at a university
+	  * @param percentFemale the percent female of a university
+	  * @param satVerbal SAT of a university
+	  * @param satMath SAT of a university
+	  * @param expenses The Expenses of a university
+	  * @param financialAid the Financial aid at a university
+	  * @param numberOfApplicants Number of Applicants of a university
+	  * @param percentAdmitted The percent admitted of a university
+	  * @param percentEnrolled The percent Enrolled of a university
+	  * @param academicScale The academic scale of a university
+	  * @param socialScale Social scale of a university
+	  * @param qualityOfLife Quality of life of a university
+	  * @param emphases empases of a university
+	  */
+	 public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+			double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+			double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife,
+			List<String> emphases){
+		 
 	 }
 	
 	 public static void main(String args[]){

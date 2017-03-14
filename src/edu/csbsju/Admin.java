@@ -38,21 +38,6 @@ public class Admin extends Account{
 		// TODO Auto-generated constructor stub
 	}
 
-
-	/**
-	 * a method to display all of the accounts
-	 */
-	public void displayAccounts(){
-		
-	}
-	
-	/**
-	 * displays all of the universities
-	 */
-	public void displayUniversities(){
-		
-	}
-	
 	/**
 	 * Sets the status of the account
 	 * @param status the status of the account

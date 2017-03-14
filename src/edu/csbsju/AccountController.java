@@ -3,6 +3,8 @@ package edu.csbsju;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 /**
  * This Class acts as a controller class for an Account object. This
  * Class does the techinical work and deals with interchanging data
@@ -72,13 +74,13 @@ public class AccountController {
 				 return null;
 			 }
 			 else{
-				 a.displayLoginError();
+	    	     JOptionPane.showMessageDialog(null,"Failed Login");
 				 return null;
 			 }
 		 }
 		 else{
-			 a.displayLoginError();
-			 return null;
+    	     JOptionPane.showMessageDialog(null,"Failed Login");
+    	     return null;
 		 }
 	 }
 	 
@@ -161,8 +163,15 @@ public class AccountController {
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
 	  */
-	 public void confirmEdit(){
-		 
+	 public boolean confirmEdit(){
+		  String answer = JOptionPane.showInputDialog("Are You sure you want to confirm change? (Y/N)");
+		  if(answer == "y"|| answer == "Y"){
+			  return true;
+		  }
+		  else{
+			  JOptionPane.showMessageDialog(null,"The changes were not saved");
+			  return false;
+		  }
 	 }
 	 
 	 /**
@@ -202,7 +211,10 @@ public class AccountController {
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){
-		 return a.getType();
+		 if(a!=null){
+		     return a.getType();}
+		 else 
+			 return '\0';
 	 }
 	 
 	 /**

@@ -1,5 +1,6 @@
 package edu.csbsju;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is the controller for all the functions of a User.
@@ -29,6 +30,8 @@ public class UserFuncController extends AccountController {
 	public UserFuncController() {
 		super();
 		this.u = null;
+		this.d = new DBController();
+		this.s = new SearchController();
 	}
 	
 	/**
@@ -38,43 +41,86 @@ public class UserFuncController extends AccountController {
 	public UserFuncController(User u) {
 		super();
 		this.u = u;
+		this.d = new DBController();
+		this.s = new SearchController();
 	}
 	
 	/**
 	 * adds a university to saved schools list
 	 * @param uni university object
+	 * @return boolean, true if the addition was successful
 	 */
-	public void addUniversityToSavedSchools(University uni)
+	public boolean addUniversityToSavedSchools(University uni)
 	{
-		
+		return false;
 	}
 	
 	/**
 	 * removes university from saved schools list
 	 * @param uni university object to remove
+	 * @return boolean, true if the removal was successful
 	 */
-	public void removeUniversityFromSavedSchools(University uni)
+	public boolean removeUniversityFromSavedSchools(University uni)
 	{
-		
+		return false;
 	}
 	
 	/**
-	 * searches for a school
-	 * @param uni university to search for
-	 * @return arraylist of universities
+	 * searches for a users universities
+	 * @param universityName Univeristy name
+	 * @param state university state
+	 * @param location location of the university
+	 * @param control control of the university
+	 * @param numberOfStudentsLOWER lower bound number of students
+	 * @param numberOfStudentsUPPER upper bound number of students
+	 * @param percentFemaleLOWER lower bound percent female
+	 * @param percentFemaleUPPER upper bound percent female
+	 * @param satVerbalLOWER lower bound verbal sat score
+	 * @param satVerbalUPPER upper bound verbal sat score
+	 * @param satMathLOWER lower bound math sat score
+	 * @param satMathUPPER upper bound math sat
+	 * @param expensesLOWER lower bound expenses
+	 * @param expensesUPPER upper bound expenses
+	 * @param financialAidLOWER lower bound financial aid
+	 * @param financialAidUPPER upper bound financial aid
+	 * @param numberOfApplicantsLOWER lower bound number of applicants
+	 * @param numberOfApplicantsUPPER upper bound number of applicants
+	 * @param percentAdmittedLOWER percent admitted lower
+	 * @param percentAdmittedUPPER percent admitted upper
+	 * @param percentEnrolledLOWER percent enrolled lower
+	 * @param percentEnrolledUPPER percent enrolled upper
+	 * @param academicScaleLOWER academic scale lower
+	 * @param academicScaleUPPER academic scale upper
+	 * @param socialScaleLOWER social scale lower
+	 * @param socialScaleUPPER social scale upper
+	 * @param qualityOfLifeLOWER quality of life lower
+	 * @param qualityOfLifeUPPER quality of life upper
+	 * @param emphases list of emphases
+	 * @return A list of university objects that meet the criteria
 	 */
-	public ArrayList<University> searchForSchools(University uni)
-	{
-		return null;
+	public List<University> searchForSchools(String universityName, String state, String location, String control, String numberOfStudentsLOWER,
+		 	String numberOfStudentsUPPER, String percentFemaleLOWER, String percentFemaleUPPER, String satVerbalLOWER, String satVerbalUPPER, 
+		 	String satMathLOWER, String satMathUPPER, String expensesLOWER, String expensesUPPER, String financialAidLOWER, String financialAidUPPER,  
+		 	String numberOfApplicantsLOWER, String numberOfApplicantsUPPER, String percentAdmittedLOWER,String percentAdmittedUPPER, 
+		 	String percentEnrolledLOWER,  String percentEnrolledUPPER, String academicScaleLOWER, String academicScaleUPPER, String socialScaleLOWER, 
+		 	String socialScaleUPPER, String qualityOfLifeLOWER, String qualityOfLifeUPPER, List<String> emphases){
+		List<University> x = s.search(universityName, state, location, control, numberOfStudentsLOWER,
+			 	numberOfStudentsUPPER, percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
+			 	satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
+			 	numberOfApplicantsLOWER,numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
+			 	percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
+			 	socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER,emphases);
+		return x;
 	}
 	
 	
 	/**
 	 * view student profile
 	 */
-	public void displayStudentDetails()
+	public User displayStudentDetails()
 	{
 		u.displayStudent();
+		return u;
 	}
 	
 	/**
@@ -88,8 +134,17 @@ public class UserFuncController extends AccountController {
 	/**
 	 * Displays the student's saved schools
 	 */
-	public void getSavedSchools(){
-		
+	public List<University> getSavedSchools(){
+		return null;
+	}
+	
+	/**
+	 * gets the 5 matches for the university
+	 * @param u university
+	 * @return a list of university objects
+	 */
+	public List<University> getFiveMatches(University u){
+		return s.display5Schools(u);
 	}
 	
 	/**

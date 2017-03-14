@@ -298,7 +298,7 @@ public class DBController {
 		int socialScale = u.getSocialScale();
 		int qualityOfLife = u.getQualityOfLife();
 
-		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale)
+		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
 	 }
 	 
 	 /**
@@ -365,6 +365,7 @@ public class DBController {
 	 public boolean isActive(Account a)
 	 {
 		 return a.getStatus()=='y';
+
 	 }
 	 
 	 /**
@@ -373,8 +374,10 @@ public class DBController {
 	  */
 	 public void deactivate(Account a)
 	 {
+
 		 univDBlib.user_editUser(a.getUsername, a.getFirstName(), a.getLastName(),
 				 a.getPassword(), a.getType(), 'n');
+
 	 }
 	
 	 public static void main(String args[]){

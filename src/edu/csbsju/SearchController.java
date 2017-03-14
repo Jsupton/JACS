@@ -144,7 +144,7 @@ public class SearchController {
 		 s = d.getAllUniversities();
 		 for(University university:s){
 			 boolean b = true;
-			 if(universityName!=null && b == true)
+			 if(universityName !=null && b == true)
 				 b = university.getUniversityName().contains(universityName);
 			 else if(state!=null && b == true)
 				 b = university.getState().equals(state);
@@ -257,7 +257,6 @@ public class SearchController {
 	  * @return Account
 	  */
 	 public Account search(String u){
-		 Account newAccount;
 		 ArrayList<Account> accounts = d.getAccounts();
 		 for(Account ac:accounts){
 			 if(u.equals(ac.getUsername())){
@@ -426,10 +425,6 @@ public class SearchController {
 		 for(i=0;i<5;i++){
 			 University x = d.getAUniversity(distance[i][0]);
 			 matches.add(x);
-		 }
-		 
-		 for(University university: matches){
-			 university.printString();
 		 }
 		 return matches;
 	 }

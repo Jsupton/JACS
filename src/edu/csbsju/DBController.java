@@ -420,6 +420,32 @@ public class DBController {
 			List<String> emphases){
 		 
 	 }
+	 
+	 /**
+	  * This adds an emphases for the specified university object.
+	  * The parameter string is then added to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  * */
+	 public int addEmphases(String universityName,String emphases ){
+		 return -1;
+	 }
+	 
+	 /**
+	  * This removes an emphases for the specified university object.
+	  * The parameter string is then removed to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  */
+	 public int removeEmphases(String universityName,String emphases ){
+		 return -1;
+	 }
 	
 	 public static void main(String args[]){
 		 DBController d = new DBController();

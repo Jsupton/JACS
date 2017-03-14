@@ -47,24 +47,6 @@ public class User extends Account {
 	}
 	
 	/**
-	 * displays schools saved
-	 * @param name String representing student name
-	 */
-	public void displaySavedSchools(String name)
-	{
-		
-	}
-	
-	
-	/**
-	 * displays search results
-	 */
-	public void displaySearchResults()
-	{
-		
-	}
-	
-	/**
 	 * displays search error
 	 */
 	public void displaySearchError()

@@ -63,7 +63,7 @@ public class CMCDriver {
 	    //If the Account object is a user this is followed
 	    if(account.returnType()=='u' && a != null){
 	    	Account acc = account.displayAccount();
-	    	User u = new User(acc.getUsername(),acc.getPassword(),acc.getFirstName(),acc.getLastName(),acc.getType(),acc.getStatus());
+	    	User u = new User(acc.getFirstName(),acc.getLastName(),acc.getUsername(),acc.getPassword(),acc.getStatus(),acc.getType());
 	    	this.user = new UserUI(u);
 	    	do
 	    	{
@@ -75,6 +75,9 @@ public class CMCDriver {
 	    }
 	    //if the account object is an admin this is followed
 	    else if(account.returnType()=='a' && a != null){
+	    	Account acc = account.displayAccount();
+	    	Admin ad = new Admin(acc.getFirstName(),acc.getLastName(),acc.getUsername(),acc.getPassword(),acc.getStatus(),acc.getType());
+	    	this.admin = new AdminUI(ad);
 	    	do
 	    	{
 	    		adminMenu();
@@ -190,8 +193,9 @@ public class CMCDriver {
 	        //Allows User to Manage search for Schools
 	        case 's': case 'S':
 		    	searchMenu();
-	    		String un,s,l,c,nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu;
-	    		un= s= l= c= nosl= nosu= pfl= pfu= svl= svu= sml= smu= el= eu= fal= fau=  noal= noau= pal= pau= pel= peu= asl= asu= ssl= ssu= qoll= qolu= null;
+	    		String un,s,l,c,nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu, e;
+	    		un= s= l= c= nosl= nosu= pfl= pfu= svl= svu= sml= smu= el= eu= fal= fau=  noal= noau= pal= pau= pel= peu= asl= asu= ssl= ssu= qoll= qolu =e = null;
+	    		List<String> emphases = null;
 	    		//This populates the variables in order for the person to search
 	    		do
 			    {
@@ -276,6 +280,10 @@ public class CMCDriver {
 		    	    	qoll = JOptionPane.showInputDialog("Please Enter a lower bound for the quality of life: ");
 				  	    qolu = JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life: ");	    	        
 				  	    break;
+		    	      case 't': case 'T':
+			    	    e = JOptionPane.showInputDialog("Please Enter an emphases: ");
+			    	    emphases.add(e);
+			    	    break;
 		    	    	//Quit
 		    	      case 'R': case 'r':
 		    	    	break;
@@ -464,13 +472,14 @@ public class CMCDriver {
 	 * @param ch, a character telling what command to perform
 	 */
 	private void editAndAddUniversity(char ch){
-		String un, s, l, c;
-    	un=s=l=c=null;
+		String un, s, l, c, emp;
+    	un=s=l=c=emp=null;
     	int nos, sv, sm, noa,as, ss, qol;
     	nos=sv=sm=noa=as=ss=qol=0;
     	double pf, e, fa,pa ,pe;
     	pf=e=fa=pa=pe=0.0;
     	char cmd;
+    	List<String> emphases = null;
     	if(ch == 'E'|| ch == 'e'){
     			University univ = user.getAUniversity(JOptionPane.showInputDialog("Please enter a university name: ").toUpperCase());
 		 		un = univ.getUniversityName(); 
@@ -489,6 +498,7 @@ public class CMCDriver {
 		 		fa = univ.getFinancialAid();
 		 		pa = univ.getPercentAdmitted();
 		 		pe = univ.getPercentEnrolled();
+		 		emphases = univ.getEmphases();
 		 		System.out.println();
    		 		univ.printString();
    		 		universityMenu();
@@ -554,6 +564,7 @@ public class CMCDriver {
     	      case 'O': case 'o':
     	    	as = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an academic scale: "));		  	    
 		  	    //Add Social Scale
+    	    	break;
     	      case 'p': case 'P':
     	    	ss = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a social scale: "));	    	        
 		  	    break;
@@ -561,12 +572,49 @@ public class CMCDriver {
     	      case 'Q': case 'q':
     	    	qol = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a quality of life: "));	    	        
 		  	    break;
+    	      case 'U': case 'u':
+    	    	    String input = JOptionPane.showInputDialog("Please enter wether you would like to Add an Emphases (x) or remove an emphases (y): ");
+    	    	    cmd = input.charAt(0);
+    	    	    if(cmd == ('x')){
+    	    	    	emp = JOptionPane.showInputDialog("Please Enter an emphases to Add: ").toUpperCase();
+    	    	    	input = JOptionPane.showInputDialog("Are You sure You want to Add This Ephases? (y/n)");
+        	    	    cmd = input.charAt(0);
+        	    	    if(cmd == 'y'){
+        	    	    	int i = admin.addEmphases(un, emp);
+        	    	    	if(i==-1){
+            	    	    	JOptionPane.showMessageDialog(null,"There was an error adding the Emphases");
+        	    	    	}
+        	    	    	else
+            	    	    	JOptionPane.showMessageDialog(null,"The Emphases was added successfully");
+        	    	    }
+    	    	    }
+    	    	    else if(cmd == ('y')){
+    	    	    	emp = JOptionPane.showInputDialog("Please Enter an emphases to remove: ").toUpperCase();
+    	    	    	input = JOptionPane.showInputDialog("Are You sure You want to Remove This Ephases? (y/n)");
+        	    	    cmd = input.charAt(0);
+        	    	    if(cmd == 'y'){
+        	    	    	int i = admin.addEmphases(un, emp);
+        	    	    	if(i==-1){
+            	    	    	JOptionPane.showMessageDialog(null,"There was an error adding the Emphases");
+        	    	    	}
+        	    	    	else
+            	    	    	JOptionPane.showMessageDialog(null,"The Emphases was added successfully");
+        	    	    }
+    	    	    }
+    	    	break;
     	      case 'S': case 's':
-    	    	admin.addUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol,null);
+    	    	admin.addUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
     	    	break;
     	      case 'T': case 't':
     	    	System.out.print("SCHOOL PREVIEW:\nName: " + un+"\nState: "+ s +"\nLocation: "+ l +"\nControl: "+ c +"\n# of Studnets:"+ nos +"\n% Female:"+ pf +"\nSAT Verbal: "+ sv +"\nSAT Math: "+ sm +"\nExpenses: "+
   		    	e +"\nFinancial Aid: "+ fa +"\n# applicants: "+ noa +"\n% Accepted: "+ pa +"\n% Enrolled: "+pe +"\nAcademic Scale: "+as +"\nSocial Scale: "+ss +"\nQualit of Life: "+ qol +"\n");
+    	    	System.out.print("Emphases: [");
+    	    	if(emphases!=null){
+    	    		for(String emph:emphases){
+    	    			System.out.print(emph+"   ");
+    	    		}
+    	    	}
+    	    	System.out.print("]\n");
     	    	break;
     	      case 'R': case 'r':
     	    	JOptionPane.showMessageDialog(null,"The Changes WERE NOT saved");
@@ -584,7 +632,7 @@ public class CMCDriver {
 		System.out.println();
 		System.out.println("-------------------------------------------------------------------------");
 	    System.out.println("\tSearch Options");
-	    System.out.println("\t   UniversityName -- CANNOT EDIT ---");
+	    System.out.println("\tA:  UniversityName");
 	    System.out.println("\tB: State");
 	    System.out.println("\tC: Location");
 	    System.out.println("\tD: Control");
@@ -601,6 +649,7 @@ public class CMCDriver {
 	    System.out.println("\tO: Academic Scale");
 	    System.out.println("\tP: Social Scale");
 	    System.out.println("\tQ: Quality of Life");
+	    System.out.println("\tT: Emphases");
 	    System.out.println("\tR: Quit");
 	    System.out.println("\tS: SEARCH");
 	    System.out.println();
@@ -690,8 +739,8 @@ public class CMCDriver {
 	private void universityMenu(){
 		System.out.println();
 		System.out.println("-------------------------------------------------------------------------");
-	    System.out.println("\tAdd University Options");
-	    System.out.println("\tA: UniversityName");
+	    System.out.println("\tUniversity Options");
+	    System.out.println("\t   UniversityName  -- CANNOT EDIT --");
 	    System.out.println("\tB: State");
 	    System.out.println("\tC: Location");
 	    System.out.println("\tD: Control");
@@ -708,8 +757,9 @@ public class CMCDriver {
 	    System.out.println("\tO: Academic Scale");
 	    System.out.println("\tP: Social Scale");
 	    System.out.println("\tQ: Quality of Life");
+	    System.out.println("\tU: Emphases");
 	    System.out.println("\tR: Quit");
-	    System.out.println("\tt: PREVIEW NEW SCHOOL");
+	    System.out.println("\tT: PREVIEW NEW SCHOOL");
 	    System.out.println("\tS: SAVE NEW SCHOOL");
 	    System.out.println();
 	}

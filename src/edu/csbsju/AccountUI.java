@@ -106,8 +106,9 @@ public class AccountUI {
 	  * @param name String, a name of a university
 	  * @return University a university object
 	  */
-	 public void getAUniversity(String name){
-		 accountFunc.getAUniversity(name);
+	 public University getAUniversity(String name){
+		 University u = accountFunc.getAUniversity(name);
+		 return u;
 	 }
 	 
 	 /**

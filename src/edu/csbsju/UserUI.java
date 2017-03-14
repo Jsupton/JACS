@@ -4,6 +4,7 @@
 package edu.csbsju;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author saschmidgall
@@ -64,9 +65,19 @@ public class UserUI extends AccountUI{
 	 * searches for a users universities
 	 * @param u university object
 	 */
-	public void searchForSchools(University u)
-	{
-		
+	public List<University> searchForSchools(String universityName, String state, String location, String control, String numberOfStudentsLOWER,
+		 	String numberOfStudentsUPPER, String percentFemaleLOWER, String percentFemaleUPPER, String satVerbalLOWER, String satVerbalUPPER, 
+		 	String satMathLOWER, String satMathUPPER, String expensesLOWER, String expensesUPPER, String financialAidLOWER, String financialAidUPPER,  
+		 	String numberOfApplicantsLOWER, String numberOfApplicantsUPPER, String percentAdmittedLOWER,String percentAdmittedUPPER, 
+		 	String percentEnrolledLOWER,  String percentEnrolledUPPER, String academicScaleLOWER, String academicScaleUPPER, String socialScaleLOWER, 
+		 	String socialScaleUPPER, String qualityOfLifeLOWER, String qualityOfLifeUPPER, List<String> emphases){
+		List<University> x = userFunc.searchForSchools(universityName, state, location, control, numberOfStudentsLOWER,
+			 	numberOfStudentsUPPER, percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
+			 	satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
+			 	numberOfApplicantsLOWER,numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
+			 	percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
+			 	socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER,emphases);
+		return x;
 	}
 	
 	/**
@@ -75,6 +86,15 @@ public class UserUI extends AccountUI{
 	public void getSavedSchools()
 	{
 	
+	}
+	
+	/**
+	 * gets the 5 matches for the university
+	 * @param u university
+	 * @return a list of university objects
+	 */
+	public List<University> getFiveMatches(University u){
+		return userFunc.getFiveMatches(u);
 	}
 	
 	/**

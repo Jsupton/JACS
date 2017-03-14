@@ -95,6 +95,7 @@ public class User extends Account {
 	{
 		
 	}
+	
 	/**
 	 * displays search results
 	 */

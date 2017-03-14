@@ -13,12 +13,18 @@ public class UniversityController {
 	private University university;
 	
 	/**
+	 * This is a DBController object used to access the Database
+	 */
+	private DBController d;
+	
+	
+	/**
 	 * Adds a university to the database
 	 * @param u New University to be added to the database
 	 */
 	public void addUniversity(University u)
 	{
-
+		
 	}
 	
 	/**

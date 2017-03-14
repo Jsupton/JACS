@@ -302,6 +302,29 @@ public class DBController {
 	 }
 	 
 	 /**
+	  * @param username
+	  * @return 
+	  * 
+	  */
+	 public void getUserSavedSchools(String username)
+	 {
+		 boolean found = false;
+		 int i=0; 
+		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
+		 String[] matchingSchools;
+		 
+		 while(!found && i<savedSchools.length)
+		 {
+			 
+			 if(username.equals(String[i][0]))
+			 {
+				 found = true;
+				 for(int j=0; j<)
+			 }
+		 }
+	 }
+	 
+	 /**
 	  * Add a university to a Users saved list
 	  * @param u University object to be saved
 	  * @param a Account that this university is to be saved to
@@ -341,7 +364,7 @@ public class DBController {
 	  */
 	 public boolean isActive(Account a)
 	 {
-		 return
+		 return a.getStatus()=='y';
 	 }
 	 
 	 /**
@@ -350,12 +373,8 @@ public class DBController {
 	  */
 	 public void deactivate(Account a)
 	 {
-		this.firstName = firstName;
-		  this.lastName = lastName;
-		  this.username = username;
-		  this.password = password;
-		  this.status = status;
-		  this.type = type;
+		 univDBlib.user_editUser(a.getUsername, a.getFirstName(), a.getLastName(),
+				 a.getPassword(), a.getType(), 'n');
 	 }
 	
 	 public static void main(String args[]){

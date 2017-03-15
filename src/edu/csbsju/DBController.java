@@ -1,6 +1,7 @@
 package edu.csbsju;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import dblibrary.project.csci230.*;
@@ -278,32 +279,55 @@ public class DBController {
 		int socialScale = u.getSocialScale();
 		int qualityOfLife = u.getQualityOfLife();
 
-		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents,
+				 percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
 	 }
 	 
 	 /**
 	  * @param username
-	  * @return 
+	  * @return String [] of all university names of all the saved schools
 	  * 
 	  */
-	 public void getUserSavedSchools(String username)
+	 public ArrayList<String> getUserSavedSchools(String username)
 	 {
 		 boolean found = false;
 		 int i=0; 
 		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
-		 String[] matchingSchools;
+		 ArrayList<String> matchingSchools = new ArrayList<String>();
 		 
+		 System.out.println(Arrays.deepToString(savedSchools));
+		 /**
 		 while(!found && i<savedSchools.length)
 		 {
-			 
+			 System.out.println("This is userName "+ savedSchools[i][0]);
+
 			 if(username.equals(savedSchools[i][0]))
 			 {
 				 found = true;
+				 for(int j = 1; j<savedSchools[i].length; j++)
+				 {
+					 System.out.println("This is saved School "+ savedSchools[i][j]);
+					 matchingSchools.add(savedSchools[i][j]);
+				 }
 				// for(int j=0; j<)
 			 }
 		 }
+		 return matchingSchools;
+		 */
+		 return null;
 	 }
 	 
+	 /**
+	  * Add a university to a Users saved list
+	  * @param school String object to be saved
+	  * @param userName String that this university is to be saved to
+	  */
+	 public void addUniversityToSavedSchools(String school, String userName)
+	 {
+		 String uppercase = school.toUpperCase();
+		 univDBlib.user_saveSchool(userName, uppercase);
+	 }
 	 /**
 	  * Add a university to a Users saved list
 	  * @param u University object to be saved
@@ -314,6 +338,18 @@ public class DBController {
 		 String school = u.getUniversityName();
 		 String userName = a.getUsername();
 		 univDBlib.user_saveSchool(userName, school);
+	 }
+	 
+	 /**
+	  * Remove a saved university from a specific account
+	  * @param u String University name of school to be removed
+	  * @param a String username that to remove school
+	  */
+	 public void removeUniversityFromSavedSchools(String u ,String a)
+	 {
+		 String upperCaseUniversity = u.toUpperCase();
+		 String lowerCaseUser = a.toLowerCase();
+		 univDBlib.user_removeSchool(lowerCaseUser, upperCaseUniversity);
 	 }
 	 
 	 /**
@@ -344,7 +380,7 @@ public class DBController {
 	  */
 	 public boolean isActive(Account a)
 	 {
-		 return a.getStatus()=='y';
+		 return a.getStatus()=='Y';
 
 	 }
 	 
@@ -356,7 +392,7 @@ public class DBController {
 	 {
 
 		 univDBlib.user_editUser(a.getUsername(), a.getFirstName(), a.getLastName(),
-				 a.getPassword(), a.getType(), 'n');
+				 a.getPassword(), a.getType(), 'N');
 
 	 }
 	 
@@ -369,8 +405,8 @@ public class DBController {
 	  * @param type the type of the new account
 	  * @param status the status of the new account
 	  */
-	 public void addAccount(String firstname,String lastname, String username, String password, char type, char status){
-		 
+	 public void addAccount(String firstName,String lastName, String username, String password, char type, char status){
+		 univDBlib.user_addUser(firstName, lastName, username, password, type);
 	 }
 	 
 	 /**
@@ -412,6 +448,11 @@ public class DBController {
 		int academicScale = u.getAcademicScale();
 		int socialScale = u.getSocialScale();
 		int qualityOfLife = u.getQualityOfLife();
+		
+		univDBlib.university_editUniversity(school, state, location, control, numberOfStudents, percentFemale,
+				satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		
 	 }
 	 
 	 /**
@@ -424,7 +465,8 @@ public class DBController {
 	  * the specified emphasis already exists for the specified school
 	  * */
 	 public int addEmphases(String universityName,String emphases ){
-		 return -1;
+		 int numRecords = univDBlib.university_addUniversityEmphasis(universityName, emphases);
+		 return numRecords;
 	 }
 	 
 	 /**
@@ -437,7 +479,7 @@ public class DBController {
 	  * the specified emphasis already exists for the specified school
 	  */
 	 public int removeEmphases(String universityName,String emphases ){
-		 return -1;
+		 return univDBlib.university_removeUniversityEmphasis(universityName, emphases);
 	 }
 	
 	 public static void main(String args[]){

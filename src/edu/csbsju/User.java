@@ -53,4 +53,12 @@ public class User extends Account {
 	{
 		
 	}
+	
+	/**
+	 * displays the saved Schools error that will
+	 * display an error if there is a problem saving a school
+	 */
+	public void displaySavedSchoolsError(){
+		
+	}
 }

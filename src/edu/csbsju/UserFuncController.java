@@ -9,7 +9,7 @@ import java.util.List;
  * @author saschmidgall
  * @version 02-26-17
  */
-public class UserFuncController extends AccountController {
+public class UserFuncController {
 
 	/**
 	 * This instance variable is a User object
@@ -62,7 +62,7 @@ public class UserFuncController extends AccountController {
 	 */
 	public boolean removeUniversityFromSavedSchools(University uni)
 	{
-		return false;
+		return false; 
 	}
 	
 	/**
@@ -98,12 +98,12 @@ public class UserFuncController extends AccountController {
 	 * @param emphases list of emphases
 	 * @return A list of university objects that meet the criteria
 	 */
-	public List<University> searchForSchools(String universityName, String state, String location, String control, String numberOfStudentsLOWER,
-		 	String numberOfStudentsUPPER, String percentFemaleLOWER, String percentFemaleUPPER, String satVerbalLOWER, String satVerbalUPPER, 
-		 	String satMathLOWER, String satMathUPPER, String expensesLOWER, String expensesUPPER, String financialAidLOWER, String financialAidUPPER,  
-		 	String numberOfApplicantsLOWER, String numberOfApplicantsUPPER, String percentAdmittedLOWER,String percentAdmittedUPPER, 
-		 	String percentEnrolledLOWER,  String percentEnrolledUPPER, String academicScaleLOWER, String academicScaleUPPER, String socialScaleLOWER, 
-		 	String socialScaleUPPER, String qualityOfLifeLOWER, String qualityOfLifeUPPER, List<String> emphases){
+	public List<University> searchForSchools(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
+		 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
+		 	int satMathLOWER, int satMathUPPER, double expensesLOWER, double expensesUPPER, double financialAidLOWER, double financialAidUPPER,  
+		 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
+		 	double percentEnrolledLOWER,  double percentEnrolledUPPER, int academicScaleLOWER, int academicScaleUPPER, int socialScaleLOWER, 
+		 	int socialScaleUPPER, int qualityOfLifeLOWER, int qualityOfLifeUPPER, List<String> emphases){
 		List<University> x = s.search(universityName, state, location, control, numberOfStudentsLOWER,
 			 	numberOfStudentsUPPER, percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
 			 	satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  

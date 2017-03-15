@@ -193,8 +193,12 @@ public class CMCDriver {
 	        //Allows User to Manage search for Schools
 	        case 's': case 'S':
 		    	searchMenu();
-	    		String un,s,l,c,nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu, e;
-	    		un= s= l= c= nosl= nosu= pfl= pfu= svl= svu= sml= smu= el= eu= fal= fau=  noal= noau= pal= pau= pel= peu= asl= asu= ssl= ssu= qoll= qolu =e = null;
+	    		String un,s,l,c,e;
+	    		int nosl, nosu, svl, svu, sml, smu, noal, noau, asl, asu, ssl, ssu, qoll, qolu;
+	    		double pfl, pfu, el, eu, fal, fau, pal, pau, pel, peu;
+	    		un=s=l=c=null;
+	    		nosl=nosu=svl=svu=sml=smu=noal=noau=asl=asu=ssl=ssu=qoll=qolu=0;
+	    		pfl=pfu=el=eu=fal=fau=pal=pau=pel=peu=0.0;
 	    		List<String> emphases = null;
 	    		//This populates the variables in order for the person to search
 	    		do
@@ -226,59 +230,59 @@ public class CMCDriver {
 		  	    	    break;
 		    	    	//add number of students
 		    	      case 'E': case 'e':
-			  	    	nosl = JOptionPane.showInputDialog("Please Enter a lower bound for the number of students: ");
-			  	    	nosu = JOptionPane.showInputDialog("Please Enter an upper bound for the number of students: ");
+			  	    	nosl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the number of students: "));
+			  	    	nosu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the number of students: "));
 			  	    	break;
 		    	    	//add Percent female
 		    	      case 'F': case 'f':
-		    	    	pfl = JOptionPane.showInputDialog("Please Enter alower bound for the percent female: ");
-				  	    pfu = JOptionPane.showInputDialog("Please Enter an upperbound for the percent female: ");
+		    	    	pfl = Double.parseDouble(JOptionPane.showInputDialog("Please Enter alower bound for the percent female: "));
+				  	    pfu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upperbound for the percent female: "));
 				  	    //add SAT Verbal
 		    	      case 'G': case 'g':
-		    	    	svl = JOptionPane.showInputDialog("Please Enter a lower bound for verbal SAT scores: ");
-				  	    svu = JOptionPane.showInputDialog("Please Enter and upper bound for verbal SAT scores: ");	    	        
+		    	    	svl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for verbal SAT scores: "));
+				  	    svu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter and upper bound for verbal SAT scores: "));	    	        
 				  	    break;
 		    	    	//add SAT Math
 		    	      case 'H': case 'h':
-		    	    	sml = JOptionPane.showInputDialog("Please Enter a lower bound for math sat scores: ");
-				  	    smu = JOptionPane.showInputDialog("Please Enter an upper bound for math sat scores: ");	    	        
+		    	    	sml = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for math sat scores: "));
+				  	    smu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for math sat scores: "));	    	        
 				  	    break;
 		    	    	//add Expenses
 		    	      case 'I': case 'i':
-		    	    	el = JOptionPane.showInputDialog("Please Enter a lower bound for expenses ");
-				  	    eu = JOptionPane.showInputDialog("Please Enter an upper bound for expenses: ");
+		    	    	el = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for expenses "));
+				  	    eu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for expenses: "));
 		    	        // add financial Aid
 		    	      case 'J': case 'j':
-		    	    	fal = JOptionPane.showInputDialog("Please Enter a lower bound for financial aid: ");
-				  	    fau = JOptionPane.showInputDialog("Please Enter an upper bound for financial aid: ");	    	        
+		    	    	fal = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for financial aid: "));
+				  	    fau = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for financial aid: "));	    	        
 				  	    break;
 		    	    	//add Number of applicants
 		    	      case 'K': case 'k':
-		    	    	noal = JOptionPane.showInputDialog("Please Enter a lower bound for the number of applicants: ");
-				  	    noau = JOptionPane.showInputDialog("Please Enter an upper bound for the number of applicants: ");	    	        
+		    	    	noal = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the number of applicants: "));
+				  	    noau = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the number of applicants: "));	    	        
 				  	    break;
 		    	    	//add Percent Admitted
 		    	      case 'L': case 'l':
-		    	    	pal = JOptionPane.showInputDialog("Please Enter a lower bound for the percent admitted: ");
-				  	    pau = JOptionPane.showInputDialog("Please Enter an upper bound for the percent admitted: ");			  	    
+		    	    	pal = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent admitted: "));
+				  	    pau = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent admitted: "));			  	    
 				  	    // add percent enrolled
 		    	      case 'M': case 'm':
-		    	    	pel = JOptionPane.showInputDialog("Please Enter a lower bound for the percent enrolled: ");
-				  	    peu = JOptionPane.showInputDialog("Please Enter an upper bound for the percent enrolled: ");	    	        
+		    	    	pel = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent enrolled: "));
+				  	    peu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent enrolled: "));	    	        
 				  	    break;
 		    	    	//add Academic Scale
 		    	      case 'O': case 'o':
-		    	    	asl = JOptionPane.showInputDialog("Please Enter a lower bound for the academic scale: ");
-				  	    asu = JOptionPane.showInputDialog("Please Enter an upper bound for the academic scale: ");			  	    
+		    	    	asl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the academic scale: "));
+				  	    asu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the academic scale: "));			  	    
 				  	    //Add Social Scale
 		    	      case 'p': case 'P':
-		    	    	ssl = JOptionPane.showInputDialog("Please Enter a lower bound for the social scale: ");
-				  	    ssu = JOptionPane.showInputDialog("Please Enter an upper bound for the social scale: ");	    	        
+		    	    	ssl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the social scale: "));
+				  	    ssu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the social scale: "));	    	        
 				  	    break;
 		    	    	//add Quality of life
 		    	      case 'Q': case 'q':
-		    	    	qoll = JOptionPane.showInputDialog("Please Enter a lower bound for the quality of life: ");
-				  	    qolu = JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life: ");	    	        
+		    	    	qoll = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the quality of life: "));
+				  	    qolu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life: "));	    	        
 				  	    break;
 		    	      case 't': case 'T':
 			    	    e = JOptionPane.showInputDialog("Please Enter an emphases: ");

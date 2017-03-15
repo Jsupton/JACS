@@ -101,16 +101,6 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Determines whether or not search criteria is empty
-	  * @param criteria Information for the search provided by the user
-	  * @return True if there is some criteria provided
-	  */
-	 public boolean searchCriteriaEmpty(University u)
-	 {
-	  return false;
-	 }
-	 
-	 /**
 	  * Obtain a list of all users in the database
 	  * @return A list of all Users that exist in the database
 	  */
@@ -132,16 +122,6 @@ public class DBController {
 			 s.add(a);
 		 }
 		 return s;
-	 }
-	 
-	 /**
-	  * Finds a list of universities that match our criteria
-	  * @param criteria
-	  * @return a list of Universities that match our criteria.
-	  */
-	 public ArrayList<University> search(University u)
-	 {
-	  return null;
 	 }
 	 
 	 /**
@@ -414,11 +394,24 @@ public class DBController {
 	  * @param qualityOfLife Quality of life of a university
 	  * @param emphases empases of a university
 	  */
-	 public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
-			double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
-			double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife,
-			List<String> emphases){
-		 
+	 public void editUniversity(University u)
+	 {
+		 String school = u.getUniversityName();
+		 String state = u.getState();
+		 String location = u.getLocation();
+		 String control = u.getControl();
+		 int numberOfStudents = u.getNumberOfStudents();
+		 double percentFemale = u.getPercentFemale();
+		 int satVerbal = u.getSatVerbal();
+		 int satMath = u.getSatMath();
+		 double expenses = u.getExpenses();
+		 double financialAid = u.getFinancialAid();
+		 int numberOfApplicants = u.getNumberOfApplicants();
+		double percentAdmitted = u.getPercentAdmitted();
+		double percentEnrolled = u.getPercentEnrolled();
+		int academicScale = u.getAcademicScale();
+		int socialScale = u.getSocialScale();
+		int qualityOfLife = u.getQualityOfLife();
 	 }
 	 
 	 /**

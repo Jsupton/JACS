@@ -35,6 +35,54 @@ public class SearchController {
 		 this.a = null;
 		 this.u = null;
 	 }
+	 
+	 /**
+	  * This method allows us to determine if the search criteria are empty or not
+	  * @param universityName the name of the university
+	  * @param location the location (SUBURBAN,URBAN,SMALL-CITY or -1 for unknown)
+	  * @param state the state the university is in
+	  * @param control (PRIVATE,STATE,CITY, or -1 for unknown
+	  * @param numberOfStudentsLOWER the lower bound of number of students
+	  * @param numberOfStudentsUPPER the upper bound of number of students
+	  * @param percentFemaleLOWER the lower bound for percent female
+	  * @param percentFemaleUPPER the upper bound for percent female
+	  * @param satVerbalLOWER the lower bound for verbal sat scores
+	  * @param satVerbalUPPER the upper bound for verbal sat scores
+	  * @param satMathLOWER the lower bound for math sat scores
+	  * @param satMathUPPER the upper bound for math sat scores
+	  * @param expensesLOWER the lower bound for expenses
+	  * @param expensesUPPER the upper bound for expenses
+	  * @param financialAidLOWER the lower bound for financial aid
+	  * @param financialAidUPPER the upper bound for financial aid
+	  * @param numberOfApplicantsLOWER the lower bound for the number of applicants
+	  * @param numberOfApplicantsUPPER the upper bound for the number of applicants
+	  * @param percentAdmittedLOWER the lower bound for the percent of students admitted
+	  * @param percentAdmittedUPPER the upper bound for the percent of students admitted
+	  * @param percentEnrolledLOWER the lower bound for the percent enrolled
+	  * @param percentEnrolledUPPER the upper bound for the percent enrolled
+	  * @param academicScaleLOWER the upper bound for the academic scale
+	  * @param academicScaleUPPER the upper bound for the academic Scale
+	  * @param socialScaleLOWER the lower bound for the social scale
+	  * @param socialScaleUPPER the upper bound for the social scale
+	  * @param qualityOfLifeLOWER the lower bound for the quality of life
+	  * @param qualityOfLifeUPPER the upper bound for the quality of life
+	  * @param emphases the emphases for a university
+	  * @return ArrayList<University>
+	  */
+	 public boolean searchCriteriaEmpty(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
+			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
+			 	int satMathLOWER, int satMathUPPER, double expensesLOWER, double expensesUPPER, double financialAidLOWER, double financialAidUPPER,  
+			 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
+			 	double percentEnrolledLOWER,  double percentEnrolledUPPER, int academicScaleLOWER, int academicScaleUPPER, int socialScaleLOWER, 
+			 	int socialScaleUPPER, int qualityOfLifeLOWER, int qualityOfLifeUPPER, List<String> emphases){
+		
+	  return ((universityName==null) && (state==null) && ( location==null) && ( control==null) && ( numberOfStudentsLOWER==0) && (numberOfStudentsUPPER==0) &&
+			  (percentFemaleLOWER==0.0) && ( percentFemaleUPPER==0.0) && ( satVerbalLOWER ==0) && ( satVerbalUPPER ==0) &&
+			 	( satMathLOWER==0) && (satMathUPPER==0) &&( expensesLOWER==0.0) && (expensesUPPER==0.0) &&  (financialAidLOWER==0.0) && (financialAidUPPER==0.0)&&  
+			 	( numberOfApplicantsLOWER==0) && ( numberOfApplicantsUPPER==0) && (percentAdmittedLOWER==0.0) && (percentAdmittedUPPER==0.0) && 
+			 	( percentEnrolledLOWER==0.0)  && (percentEnrolledUPPER==0.0) && (academicScaleLOWER==0) && (academicScaleUPPER==0) && (socialScaleLOWER==0) 
+			 	&& (socialScaleUPPER==0) && (qualityOfLifeLOWER==0) && (qualityOfLifeUPPER==0) && (emphases==null));
+	 }
 	
 	 /**
 	  * This method allows the user to search for a specific university. It takes 
@@ -141,6 +189,15 @@ public class SearchController {
 		 List<University> matches = new ArrayList<University>();
  		 List<University> s = new ArrayList<University>();
 		 s = d.getAllUniversities();
+		 boolean bo = searchCriteriaEmpty( universityName, state, location, control, numberOfStudentsLOWER, numberOfStudentsUPPER, 
+				    percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
+				    satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
+				 	numberOfApplicantsLOWER, numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
+				    percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
+				    socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER, emphases);
+		 if(bo){
+			 return s;
+		 }
 		 for(University university:s){
 			 boolean b = true;
 			 if(universityName !=null && b == true)
@@ -217,12 +274,13 @@ public class SearchController {
 				 }
 				 b = (university.getSocialScale() >= socialScaleLOWER);
 			 }
-			 else if(u.getEmphases()!=null && b == true){
+			 else if(emphases!=null && b == true){
 				 b = false;
-				 for(String x : u.getEmphases()){
+				 for(String x : emphases){
 					 for(String y: university.getEmphases()){
-						 if(x.equals(y))
-								 b = true;
+						 if(x.equals(y)){
+						 	b = true;
+						 }
 					 }
 				 }
 			 }

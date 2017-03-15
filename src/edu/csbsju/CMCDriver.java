@@ -199,7 +199,7 @@ public class CMCDriver {
 	    		un=s=l=c=null;
 	    		nosl=nosu=svl=svu=sml=smu=noal=noau=asl=asu=ssl=ssu=qoll=qolu=0;
 	    		pfl=pfu=el=eu=fal=fau=pal=pau=pel=peu=0.0;
-	    		List<String> emphases = null;
+	    		List<String> emphases = new ArrayList<String>();
 	    		//This populates the variables in order for the person to search
 	    		do
 			    {
@@ -285,7 +285,7 @@ public class CMCDriver {
 				  	    qolu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life: "));	    	        
 				  	    break;
 		    	      case 't': case 'T':
-			    	    e = JOptionPane.showInputDialog("Please Enter an emphases: ");
+			    	    e = (JOptionPane.showInputDialog("Please Enter an emphases: ")).toUpperCase();
 			    	    emphases.add(e);
 			    	    break;
 		    	    	//Quit
@@ -298,7 +298,7 @@ public class CMCDriver {
 		    	        el +" to "+ eu +"\nFinancial Aid: "+ fal +" to "+ fau +"\n# applicants: "+ noal +" to "+ noau +"\n% Accepted: "+ pal +" to "+ pau +"\n% Enrolled: "+pel +" to "+ peu +"\nAcademic Scale: "+asl +" to "+asu +"\nSocial Scale: "+ssl +" to "+ssu +"\nQualit of Life: "+
 		    	        qoll +" to "+qolu+"\n");
 		    	    	//The search criteria is used to search through all the list
-		    	    	List<University> y = user.searchForSchools(un, s, l, c, nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu, null);
+		    	    	List<University> y = user.searchForSchools(un, s, l, c, nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu, emphases);
 		    	    	//The list is traversed and displayed
 		    	    	System.out.println("--------------------------------------------------------");
 		    	    	System.out.println("\tSEARCH RESULTS");

@@ -113,9 +113,9 @@ public class UserUI extends AccountUI{
 	 * gets the saved schools
 	 * @return List<University> a list of the student's saved schools
 	 */
-	public List<University> getSavedSchools()
+	public List<String> getSavedSchools()
 	{
-		return null;
+		return userFunc.getSavedSchools();
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class UserUI extends AccountUI{
 	 */
 	public void editStudentProfile()
 	{
-		
+		userFunc.editStudentProfile();
 	}
 	
 	/**
@@ -151,6 +151,7 @@ public class UserUI extends AccountUI{
 	 */
 	public boolean addUniversityToSavedSchools(University uni)
 	{
+		userFunc.addUniversityToSavedSchools(uni);
 		return true;
 	}
 	
@@ -161,6 +162,7 @@ public class UserUI extends AccountUI{
 	 */
 	public boolean removeUniversityFromSavedSchools(University uni)
 	{
-		return false;
+		userFunc.removeUniversityFromSavedSchools(uni);
+		return true;
 	}
 }

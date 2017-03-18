@@ -23,6 +23,7 @@ public class UserFuncController {
 	  * searchController instance varibale
 	  */
 	 private SearchController s;
+	 
 	
 	/**
 	 * default constructor
@@ -52,7 +53,8 @@ public class UserFuncController {
 	 */
 	public boolean addUniversityToSavedSchools(University uni)
 	{
-		return false;
+		 d.addUniversityToSavedSchools(uni,u);
+		 return true;
 	}
 	
 	/**
@@ -62,7 +64,8 @@ public class UserFuncController {
 	 */
 	public boolean removeUniversityFromSavedSchools(University uni)
 	{
-		return false; 
+		d.removeUniversityFromSavedSchools(uni,u);
+		return true; 
 	}
 	
 	/**
@@ -128,14 +131,14 @@ public class UserFuncController {
 	 */
 	public void editStudentProfile()
 	{
-		
+		d.editAccount(u.getFirstName(),u.getLastName(),u.getPassword(),u.getType());
 	}
 	
 	/**
 	 * Displays the student's saved schools
 	 */
-	public List<University> getSavedSchools(){
-		return null;
+	public List<String> getSavedSchools(){
+		return d.getUserSavedSchools(u.getUsername());
 	}
 	
 	/**
@@ -160,7 +163,7 @@ public class UserFuncController {
 	 */
 	public void displaySavedSchoolsError()
 	{
-		
+		System.out.println("there was an error displaying saved schools");
 	}
 	
 }

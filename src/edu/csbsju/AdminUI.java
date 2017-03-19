@@ -15,7 +15,7 @@ public class AdminUI extends AccountUI{
 	 * a AdminFuncController object instance variable
 	 */
 	private AdminFuncController adminFunc;
-	/*
+	/**
 	 * a DB controller object instance variable
 	 */
 	private DBController DB;

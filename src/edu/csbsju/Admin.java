@@ -11,7 +11,7 @@ package edu.csbsju;
  * @version 02-26-17
  */
 public class Admin extends Account{
-
+	private DBController d;
 	
 	/**
 	 * this constructor creates an Admin object using the constructor
@@ -25,7 +25,13 @@ public class Admin extends Account{
 	 */
 	public Admin(String firstName, String lastName, String username, String password, char status, char type) {
 		super(firstName, lastName, username, password, type,status);
-		// TODO Auto-generated constructor stub
+		this.firstName = firstName;
+		 this.lastName = lastName;
+		 this.username = username;
+		 this.password = password;
+		 this.status = status;
+		 this.type = type;
+		 this.d= new DBController();
 	}
 
 	/**
@@ -35,7 +41,14 @@ public class Admin extends Account{
 	 */
 	public Admin(String firstName) {
 		super(firstName);
-		// TODO Auto-generated constructor stub
+		this.firstName = firstName;
+		this.lastName = null;
+		  this.username = null;
+		  this.password = null;
+		  this.status = '\0';
+		  this.type = '\0';
+		  this.d= new DBController();
+				
 	}
 
 
@@ -44,13 +57,14 @@ public class Admin extends Account{
 	 */
 	public void displayAccounts(){
 		
+		System.out.println(d.getAccounts())
 	}
 	
 	/**
 	 * displays all of the universities
 	 */
 	public void displayUniversities(){
-		
+		System.out.println(d.getAllUniversities())
 	}
 	
 	/**

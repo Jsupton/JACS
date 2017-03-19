@@ -2,7 +2,6 @@
 package edu.csbsju;
 
 import java.util.*;
-import java.util.Comparator; 
 import java.lang.*;
 /**
  * This class Class the responsible for searching the database for a University.
@@ -35,6 +34,54 @@ public class SearchController {
 		 this.d = new DBController();
 		 this.a = null;
 		 this.u = null;
+	 }
+	 
+	 /**
+	  * This method allows us to determine if the search criteria are empty or not
+	  * @param universityName the name of the university
+	  * @param location the location (SUBURBAN,URBAN,SMALL-CITY or -1 for unknown)
+	  * @param state the state the university is in
+	  * @param control (PRIVATE,STATE,CITY, or -1 for unknown
+	  * @param numberOfStudentsLOWER the lower bound of number of students
+	  * @param numberOfStudentsUPPER the upper bound of number of students
+	  * @param percentFemaleLOWER the lower bound for percent female
+	  * @param percentFemaleUPPER the upper bound for percent female
+	  * @param satVerbalLOWER the lower bound for verbal sat scores
+	  * @param satVerbalUPPER the upper bound for verbal sat scores
+	  * @param satMathLOWER the lower bound for math sat scores
+	  * @param satMathUPPER the upper bound for math sat scores
+	  * @param expensesLOWER the lower bound for expenses
+	  * @param expensesUPPER the upper bound for expenses
+	  * @param financialAidLOWER the lower bound for financial aid
+	  * @param financialAidUPPER the upper bound for financial aid
+	  * @param numberOfApplicantsLOWER the lower bound for the number of applicants
+	  * @param numberOfApplicantsUPPER the upper bound for the number of applicants
+	  * @param percentAdmittedLOWER the lower bound for the percent of students admitted
+	  * @param percentAdmittedUPPER the upper bound for the percent of students admitted
+	  * @param percentEnrolledLOWER the lower bound for the percent enrolled
+	  * @param percentEnrolledUPPER the upper bound for the percent enrolled
+	  * @param academicScaleLOWER the upper bound for the academic scale
+	  * @param academicScaleUPPER the upper bound for the academic Scale
+	  * @param socialScaleLOWER the lower bound for the social scale
+	  * @param socialScaleUPPER the upper bound for the social scale
+	  * @param qualityOfLifeLOWER the lower bound for the quality of life
+	  * @param qualityOfLifeUPPER the upper bound for the quality of life
+	  * @param emphases the emphases for a university
+	  * @return ArrayList<University>
+	  */
+	 public boolean searchCriteriaEmpty(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
+			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
+			 	int satMathLOWER, int satMathUPPER, double expensesLOWER, double expensesUPPER, double financialAidLOWER, double financialAidUPPER,  
+			 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
+			 	double percentEnrolledLOWER,  double percentEnrolledUPPER, int academicScaleLOWER, int academicScaleUPPER, int socialScaleLOWER, 
+			 	int socialScaleUPPER, int qualityOfLifeLOWER, int qualityOfLifeUPPER, List<String> emphases){
+		
+	  return ((universityName==null) && (state==null) && ( location==null) && ( control==null) && ( numberOfStudentsLOWER==0) && (numberOfStudentsUPPER==0) &&
+			  (percentFemaleLOWER==0.0) && ( percentFemaleUPPER==0.0) && ( satVerbalLOWER ==0) && ( satVerbalUPPER ==0) &&
+			 	( satMathLOWER==0) && (satMathUPPER==0) &&( expensesLOWER==0.0) && (expensesUPPER==0.0) &&  (financialAidLOWER==0.0) && (financialAidUPPER==0.0)&&  
+			 	( numberOfApplicantsLOWER==0) && ( numberOfApplicantsUPPER==0) && (percentAdmittedLOWER==0.0) && (percentAdmittedUPPER==0.0) && 
+			 	( percentEnrolledLOWER==0.0)  && (percentEnrolledUPPER==0.0) && (academicScaleLOWER==0) && (academicScaleUPPER==0) && (socialScaleLOWER==0) 
+			 	&& (socialScaleUPPER==0) && (qualityOfLifeLOWER==0) && (qualityOfLifeUPPER==0) && (emphases==null));
 	 }
 	
 	 /**
@@ -133,18 +180,27 @@ public class SearchController {
 	  * @param emphases the emphases for a university
 	  * @return ArrayList<University>
 	  */
-	 public List<University> search(String universityName, String state, String location, String control, String numberOfStudentsLOWER,
-			 	String numberOfStudentsUPPER, String percentFemaleLOWER, String percentFemaleUPPER, String satVerbalLOWER, String satVerbalUPPER, 
-			 	String satMathLOWER, String satMathUPPER, String expensesLOWER, String expensesUPPER, String financialAidLOWER, String financialAidUPPER,  
-			 	String numberOfApplicantsLOWER, String numberOfApplicantsUPPER, String percentAdmittedLOWER,String percentAdmittedUPPER, 
-			 	String percentEnrolledLOWER,  String percentEnrolledUPPER, String academicScaleLOWER, String academicScaleUPPER, String socialScaleLOWER, 
-			 	String socialScaleUPPER, String qualityOfLifeLOWER, String qualityOfLifeUPPER, List<String> emphases){
+	 public List<University> search(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
+			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
+			 	int satMathLOWER, int satMathUPPER, double expensesLOWER, double expensesUPPER, double financialAidLOWER, double financialAidUPPER,  
+			 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
+			 	double percentEnrolledLOWER,  double percentEnrolledUPPER, int academicScaleLOWER, int academicScaleUPPER, int socialScaleLOWER, 
+			 	int socialScaleUPPER, int qualityOfLifeLOWER, int qualityOfLifeUPPER, List<String> emphases){
 		 List<University> matches = new ArrayList<University>();
  		 List<University> s = new ArrayList<University>();
 		 s = d.getAllUniversities();
+		 boolean bo = searchCriteriaEmpty( universityName, state, location, control, numberOfStudentsLOWER, numberOfStudentsUPPER, 
+				    percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
+				    satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
+				 	numberOfApplicantsLOWER, numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
+				    percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
+				    socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER, emphases);
+		 if(bo){
+			 return s;
+		 }
 		 for(University university:s){
 			 boolean b = true;
-			 if(universityName!=null && b == true)
+			 if(universityName !=null && b == true)
 				 b = university.getUniversityName().contains(universityName);
 			 else if(state!=null && b == true)
 				 b = university.getState().equals(state);
@@ -152,92 +208,79 @@ public class SearchController {
 				 b = university.getLocation().equals(location);
 			 else if(control!=null && b == true)
 				 b = university.getControl().equals(control);
-			 else if(numberOfStudentsLOWER !=null && b == true){
-				 int nosl = (Integer.parseInt(numberOfStudentsLOWER));
-				 if(numberOfStudentsUPPER !=null){
-					 int nosu = (Integer.parseInt(numberOfStudentsLOWER));
-					 b = (university.getNumberOfStudents()>=nosl && university.getNumberOfStudents()<=nosu);
+			 else if(numberOfStudentsLOWER !=0 && b == true){
+				 if(numberOfStudentsUPPER !=0){
+					 b = (university.getNumberOfStudents()>=numberOfStudentsLOWER && university.getNumberOfStudents()<=numberOfStudentsUPPER);
 				 }
-				 b = (university.getNumberOfStudents() >= nosl);
+				 b = (university.getNumberOfStudents() >= numberOfStudentsLOWER);
 			 }
-			 else if(percentFemaleLOWER!= null && b == true){
-				 int pfl = (Integer.parseInt(percentFemaleLOWER));
-				 if(percentFemaleUPPER !=null){
-					 int pfu = (Integer.parseInt(percentFemaleUPPER));
-					 b = (university.getPercentFemale()>=pfl && university.getPercentFemale()<=pfu);
+			 else if(percentFemaleLOWER!= 0.0 && b == true){
+				 if(percentFemaleUPPER !=0){
+					 b = (university.getPercentFemale()>=percentFemaleLOWER && university.getPercentFemale()<=percentFemaleUPPER);
 				 }
-				 b = (university.getPercentFemale() >= pfl);
+				 b = (university.getPercentFemale() >= percentFemaleLOWER);
 			 }	
-			 else if(satVerbalLOWER != null && b == true){
-				 int svl = (Integer.parseInt(satVerbalLOWER));
-				 if(satVerbalUPPER !=null){
-					 int svu = (Integer.parseInt(satVerbalUPPER));
-					 b = (university.getSatVerbal()>=svl && university.getSatVerbal()<=svu);
+			 else if(satVerbalLOWER != 0 && b == true){
+				 if(satVerbalUPPER !=0){
+					 b = (university.getSatVerbal()>=satVerbalLOWER && university.getSatVerbal()<=satVerbalUPPER);
 				 }
-				 b = (university.getSatVerbal() >= svl);
+				 b = (university.getSatVerbal() >= satVerbalLOWER);
 			 }	
-			 else if(satMathLOWER!= null && b == true){
-				 int sml = (Integer.parseInt(satMathLOWER));
-				 if(satMathUPPER !=null){
-					 int smu = (Integer.parseInt(satMathUPPER));
-					 b = (university.getSatMath()>=sml && university.getSatMath()<=smu);
+			 else if(satMathLOWER!= 0 && b == true){
+				 if(satMathUPPER !=0){
+					 b = (university.getSatMath()>=satMathLOWER && university.getSatMath()<=satMathUPPER);
 				 }
-				 b = (university.getSatMath() >= sml);
+				 b = (university.getSatMath() >= satMathLOWER);
 			 }	
-			 else if(financialAidLOWER != null && b == true){
-				 int fal = (Integer.parseInt(financialAidLOWER));
-				 if(financialAidUPPER !=null){
-					 int fau = (Integer.parseInt(financialAidUPPER));
-					 b = (university.getFinancialAid()>=fal && university.getFinancialAid()<=fau);
+			 else if(expensesLOWER!= 0 && b == true){
+				 if(expensesUPPER !=0){
+					 b = (university.getExpenses()>=expensesLOWER && university.getExpenses()<=expensesUPPER);
 				 }
-				 b = (university.getFinancialAid() >= fal);
+				 b = (university.getExpenses() >= expensesLOWER);
+			 }
+			 else if(financialAidLOWER != 0.0 && b == true){
+				 if(financialAidUPPER !=0.0){
+					 b = (university.getFinancialAid()>=financialAidLOWER && university.getFinancialAid()<=financialAidLOWER);
+				 }
+				 b = (university.getFinancialAid() >= financialAidLOWER);
 			 }	
-			 else if(numberOfApplicantsLOWER != null && b == true){
-				 int noal = (Integer.parseInt(numberOfApplicantsLOWER));
-				 if(numberOfApplicantsUPPER !=null){
-					 int noau = (Integer.parseInt(numberOfApplicantsUPPER));
-					 b = (university.getNumberOfApplicants()>=noal && university.getNumberOfApplicants()<=noau);
+			 else if(numberOfApplicantsLOWER != 0 && b == true){
+				 if(numberOfApplicantsUPPER !=0){
+					 b = (university.getNumberOfApplicants()>=numberOfApplicantsLOWER && university.getNumberOfApplicants()<=numberOfApplicantsUPPER);
 				 }
-				 b = (university.getNumberOfApplicants() >= noal);
+				 b = (university.getNumberOfApplicants() >= numberOfApplicantsLOWER);
 			 }
-			 else if(percentAdmittedLOWER != null && b == true){
-				 int pal = (Integer.parseInt(percentAdmittedLOWER));
-				 if(percentAdmittedUPPER !=null){
-					 int pau = (Integer.parseInt(percentAdmittedUPPER));
-					 b = (university.getPercentAdmitted()>=pal && university.getPercentAdmitted()<=pau);
+			 else if(percentAdmittedLOWER != 0 && b == true){
+				 if(percentAdmittedUPPER !=0){
+					 b = (university.getPercentAdmitted()>=percentAdmittedLOWER && university.getPercentAdmitted()<=percentAdmittedUPPER);
 				 }
-				 b = (university.getPercentAdmitted() >= pal);
+				 b = (university.getPercentAdmitted() >= percentAdmittedLOWER);
 			 }
-			 else if(percentEnrolledLOWER!=null && b == true){
-				 int pel = (Integer.parseInt(percentEnrolledLOWER));
-				 if(percentEnrolledUPPER !=null){
-					 int peu = (Integer.parseInt(percentEnrolledUPPER));
-					 b = (university.getPercentEnrolled()>=pel && university.getPercentEnrolled()<=peu);
+			 else if(percentEnrolledLOWER!=0.0 && b == true){
+				 if(percentEnrolledUPPER !=0.0){
+					 b = (university.getPercentEnrolled()>=percentEnrolledLOWER && university.getPercentEnrolled()<=percentEnrolledUPPER);
 				 }
-				 b = (university.getPercentEnrolled() >= pel);
+				 b = (university.getPercentEnrolled() >= percentEnrolledLOWER);
 			 }
-			 else if(academicScaleLOWER!= null && b == true){
-				 int asl = (Integer.parseInt(academicScaleLOWER));
-				 if(academicScaleUPPER !=null){
-					 int asu = (Integer.parseInt(academicScaleUPPER));
-					 b = (university.getAcademicScale()>=asl && university.getAcademicScale()<=asu);
+			 else if(academicScaleLOWER!= 0 && b == true){
+				 if(academicScaleUPPER !=0){
+					 b = (university.getAcademicScale()>=academicScaleLOWER && university.getAcademicScale()<=academicScaleUPPER);
 				 }
-				 b = (university.getAcademicScale() >= asl);
+				 b = (university.getAcademicScale() >= academicScaleLOWER);
 			 }
-			 else if(socialScaleLOWER!= null && b == true){
-				 int ssl = (Integer.parseInt(socialScaleLOWER));
-				 if(socialScaleUPPER !=null){
-					 int ssu = (Integer.parseInt(socialScaleUPPER));
-					 b = (university.getSocialScale()>=ssl && university.getSocialScale()<=ssu);
+			 else if(socialScaleLOWER!= 0 && b == true){
+				 if(socialScaleUPPER !=0){
+					 b = (university.getSocialScale()>=socialScaleLOWER && university.getSocialScale()<=socialScaleUPPER);
 				 }
-				 b = (university.getSocialScale() >= ssl);
+				 b = (university.getSocialScale() >= socialScaleLOWER);
 			 }
-			 else if(u.getEmphases()!=null && b == true){
+			 else if(emphases!=null && b == true){
 				 b = false;
-				 for(String x : u.getEmphases()){
+				 for(String x : emphases){
 					 for(String y: university.getEmphases()){
-						 if(x.equals(y))
-								 b = true;
+						 if(x.equals(y)){
+						 	b = true;
+						 }
 					 }
 				 }
 			 }
@@ -257,7 +300,6 @@ public class SearchController {
 	  * @return Account
 	  */
 	 public Account search(String u){
-		 Account newAccount;
 		 ArrayList<Account> accounts = d.getAccounts();
 		 for(Account ac:accounts){
 			 if(u.equals(ac.getUsername())){
@@ -426,10 +468,6 @@ public class SearchController {
 		 for(i=0;i<5;i++){
 			 University x = d.getAUniversity(distance[i][0]);
 			 matches.add(x);
-		 }
-		 
-		 for(University university: matches){
-			 university.printString();
 		 }
 		 return matches;
 	 }

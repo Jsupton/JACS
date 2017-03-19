@@ -9,7 +9,7 @@ import java.util.*;
  * @author cjzins
  * @version 02-26-17
  */
-public class AdminFuncController extends AccountController {
+public class AdminFuncController {
 
 	/**
 	 * a Admin object variable
@@ -33,6 +33,7 @@ public class AdminFuncController extends AccountController {
 		this.d = new DBController();
 		this.s = new SearchController();
 	}
+
 	
 	 /**
 	  * This constructor initiates the Admin instance variable
@@ -45,6 +46,7 @@ public class AdminFuncController extends AccountController {
 			this.d = new DBController();
 			this.s = new SearchController();
 		}
+
 	/**
 	  * This method calls on the database and gets all of the accounts that are
 	  * in the system. It then returns an arrayList of those accounts
@@ -52,6 +54,32 @@ public class AdminFuncController extends AccountController {
 	  */
 	 public ArrayList getAccounts(){
 		 return d.getAccounts();;
+	 }
+	 
+	 /**
+	  * This method allows an admin to be able to edit a university object
+	  * The changes are sent to the Database to save the changes
+	  * @param universityName The name of a university
+	  * @param location The location of a university
+	  * @param state The state of a university
+	  * @param control The control of a university
+	  * @param numberOfStudents the number of students at a university
+	  * @param percentFemale the percent female of a university
+	  * @param satVerbal SAT of a university
+	  * @param satMath SAT of a university
+	  * @param expenses The Expenses of a university
+	  * @param financialAid the Financial aid at a university
+	  * @param numberOfApplicants Number of Applicants of a university
+	  * @param percentAdmitted The percent admitted of a university
+	  * @param percentEnrolled The percent Enrolled of a university
+	  * @param academicScale The academic scale of a university
+	  * @param socialScale Social scale of a university
+	  * @param qualityOfLife Quality of life of a university
+	  */
+	 public void addUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+				double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+				double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+		 
 	 }
 	 
 	 /**
@@ -91,8 +119,8 @@ public class AdminFuncController extends AccountController {
 	  * deactivated.
 	  * @param a Account object
 	  */
-	 public void deactivate(){
-		 d.deactivate(admin);
+	 public void deactivate(Account a){
+		 d.deactivate(a);
 	 }
 	 
 	 /**
@@ -113,9 +141,90 @@ public class AdminFuncController extends AccountController {
 	  * It gathers all of the attributes for an account object and then displays
 	  * that information for the user to see
 	  */
-	 public void viewAccount(String name){
+	 public Account viewAccount(String name){
 		 Account a = this.findAccount(name);
-		 a.displayStudent();
+		 return a;
+	 }
+	 
+	 /**
+	  * This method allows an admin to be able to edit a university object
+	  * The changes are sent to the Database to save the changes
+	  * @param universityName The name of a university
+	  * @param location The location of a university
+	  * @param state The state of a university
+	  * @param control The control of a university
+	  * @param numberOfStudents the number of students at a university
+	  * @param percentFemale the percent female of a university
+	  * @param satVerbal SAT of a university
+	  * @param satMath SAT of a university
+	  * @param expenses The Expenses of a university
+	  * @param financialAid the Financial aid at a university
+	  * @param numberOfApplicants Number of Applicants of a university
+	  * @param percentAdmitted The percent admitted of a university
+	  * @param percentEnrolled The percent Enrolled of a university
+	  * @param academicScale The academic scale of a university
+	  * @param socialScale Social scale of a university
+	  * @param qualityOfLife Quality of life of a university
+	  * @param emphases empases of a university
+	  */
+	 public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+			double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+			double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+		 
+	 }
+	 
+	 /**
+	  * This method is used to edit the account
+	  * @param firstname the firstname of the account
+	  * @param lastname the lastname of the account
+	  * @param username the username of the account
+	  * @param password the password of the account
+	  * @param type the type of the account
+	  * @param status the status of the account
+	  */
+	 public void editAccount(String firstname,String lastname, String username, String password, char type, char status){
+		 
+	 }
+	 
+	 /**
+	  * This method is used to edit the account
+	  * @param firstname the firstname of the new account
+	  * @param lastname the lastname of the new account
+	  * @param username the username of the new account
+	  * @param password the password of the new account
+	  * @param type the type of the new account
+	  * @param status the status of the new account
+	  */
+	 public void addAccount(String firstname,String lastname, String username, String password, char type, char status){
+		 
+	 }
+	 
+	 /**
+	  * This adds an emphases for the specified university object.
+	  * The parameter string is then added to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  * */
+	 public int addEmphases(String universityName,String emphases ){
+		 d.addEmphases(universityName, emphases);
+		 return -1;
+	 }
+	 
+	 /**
+	  * This removes an emphases for the specified university object.
+	  * The parameter string is then removed to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  */
+	 public int removeEmphases(String universityName,String emphases ){
+		 d.removeEmphases(universityName, emphases);
+		 return -1;
 	 }
 	 
 	}

@@ -51,22 +51,6 @@ public class Admin extends Account{
 				
 	}
 
-
-	/**
-	 * a method to display all of the accounts
-	 */
-	public void displayAccounts(){
-		
-		System.out.println(a.getAccounts())
-	}
-	
-	/**
-	 * displays all of the universities
-	 */
-	public void displayUniversities(){
-		System.out.println(a.displayUniversities())
-	}
-	
 	/**
 	 * Sets the status of the account
 	 * @param status the status of the account

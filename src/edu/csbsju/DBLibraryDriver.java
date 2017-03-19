@@ -16,45 +16,49 @@ import java.util.*;
  */ 
 
 public class DBLibraryDriver {
-  private UniversityDBLibrary univDBlib;
+  private DBController univDBlib;
   
-  public  DBLibraryDriver(String db, String username, String password){
-    univDBlib = new UniversityDBLibrary(db,username,password);
+  public  DBLibraryDriver(){
+    univDBlib = new DBController();
   }
   
-  public UniversityDBLibrary getUnivDBlib(){
-    return univDBlib;
+  public void run()
+  {
+//	  // Display all university names in the database
+//	  ArrayList<University> allUniv  = univDBlib.getAllUniversities();
+//	  for (University row : allUniv)
+//      {
+//          System.out.println(row.getUniversityName());       
+//      }
+	  
+	  // Display all accounts in the database
+//	  ArrayList<Account> allAccts = univDBlib.getAccounts();
+//	  for (Account row : allAccts)
+//	  {
+//        System.out.println(row.getUsername());       
+//	  }
+
+//	  univDBlib.removeUniversityFromSavedSchools("AUGSBURG", "luser");
+//	  univDBlib.removeUniversityFromSavedSchools("STANFORD", "juser");
+//	  univDBlib.getUserSavedSchools("juser");
+	  
+
+	  
+	  
+	  
+      
   }
-  
-  public void display(String[][] table, PrintWriter pw, int topx) {
-    if(table!=null){
-      if (topx == -1 || topx > table.length)
-        topx = table.length;      
-      for (int row = 0; row < topx; row++) {         
-        for (int col = 0; col < table[0].length; col++) {
-          pw.print(table[row][col] + ",");
-        }
-        pw.println();
-      }     
-    }
-    else{
-      pw.println("Nothing to display");
-    }
-  }
+ 
   
   public static void main(String[] args) {
-      int topx = -1;
-      //DBLibraryDriver dbld = new DBLibraryDriver(args[0],args[1], args[2]);
-      DBLibraryDriver dbld = new DBLibraryDriver("jacs","jacs","csci230");
-      String[][] test = dbld.getUnivDBlib().user_getUsers();
-     
+	  
+      DBLibraryDriver testRun = new DBLibraryDriver();
+      testRun.run();
+  }
+  
       //System.out.println(Arrays.deepToString(test));
       
-      for (String[] row : test)
-      {
-          System.out.println(Arrays.toString(row));       
-      }
-      
+    
       /**
       System.out.println("university_addUniversity(x,x,x,x,1,1,1,1,1,1,1,1,1,1,1,1) : " + 
                          dbld.getUnivDBlib().university_addUniversity("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1));
@@ -103,4 +107,3 @@ public class DBLibraryDriver {
       
   	*/
   }
-}

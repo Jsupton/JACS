@@ -1,6 +1,7 @@
 package edu.csbsju;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import dblibrary.project.csci230.*;
@@ -101,16 +102,6 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Determines whether or not search criteria is empty
-	  * @param criteria Information for the search provided by the user
-	  * @return True if there is some criteria provided
-	  */
-	 public boolean searchCriteriaEmpty(University u)
-	 {
-	  return false;
-	 }
-	 
-	 /**
 	  * Obtain a list of all users in the database
 	  * @return A list of all Users that exist in the database
 	  */
@@ -132,16 +123,6 @@ public class DBController {
 			 s.add(a);
 		 }
 		 return s;
-	 }
-	 
-	 /**
-	  * Finds a list of universities that match our criteria
-	  * @param criteria
-	  * @return a list of Universities that match our criteria.
-	  */
-	 public ArrayList<University> search(University u)
-	 {
-	  return null;
 	 }
 	 
 	 /**
@@ -270,7 +251,7 @@ public class DBController {
 	  * @param ln Last name of the user
 	  * @param p Password of user
 	  */
-	 public boolean editAccount(String fn,String ln,String p)
+	 public boolean editAccount(String fn,String ln,String p,char type)
 	 {
 		 return false;
 	 }
@@ -298,15 +279,61 @@ public class DBController {
 		int socialScale = u.getSocialScale();
 		int qualityOfLife = u.getQualityOfLife();
 
-		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale)
+		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents,
+				 percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
 	 }
 	 
+	 /**
+	  * @param username
+	  * @return String [] of all university names of all the saved schools
+	  * 
+	  */
+	 public ArrayList<String> getUserSavedSchools(String username)
+	 {
+		 boolean found = false;
+		 int i=0; 
+		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
+		 ArrayList<String> matchingSchools = new ArrayList<String>();
+		 
+		 System.out.println(Arrays.deepToString(savedSchools));
+		 /**
+		 while(!found && i<savedSchools.length)
+		 {
+			 System.out.println("This is userName "+ savedSchools[i][0]);
+
+			 if(username.equals(savedSchools[i][0]))
+			 {
+				 found = true;
+				 for(int j = 1; j<savedSchools[i].length; j++)
+				 {
+					 System.out.println("This is saved School "+ savedSchools[i][j]);
+					 matchingSchools.add(savedSchools[i][j]);
+				 }
+				// for(int j=0; j<)
+			 }
+		 }
+		 return matchingSchools;
+		 */
+		 return null;
+	 }
+	 
+	 /**
+	  * Add a university to a Users saved list
+	  * @param school String object to be saved
+	  * @param userName String that this university is to be saved to
+	  */
+	 public void addUniversityToSavedSchools(String school, String userName)
+	 {
+		 String uppercase = school.toUpperCase();
+		 univDBlib.user_saveSchool(userName, uppercase);
+	 }
 	 /**
 	  * Add a university to a Users saved list
 	  * @param u University object to be saved
 	  * @param a Account that this university is to be saved to
 	  */
-	 public void addUniversity(University u, Account a)
+	 public void addUniversityToSavedSchools(University u, Account a)
 	 {
 		 String school = u.getUniversityName();
 		 String userName = a.getUsername();
@@ -315,10 +342,22 @@ public class DBController {
 	 
 	 /**
 	  * Remove a saved university from a specific account
+	  * @param u String University name of school to be removed
+	  * @param a String username that to remove school
+	  */
+	 public void removeUniversityFromSavedSchools(String u ,String a)
+	 {
+		 String upperCaseUniversity = u.toUpperCase();
+		 String lowerCaseUser = a.toLowerCase();
+		 univDBlib.user_removeSchool(lowerCaseUser, upperCaseUniversity);
+	 }
+	 
+	 /**
+	  * Remove a saved university from a specific account
 	  * @param u University object that needs to be removed
 	  * @param a Account that needs to be added 
 	  */
-	 public void removeUniversity(University u ,Account a)
+	 public void removeUniversityFromSavedSchools(University u ,Account a)
 	 {
 		 String school = u.getUniversityName();
 		 String userName = a.getUsername();
@@ -341,7 +380,8 @@ public class DBController {
 	  */
 	 public boolean isActive(Account a)
 	 {
-		 return
+		 return a.getStatus()=='Y';
+
 	 }
 	 
 	 /**
@@ -350,12 +390,96 @@ public class DBController {
 	  */
 	 public void deactivate(Account a)
 	 {
-		this.firstName = firstName;
-		  this.lastName = lastName;
-		  this.username = username;
-		  this.password = password;
-		  this.status = status;
-		  this.type = type;
+
+		 univDBlib.user_editUser(a.getUsername(), a.getFirstName(), a.getLastName(),
+				 a.getPassword(), a.getType(), 'N');
+
+	 }
+	 
+	 /**
+	  * This method is used to edit the account
+	  * @param firstname the firstname of the new account
+	  * @param lastname the lastname of the new account
+	  * @param username the username of the new account
+	  * @param password the password of the new account
+	  * @param type the type of the new account
+	  * @param status the status of the new account
+	  */
+	 public void addAccount(String firstName,String lastName, String username, String password, char type, char status){
+		 univDBlib.user_addUser(firstName, lastName, username, password, type);
+	 }
+	 
+	 /**
+	  * This method allows an admin to be able to edit a university object
+	  * The changes are sent to the Database to save the changes
+	  * @param universityName The name of a university
+	  * @param location The location of a university
+	  * @param state The state of a university
+	  * @param control The control of a university
+	  * @param numberOfStudents the number of students at a university
+	  * @param percentFemale the percent female of a university
+	  * @param satVerbal SAT of a university
+	  * @param satMath SAT of a university
+	  * @param expenses The Expenses of a university
+	  * @param financialAid the Financial aid at a university
+	  * @param numberOfApplicants Number of Applicants of a university
+	  * @param percentAdmitted The percent admitted of a university
+	  * @param percentEnrolled The percent Enrolled of a university
+	  * @param academicScale The academic scale of a university
+	  * @param socialScale Social scale of a university
+	  * @param qualityOfLife Quality of life of a university
+	  * @param emphases empases of a university
+	  */
+	 public void editUniversity(University u)
+	 {
+		 String school = u.getUniversityName();
+		 String state = u.getState();
+		 String location = u.getLocation();
+		 String control = u.getControl();
+		 int numberOfStudents = u.getNumberOfStudents();
+		 double percentFemale = u.getPercentFemale();
+		 int satVerbal = u.getSatVerbal();
+		 int satMath = u.getSatMath();
+		 double expenses = u.getExpenses();
+		 double financialAid = u.getFinancialAid();
+		 int numberOfApplicants = u.getNumberOfApplicants();
+		double percentAdmitted = u.getPercentAdmitted();
+		double percentEnrolled = u.getPercentEnrolled();
+		int academicScale = u.getAcademicScale();
+		int socialScale = u.getSocialScale();
+		int qualityOfLife = u.getQualityOfLife();
+		
+		univDBlib.university_editUniversity(school, state, location, control, numberOfStudents, percentFemale,
+				satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		
+	 }
+	 
+	 /**
+	  * This adds an emphases for the specified university object.
+	  * The parameter string is then added to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  * */
+	 public int addEmphases(String universityName,String emphases ){
+		 int numRecords = univDBlib.university_addUniversityEmphasis(universityName, emphases);
+		 return numRecords;
+	 }
+	 
+	 /**
+	  * This removes an emphases for the specified university object.
+	  * The parameter string is then removed to the University's emphases
+	  * @param universityName
+	  * @param emphases
+	  * @return an integer indicating the number of database records 
+	  * inserted or -1 if an invalid school name is specified or if 
+	  * the specified emphasis already exists for the specified school
+	  */
+	 public int removeEmphases(String universityName,String emphases ){
+		 return univDBlib.university_removeUniversityEmphasis(universityName, emphases);
 	 }
 	
 	 public static void main(String args[]){

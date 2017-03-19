@@ -428,22 +428,6 @@ public class University {
 	public List<String> getEmphases() {
 		return emphases;
 	}
-	
-	/**
-	 * Adds an emphasis to a university
-	 * @param emp the emphases to add
-	 */
-	public void addEmphasis(String emp){
-		
-	}
-	
-	/**
-	 * removes an emphasis from the Arraylist 
-	 * @param emp the emphases to remove
-	 */
-	public void removeEmphasis(String emp){
-		
-	}
 
 
 	public void printString() {

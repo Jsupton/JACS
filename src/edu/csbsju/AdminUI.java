@@ -15,6 +15,10 @@ public class AdminUI extends AccountUI{
 	 * a AdminFuncController object instance variable
 	 */
 	private AdminFuncController adminFunc;
+	/*
+	 * a DB controller object instance variable
+	 */
+	private DBController DB;
 	
 	/**
 	 * This default constructor initiates the Admin to null
@@ -82,16 +86,7 @@ public class AdminUI extends AccountUI{
 	  * @param an university that is being added
 	  */
 	 public void addUniversity(University u){
-		 
-	 }
-	 
-	 /**
-	  * This method displays an error method. It is used when there is
-	  * an error when searching the database.
-	  * @return a String representing the error
-	  */
-	 public void getSearchError(){
-	   
+		 DB.addUniversity(u);
 	 }
 	 
 	 /**
@@ -110,7 +105,7 @@ public class AdminUI extends AccountUI{
 	  * that information for the user to see
 	  */
 	 public void viewAccount(String name){
-		 
+		 DB.findAccount(name);
 	 }
 	 
 }

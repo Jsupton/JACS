@@ -30,6 +30,8 @@ public class AdminFuncController extends AccountController {
 	public AdminFuncController() {
 		super();
 		this.admin = null;
+		this.d = new DBController();
+		this.s = new SearchController();
 	}
 	
 	 /**
@@ -40,6 +42,8 @@ public class AdminFuncController extends AccountController {
 	 public AdminFuncController(Admin admin) {
 			super();
 			this.admin = admin;
+			this.d = new DBController();
+			this.s = new SearchController();
 		}
 	/**
 	  * This method calls on the database and gets all of the accounts that are
@@ -47,8 +51,7 @@ public class AdminFuncController extends AccountController {
 	  * @return an array list of the accounts
 	  */
 	 public ArrayList getAccounts(){
-		 ArrayList<Account> a = new ArrayList();
-		 return a;
+		 return d.getAccounts();;
 	 }
 	 
 	 /**
@@ -56,7 +59,10 @@ public class AdminFuncController extends AccountController {
 	  * objects that are in the database.
 	  */
 	 public void displayAccounts(){
-
+		 ArrayList<Accounts> a = this.getAccounts();
+		 for(Account u: a){
+			 u.printString();
+		 }
 	 }
 	 
 	 /**
@@ -65,8 +71,7 @@ public class AdminFuncController extends AccountController {
 	  * @return and array list of universities
 	  */
 	 public ArrayList getUniversities(){
-		 ArrayList<University> u = new ArrayList();
-		 return u;
+		 return d.getAllUniversities;
 	 }
 	 
 	 /**
@@ -74,7 +79,10 @@ public class AdminFuncController extends AccountController {
 	  * objects that are in the database.
 	  */
 	 public void displayUniversities(){
-		 
+		 ArrayList<University> a = this.getUniversities();
+		 for(University u: a){
+			 u.printString();
+		 }
 	 }
 	 
 	 /**

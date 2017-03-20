@@ -16,14 +16,76 @@ import java.util.*;
  */ 
 
 public class DBLibraryDriver {
+	
   private DBController univDBlib;
-  
+
   public  DBLibraryDriver(){
     univDBlib = new DBController();
   }
   
+  /**
+   * Testing addUniversity(), editUniversity(), and removeUniversity().
+   */
+  public void testAddEditRemoveU()
+ {
+	  // addUniversity()
+	  ArrayList<String> emp = new ArrayList<String>();
+	  emp.add("Sports");
+	  emp.add("Academics");
+	  University newU = new University("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1,emp);
+	  univDBlib.addUniversity(newU);
+	  University ourU = univDBlib.getAUniversity("x");
+	  ArrayList<String> ourEmp = (ArrayList<String>) ourU.getEmphases();
+	  for(String exEmp: ourEmp)
+	  {
+		  System.out.println("Should be Sports and Academics " + exEmp);
+	  }
+	  
+	  // editUniversity
+	  ourU.setState("MN");
+	  univDBlib.editUniversity(ourU);
+	  University editU = univDBlib.getAUniversity("x");
+	  System.out.println("Should be MN: "+ editU.getState());
+	  
+	  // removeUniversity
+	    
+ }
+  public void testSaveSchool()
+  {
+	  ArrayList<Account> allAccts = univDBlib.getAccounts();
+	  ArrayList<String> test = (ArrayList<String>) univDBlib.getUserSavedSchools("juser");
+	  if(test==null || test.isEmpty())
+	  {
+		  System.out.println("Test is empty 1.");
+	  }
+	  univDBlib.addUniversityToSavedSchools("AUGSBURG", "juser");
+	  univDBlib.addUniversityToSavedSchools("STANFORD", "juser");
+	  
+	  test = (ArrayList<String>) univDBlib.getUserSavedSchools("juser");
+	  
+	  for(String s1: test)
+	  {
+		  System.out.println("Stanford and Augsburg "+ test);
+	  }
+	  
+	  univDBlib.removeUniversityFromSavedSchools("AUGSBURG", "juser");
+	  univDBlib.removeUniversityFromSavedSchools("STANFORD", "juser");
+	  
+	  test = (ArrayList<String>) univDBlib.getUserSavedSchools("juser");
+	  
+	  if(test.isEmpty())
+	  {
+		  System.out.println("Test is empty2.");
+	  }
+  }
+  
+  
   public void run()
   {
+	  //this.testAddEditRemoveU();
+	  
+	  this.testSaveSchool();
+	  
 //	  // Display all university names in the database
 //	  ArrayList<University> allUniv  = univDBlib.getAllUniversities();
 //	  for (University row : allUniv)
@@ -41,17 +103,14 @@ public class DBLibraryDriver {
 //	  univDBlib.removeUniversityFromSavedSchools("AUGSBURG", "luser");
 //	  univDBlib.removeUniversityFromSavedSchools("STANFORD", "juser");
 //	  univDBlib.getUserSavedSchools("juser");
-	  
 
-	  
-	  
-	  
+
+
       
   }
  
   
   public static void main(String[] args) {
-	  
       DBLibraryDriver testRun = new DBLibraryDriver();
       testRun.run();
   }

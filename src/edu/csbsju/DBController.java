@@ -280,10 +280,23 @@ public class DBController {
 		int academicScale = u.getAcademicScale();
 		int socialScale = u.getSocialScale();
 		int qualityOfLife = u.getQualityOfLife();
+		
+		// Add University emphasis if it exists.
+		List<String> allEmphases = u.getEmphases();
+		if(!allEmphases.isEmpty())
+		{
+			for(String emphases: allEmphases)
+			{
+				this.addEmphases(school,emphases);
+			}
+		}
+		
 
 		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents,
 				 percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
 				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		 
+		 
 	 }
 	 
 	 /**
@@ -291,34 +304,34 @@ public class DBController {
 	  * @return String [] of all university names of all the saved schools
 	  * 
 	  */
-	 public ArrayList<String> getUserSavedSchools(String username)
+	 public List<String> getUserSavedSchools(String username)
 	 {
 		 boolean found = false;
 		 int i=0;
 		 int j = 0;
 		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
-		 ArrayList<String> matchingSchools = new ArrayList<String>();
+		 //String[][] users = univDBlib.user_getUsers();
 		 
-		 System.out.println(Arrays.deepToString(savedSchools));
-		 /**
-		 while(!found && i<savedSchools.length)
+		 ArrayList<String> matchingSchools = new ArrayList<String>();
+		 if(savedSchools == null)
 		 {
-			 System.out.println("This is userName "+ savedSchools[i][0]);
+			 return matchingSchools;
+		 }
+		 
+		 while(i<savedSchools.length)
+		 {
 
 			 if(username.equals(savedSchools[i][0]))
 			 {
-				 found = true;
 				 for(int j = 1; j<savedSchools[i].length; j++)
 				 {
-					 System.out.println("This is saved School "+ savedSchools[i][j]);
 					 matchingSchools.add(savedSchools[i][j]);
 				 }
-				// for(int j=0; j<)
 			 }
+			 i++;
 		 }
+		 
 		 return matchingSchools;
-		 */
-		 return null;
 	 }
 	 
 	 /**

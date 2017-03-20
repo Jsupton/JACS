@@ -90,17 +90,7 @@ public class DBController {
 	  */
 	 public char determineType(Account a)
 	 {
-	  return 'a';
-	 }
-	 
-	 /**
-	  * Gets a university object with a university name
-	  * @param universityName Name of the university being searched
-	  * @return University object with given university name
-	  */
-	 public University detailedUniversityInformation(String universityName)
-	 {
-	  return null;
+	  return a.getType();
 	 }
 	 
 	 /**
@@ -194,23 +184,13 @@ public class DBController {
 				 firstName = users[count][0];
 				 lastName = users[count][1];
 				 password = users[count][2];
-				 status = users[count][4].charAt(0);
-				 type = users[count][5].charAt(0);
+				 type = users[count][4].charAt(0);
+				 status = users[count][5].charAt(0);
 			 }
 			 count++;
 		 }
 		 Account acct = new Account(firstName, lastName, username, password, type, status);
 	  return acct;
-	 }
-	 
-	 /**
-	  * Changes the details of a user
-	  * @param u User we would like to change details of
-	  * @param a Account information we would like details of
-	  */
-	 public void changeStudentDetails(User u, Account a)
-	 {
-		 
 	 }
 	 
 	 /**
@@ -231,35 +211,28 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Returns a specific student object
-	  * @return User related to a specific student
-	  */
-	 public User displayStudent()
-	 {
-	  return null;
-	 }
-	 
-	 /**
-	  * Shows sends a university to our user
-	  */
-	 public void displayUniversity()
-	 {
-	  
-	 }
-	 
-	 /**
 	  * Edits the account details of a provided account
+	  * @param u user name of the user
 	  * @param fn Fist name of the user
 	  * @param ln Last name of the user
 	  * @param p Password of user
+	  * @param type, character representing the user's type
+	  * @param status, character representing the user's status
+	  * @return boolean depending on it the edit was successful.
 	  */
-	 public boolean editAccount(String fn,String ln,String p,char type)
+	 public boolean editAccount(String u, String fn,String ln,String p,char type, char status)
 	 {
+		 int i = univDBlib.user_editUser(u, fn, ln, p, type, status);
+		 if(i!=-1){
+			 return true;
+		 }
 		 return false;
 	 }
 	 
 	 /**
-	  * Adds a university to the database
+	  * Adds a university to the database, using the university object,
+	  * It gets all the attributes for the new university and then calls the DBController
+	  * to update the database with the new university
 	  * @param u Object to be added to the database
 	  */
 	 public void addUniversity(University u)
@@ -283,7 +256,7 @@ public class DBController {
 		
 		// Add University emphasis if it exists.
 		List<String> allEmphases = u.getEmphases();
-		if(!allEmphases.isEmpty())
+		if(allEmphases!=null)
 		{
 			for(String emphases: allEmphases)
 			{
@@ -295,14 +268,14 @@ public class DBController {
 		 univDBlib.university_addUniversity(school, state, location, control, numberOfStudents,
 				 percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
 				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
-		 
-		 
 	 }
 	 
 	 /**
+	  * This method gets a list of all users and their saved schools from
+	  * the DBLibrary. Then, it goes through that list and finds the desired
+	  * user. Then it adds all of their saved schools to an array list
 	  * @param username
-	  * @return String [] of all university names of all the saved schools
-	  * 
+	  * @return List<String> of all university names of all the saved schools
 	  */
 	 public List<String> getUserSavedSchools(String username)
 	 {
@@ -323,7 +296,7 @@ public class DBController {
 
 			 if(username.equals(savedSchools[i][0]))
 			 {
-				 for(int j = 1; j<savedSchools[i].length; j++)
+				 for(j = 1; j<savedSchools[i].length; j++)
 				 {
 					 matchingSchools.add(savedSchools[i][j]);
 				 }
@@ -381,17 +354,25 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Allows the user to confirm the changes that they have made
-	  * when changing information regarding Account details.
+	  * This method is a method that asks the user if they would like to 
+	  * continue on making the changes to this Account object, whether it is
+	  * a User changing their own account information or an Admin changing
+	  * another person's Account information.
 	  */
-	 public void confirmChange()
-	 {
-	  
+	 public boolean confirmEdit(){
+		  String answer = JOptionPane.showInputDialog("Are You sure you want to confirm change? (Y/N)");
+		  if(answer == "y"|| answer == "Y"){
+			  return true;
+		  }
+		  else{
+			  JOptionPane.showMessageDialog(null,"The changes were not saved");
+			  return false;
+		  }
 	 }
 	 
 	 /**
 	  * Checks the status of a given user
-	  * @param u
+	  * @param a Account object
 	  * @return true if this user is active
 	  */
 	 public boolean isActive(Account a)
@@ -402,7 +383,7 @@ public class DBController {
 	 
 	 /**
 	  * Used to deactivate a given user
-	  * @param u User that you would like to deactivate
+	  * @param a Account that you would like to deactivate
 	  */
 	 public void deactivate(Account a)
 	 {
@@ -413,7 +394,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * This method is used to edit the account
+	  * This method is used to add an account. It takes in all the attributes of 
+	  * an account object, and then uses those to create a new account object in the
+	  * database
 	  * @param firstname the firstname of the new account
 	  * @param lastname the lastname of the new account
 	  * @param username the username of the new account
@@ -428,23 +411,7 @@ public class DBController {
 	 /**
 	  * This method allows an admin to be able to edit a university object
 	  * The changes are sent to the Database to save the changes
-	  * @param universityName The name of a university
-	  * @param location The location of a university
-	  * @param state The state of a university
-	  * @param control The control of a university
-	  * @param numberOfStudents the number of students at a university
-	  * @param percentFemale the percent female of a university
-	  * @param satVerbal SAT of a university
-	  * @param satMath SAT of a university
-	  * @param expenses The Expenses of a university
-	  * @param financialAid the Financial aid at a university
-	  * @param numberOfApplicants Number of Applicants of a university
-	  * @param percentAdmitted The percent admitted of a university
-	  * @param percentEnrolled The percent Enrolled of a university
-	  * @param academicScale The academic scale of a university
-	  * @param socialScale Social scale of a university
-	  * @param qualityOfLife Quality of life of a university
-	  * @param emphases empases of a university
+	  * @param u, a university object
 	  */
 	 public void editUniversity(University u)
 	 {

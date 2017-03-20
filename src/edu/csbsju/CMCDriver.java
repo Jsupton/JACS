@@ -175,18 +175,29 @@ public class CMCDriver {
 		        	ch = acceptCommand();
 		        	if(ch == 'V'||ch=='v'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
-		        		 u.printString();
-		        		 schoolMenu();
+		        		 if(u!=null){
+		        			 u.printString();
+		        			 schoolMenu();}
+		        		 else{
+		        			 JOptionPane.showMessageDialog(null,"THIS SCHOOL DOES NOT EXIST");
+		        			 schoolMenu();}
 		        	}
 		        	else if(ch == 'R'||ch=='r'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
-		        		 boolean b = user.removeUniversityFromSavedSchools(u);
-		        		 if(b){
-		        			 JOptionPane.showMessageDialog(null,"The university was successfully removed");
+		        		 if(u!=null){
+			        		 boolean b = user.removeUniversityFromSavedSchools(u);
+			        		 if(b){
+			        			 JOptionPane.showMessageDialog(null,"The university was successfully removed");
+			        		 }
+			        		 else{
+			        			 JOptionPane.showMessageDialog(null,"UNSUCCESSFUL REMOVAL");
+			        			 schoolMenu();
+			        		 }
 		        		 }
-		        		 else
+		        		 else{
 		        			 JOptionPane.showMessageDialog(null,"UNSUCCESSFUL REMOVAL");
-		        		 schoolMenu();
+		        			 schoolMenu();
+		        		 }
 		        	}
 	        	}
 	        	while(ch!='Q');
@@ -421,13 +432,14 @@ public class CMCDriver {
 		  	    	break;
 		  	    	//QUIT
 			    case 'R': case 'r':
-			    	JOptionPane.showMessageDialog(null,"The Changes WERE NOT saved");
+			    	JOptionPane.showMessageDialog(null,"Any Aditional Changes WERE NOT saved");
 		    	    cmd = 'R';
 				  	break;
 			      //save changes
 			    case 'Q': case 'q':
 				    admin.editAccount(first, last, first, pass, type, status);
 			    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
+			    	cmd = 'R';
 				    break;
 	    	    }
 		    }
@@ -450,10 +462,15 @@ public class CMCDriver {
 			 University u = user.getAUniversity(school); 
 			 List<University> matches = user.getFiveMatches(u);
 			 System.out.println("-----------------------------------------------------");
-			 u.printString();
-			 System.out.println("-----------------5 SIMILAR SCHOOLS-------------------");
-			 for(University uni:matches){
-				 uni.printString();
+			 if(u!=null){
+					 u.printString();
+				 System.out.println("-----------------5 SIMILAR SCHOOLS-------------------");
+				 for(University uni:matches){
+					 uni.printString();
+				 }
+			 }
+			 else if(u==null){
+				 System.out.println("No schools matched the university name "+ school);
 			 }
 			 displayOptions();
 			 char ch = acceptCommand();
@@ -614,7 +631,8 @@ public class CMCDriver {
     	    	    }
     	    	break;
     	      case 'S': case 's':
-    	    	admin.addUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
+    	    	admin.editUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
+    	    	cmd = 'R';
     	    	break;
     	      case 'T': case 't':
     	    	System.out.print("SCHOOL PREVIEW:\nName: " + un+"\nState: "+ s +"\nLocation: "+ l +"\nControl: "+ c +"\n# of Studnets:"+ nos +"\n% Female:"+ pf +"\nSAT Verbal: "+ sv +"\nSAT Math: "+ sm +"\nExpenses: "+
@@ -801,7 +819,7 @@ public class CMCDriver {
 	    System.out.println("\tP: Password: "+ a.getPassword());
 	    System.out.println("\t   Status: "+ a.getStatus()+ "  -- CANNOT EDIT FROM HERE --");
 	    System.out.println("\tT: Type: "+ a.getType());
-	    System.out.println("\tR: Reset ");
+	    System.out.println("\tR: Reset/Return to main menu ");
 	    System.out.println("\tQ: Save Changes ");
 	    System.out.println();
 	}

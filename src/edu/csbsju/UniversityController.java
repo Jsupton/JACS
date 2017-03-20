@@ -24,7 +24,7 @@ public class UniversityController {
 	 */
 	public void addUniversity(University u)
 	{
-		
+		d.addUniversity(u);
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class UniversityController {
 	 */
 	public void editUniversity(University u)
 	{
-		
+		d.editUniversity(u);
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class UniversityController {
 	 */
 	public void displayUniversity(University u)
 	{
-		
+		u.printString();
 	}
 	
 }

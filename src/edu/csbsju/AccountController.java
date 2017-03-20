@@ -75,12 +75,10 @@ public class AccountController {
 				 return null;
 			 }
 			 else{
-	    	     JOptionPane.showMessageDialog(null,"Failed Login");
 				 return null;
 			 }
 		 }
 		 else{
-    	     JOptionPane.showMessageDialog(null,"Failed Login");
     	     return null;
 		 }
 	 }

@@ -19,10 +19,6 @@ public class AdminFuncController {
    * This is a DBController object used to access the Database
    */
   private DBController d;
-  /**
-   * This is a searchController object 
-   */
-  private SearchController s;
   
   /**
    * This default constructor initiates the Admin to null
@@ -31,7 +27,6 @@ public class AdminFuncController {
     super();
     this.admin = null;
     this.d = new DBController();
-    this.s = new SearchController();
   }
   
   
@@ -44,7 +39,6 @@ public class AdminFuncController {
     super();
     this.admin = admin;
     this.d = new DBController();
-    this.s = new SearchController();
   }
   
   /**
@@ -207,7 +201,7 @@ public class AdminFuncController {
    * @param status the status of the account
    */
   public void editAccount(String firstname, String lastname, String username, String password, char type, char status){
-    boolean b = d.editAccount(firstname, lastname, password, type);
+    boolean b = d.editAccount(username, firstname, lastname, password, type, status);
     if(b){
 	   System.out.println("Successful Change");
     }

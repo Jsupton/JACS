@@ -14,17 +14,9 @@ import java.lang.*;
 public class SearchController {
 	
 	/**
-	 * This is an Account object instance variable
-	 */
-	private Account a;
-	/**
 	 * This is a DBController object used to access the Database
 	 */
 	private DBController d;
-	/**
-	 * This is a University object used to access a University
-	 */
-	private University u;
 	
 	 /**
 	  * Default Constructor
@@ -32,8 +24,6 @@ public class SearchController {
 	 public SearchController() {
 		 super();
 		 this.d = new DBController();
-		 this.a = null;
-		 this.u = null;
 	 }
 	 
 	 /**
@@ -69,7 +59,7 @@ public class SearchController {
 	  * @param emphases the emphases for a university
 	  * @return ArrayList<University>
 	  */
-	 public boolean searchCriteriaEmpty(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
+	 public boolean criteriaEmpty(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
 			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
 			 	int satMathLOWER, int satMathUPPER, double expensesLOWER, double expensesUPPER, double financialAidLOWER, double financialAidUPPER,  
 			 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
@@ -192,7 +182,7 @@ public class SearchController {
 		 List<University> matches = new ArrayList<University>();
  		 List<University> s = new ArrayList<University>();
 		 s = d.getAllUniversities();
-		 boolean bo = searchCriteriaEmpty( universityName, state, location, control, numberOfStudentsLOWER, numberOfStudentsUPPER, 
+		 boolean bo = criteriaEmpty( universityName, state, location, control, numberOfStudentsLOWER, numberOfStudentsUPPER, 
 				    percentFemaleLOWER, percentFemaleUPPER, satVerbalLOWER, satVerbalUPPER, 
 				    satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
 				 	numberOfApplicantsLOWER, numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
@@ -339,138 +329,141 @@ public class SearchController {
 		 l = d.getAllUniversities();
 		 String[][] distance = new String[l.size()-1][2];
 		 List<University> matches = new ArrayList<University>();
-		 for(University uni:l){
-			 if(!(u.getUniversityName().equals(uni.getUniversityName()))){
-				 //These two if statements finds the max and min of the number of students 
-				 if(uni.getNumberOfStudents()<minNumberOfStudents)
-					 minNumberOfStudents = uni.getNumberOfStudents();
-				 else if(uni.getNumberOfStudents()>maxNumberOfStudents)
-					 maxNumberOfStudents = uni.getNumberOfStudents();
-				 //These two if statements finds the max and the min of the percent female
-				 if(uni.getPercentFemale()<minPercentFemale)
-					 minPercentFemale = uni.getPercentFemale();
-				 else if(uni.getPercentFemale()>maxPercentFemale)
-					 maxPercentFemale = uni.getPercentFemale();
-				//These two if statements finds the max and the min of the satVerbal score
-				 if(uni.getSatVerbal()<minSatVerbal)
-					 minSatVerbal = uni.getSatVerbal();
-				 else if(uni.getSatVerbal()>maxSatVerbal)
-					 maxSatVerbal = uni.getSatVerbal();
-				//These two if statements finds the max and the min of the satMath score
-				 if(uni.getSatMath()<minSatMath)
-					 minSatMath = uni.getSatMath();
-				 else if(uni.getSatMath()>maxSatMath)
-					 maxSatMath = uni.getSatMath();
-				//These two if statements finds the max and the min of the Expenses
-				 if(uni.getExpenses()<minExpenses)
-					 minExpenses = uni.getExpenses();
-				 else if(uni.getExpenses()>maxExpenses)
-					 maxExpenses = uni.getExpenses();
-				//These two if statements finds the max and the min of the Financial Aid
-				 if(uni.getFinancialAid()<minFinancialAid)
-					 minFinancialAid = uni.getFinancialAid();
-				 else if(uni.getFinancialAid()>maxFinancialAid)
-					 maxFinancialAid = uni.getFinancialAid();
-				//These two if statements finds the max and the min of the number of Applicants
-				 if(uni.getNumberOfApplicants()<minNumberOfApplicants)
-					 minNumberOfApplicants = uni.getNumberOfApplicants();
-				 else if(uni.getNumberOfApplicants()>maxNumberOfApplicants)
-					 maxNumberOfApplicants = uni.getNumberOfApplicants();
-				//These two if statements finds the max and the min of the Percent Admitted
-				 if(uni.getPercentAdmitted()<minPercentAdmitted)
-					 minPercentAdmitted = uni.getPercentAdmitted();
-				 else if(uni.getPercentAdmitted()>maxPercentAdmitted)
-					 maxPercentAdmitted = uni.getPercentAdmitted();
-				//These two if statements finds the max and the min of the Percent Enrolled
-				 if(uni.getPercentEnrolled()<minPercentEnrolled)
-					 minPercentEnrolled = uni.getPercentEnrolled();
-				 else if(uni.getPercentEnrolled()>maxPercentEnrolled)
-					 maxPercentEnrolled = uni.getPercentEnrolled();
-				//These two if statements finds the max and the min of the Academic Scale
-				 if(uni.getAcademicScale()<minAcademicScale)
-					 minAcademicScale = uni.getAcademicScale();
-				 else if(uni.getAcademicScale()>maxAcademicScale)
-					 maxAcademicScale = uni.getAcademicScale();
-				//These two if statements finds the max and the min of the Social Scale
-				 if(uni.getSocialScale()<minSocialScale)
-					 minSocialScale = uni.getSocialScale();
-				 else if(uni.getSocialScale()>maxSocialScale)
-					 maxSocialScale = uni.getSocialScale();
-				//These two if statements finds the max and the min of the Quality of life
-				 if(uni.getQualityOfLife()<minQualityOfLife)
-					 minQualityOfLife = uni.getQualityOfLife();
-				 else if(uni.getQualityOfLife()>maxQualityOfLife)
-					 maxQualityOfLife = uni.getQualityOfLife();
+		 if(u!=null){
+			 for(University uni:l){
+				 if(!(u.getUniversityName().equals(uni.getUniversityName()))){
+					 //These two if statements finds the max and min of the number of students 
+					 if(uni.getNumberOfStudents()<minNumberOfStudents)
+						 minNumberOfStudents = uni.getNumberOfStudents();
+					 else if(uni.getNumberOfStudents()>maxNumberOfStudents)
+						 maxNumberOfStudents = uni.getNumberOfStudents();
+					 //These two if statements finds the max and the min of the percent female
+					 if(uni.getPercentFemale()<minPercentFemale)
+						 minPercentFemale = uni.getPercentFemale();
+					 else if(uni.getPercentFemale()>maxPercentFemale)
+						 maxPercentFemale = uni.getPercentFemale();
+					//These two if statements finds the max and the min of the satVerbal score
+					 if(uni.getSatVerbal()<minSatVerbal)
+						 minSatVerbal = uni.getSatVerbal();
+					 else if(uni.getSatVerbal()>maxSatVerbal)
+						 maxSatVerbal = uni.getSatVerbal();
+					//These two if statements finds the max and the min of the satMath score
+					 if(uni.getSatMath()<minSatMath)
+						 minSatMath = uni.getSatMath();
+					 else if(uni.getSatMath()>maxSatMath)
+						 maxSatMath = uni.getSatMath();
+					//These two if statements finds the max and the min of the Expenses
+					 if(uni.getExpenses()<minExpenses)
+						 minExpenses = uni.getExpenses();
+					 else if(uni.getExpenses()>maxExpenses)
+						 maxExpenses = uni.getExpenses();
+					//These two if statements finds the max and the min of the Financial Aid
+					 if(uni.getFinancialAid()<minFinancialAid)
+						 minFinancialAid = uni.getFinancialAid();
+					 else if(uni.getFinancialAid()>maxFinancialAid)
+						 maxFinancialAid = uni.getFinancialAid();
+					//These two if statements finds the max and the min of the number of Applicants
+					 if(uni.getNumberOfApplicants()<minNumberOfApplicants)
+						 minNumberOfApplicants = uni.getNumberOfApplicants();
+					 else if(uni.getNumberOfApplicants()>maxNumberOfApplicants)
+						 maxNumberOfApplicants = uni.getNumberOfApplicants();
+					//These two if statements finds the max and the min of the Percent Admitted
+					 if(uni.getPercentAdmitted()<minPercentAdmitted)
+						 minPercentAdmitted = uni.getPercentAdmitted();
+					 else if(uni.getPercentAdmitted()>maxPercentAdmitted)
+						 maxPercentAdmitted = uni.getPercentAdmitted();
+					//These two if statements finds the max and the min of the Percent Enrolled
+					 if(uni.getPercentEnrolled()<minPercentEnrolled)
+						 minPercentEnrolled = uni.getPercentEnrolled();
+					 else if(uni.getPercentEnrolled()>maxPercentEnrolled)
+						 maxPercentEnrolled = uni.getPercentEnrolled();
+					//These two if statements finds the max and the min of the Academic Scale
+					 if(uni.getAcademicScale()<minAcademicScale)
+						 minAcademicScale = uni.getAcademicScale();
+					 else if(uni.getAcademicScale()>maxAcademicScale)
+						 maxAcademicScale = uni.getAcademicScale();
+					//These two if statements finds the max and the min of the Social Scale
+					 if(uni.getSocialScale()<minSocialScale)
+						 minSocialScale = uni.getSocialScale();
+					 else if(uni.getSocialScale()>maxSocialScale)
+						 maxSocialScale = uni.getSocialScale();
+					//These two if statements finds the max and the min of the Quality of life
+					 if(uni.getQualityOfLife()<minQualityOfLife)
+						 minQualityOfLife = uni.getQualityOfLife();
+					 else if(uni.getQualityOfLife()>maxQualityOfLife)
+						 maxQualityOfLife = uni.getQualityOfLife();
+				 }
 			 }
-		 }
-		 int i = 0;
-		 for(University uni:l){
-			 double sum = 0;
-			 if(!(u.getUniversityName().equals(uni.getUniversityName()))){
-				 //gets the distance between the university parameter and the university object's name
-				 if(!(uni.getUniversityName().equals(u.getUniversityName())))
-					 sum =+ 1;
-				 //gets the distance between the university parameter and the university object's state
-				 if(!(uni.getState().equals(u.getState())))
-					 sum =+1;
-				 //gets the distance between the university parameter and the university object's location
-				 if(!(uni.getLocation().equals(u.getLocation())))
-					 sum =+1;
-				 //gets the distance between the university parameter and the university object's control
-				 if(!(uni.getControl().equals(u.getControl())))
-					 sum =+1;
-				 //gets the distance between the university parameter and the university object's number of students
-				 double sum1 = (Math.abs((double)u.getNumberOfStudents()-(double)uni.getNumberOfStudents())) / (Math.abs((double)maxNumberOfStudents - (double)minNumberOfStudents));
-				 //gets the distance between the university parameter and the university object's percent Female
-				 double sum2 =+ (Math.abs(u.getPercentFemale()-uni.getPercentFemale())) / (Math.abs(maxPercentFemale - minPercentFemale));
-				 //gets the distance between the university parameter and the university object's SAT Verbal score
-				 double sum3 =+ (Math.abs((double)u.getSatVerbal()-(double)uni.getSatVerbal())) / (Math.abs((double)maxSatVerbal - (double)minSatVerbal));
-				 //gets the distance between the university parameter and the university object's SAT Math score
-				 double sum4 =+ (Math.abs((double)u.getSatMath()-(double)uni.getSatMath())) / (Math.abs((double)maxSatMath - (double)minSatMath));
-				 //gets the distance between the university parameter and the university object's Expenses
-				 double sum5 =+ (Math.abs(u.getExpenses()-uni.getExpenses())) / (Math.abs(maxExpenses - minExpenses));
-				 //gets the distance between the university parameter and the university object's % financial Aid
-				 double sum6 =+ (Math.abs(u.getFinancialAid()-uni.getFinancialAid())) / (Math.abs(maxFinancialAid - minFinancialAid));
-				 //gets the distance between the university parameter and the university object's number of applicants
-				 double sum7 =+ (Math.abs((double)u.getNumberOfApplicants()-(double)uni.getNumberOfApplicants())) / (Math.abs((double)maxNumberOfApplicants - (double)minNumberOfApplicants));
-				 //gets the distance between the university parameter and the university object's % admitted
-				 double sum8 =+ (Math.abs(u.getPercentAdmitted()-uni.getPercentAdmitted())) / (Math.abs(maxPercentAdmitted - minPercentAdmitted));
-				 //gets the distance between the university parameter and the university object's % enrolled
-				 double sum9 =+ (Math.abs(u.getPercentEnrolled()-uni.getPercentEnrolled())) / (Math.abs(maxPercentEnrolled - minPercentEnrolled));
-				 //gets the distance between the university parameter and the university object's Academic Scale
-				 double sum10 =+ (Math.abs((double)u.getAcademicScale()-(double)uni.getAcademicScale())) / (Math.abs((double)maxAcademicScale - (double)minAcademicScale));
-				 //gets the distance between the university parameter and the university object's Social Scale
-				 double sum11 =+ (Math.abs((double)u.getSocialScale()-(double)uni.getSocialScale())) / (Math.abs((double)maxSocialScale - (double)minSocialScale));
-				 //gets the distance between the university parameter and the university object's Quality of life
-				 double sum12 =+ (Math.abs((double)u.getQualityOfLife()-(double)uni.getQualityOfLife())) / (Math.abs((double)maxQualityOfLife - (double)minQualityOfLife));
-				
-				 sum = sum+sum1+sum2+sum3+sum4+sum5+sum6+sum7+sum8+sum9+sum10+sum11+sum12;
-				 distance[i][0] = uni.getUniversityName();
-				 distance[i][1] = Double.toString(sum);
-				 i++;
+			 int i = 0;
+			 for(University uni:l){
+				 double sum = 0;
+				 if(!(u.getUniversityName().equals(uni.getUniversityName()))){
+					 //gets the distance between the university parameter and the university object's name
+					 if(!(uni.getUniversityName().equals(u.getUniversityName())))
+						 sum =+ 1;
+					 //gets the distance between the university parameter and the university object's state
+					 if(!(uni.getState().equals(u.getState())))
+						 sum =+1;
+					 //gets the distance between the university parameter and the university object's location
+					 if(!(uni.getLocation().equals(u.getLocation())))
+						 sum =+1;
+					 //gets the distance between the university parameter and the university object's control
+					 if(!(uni.getControl().equals(u.getControl())))
+						 sum =+1;
+					 //gets the distance between the university parameter and the university object's number of students
+					 double sum1 = (Math.abs((double)u.getNumberOfStudents()-(double)uni.getNumberOfStudents())) / (Math.abs((double)maxNumberOfStudents - (double)minNumberOfStudents));
+					 //gets the distance between the university parameter and the university object's percent Female
+					 double sum2 =+ (Math.abs(u.getPercentFemale()-uni.getPercentFemale())) / (Math.abs(maxPercentFemale - minPercentFemale));
+					 //gets the distance between the university parameter and the university object's SAT Verbal score
+					 double sum3 =+ (Math.abs((double)u.getSatVerbal()-(double)uni.getSatVerbal())) / (Math.abs((double)maxSatVerbal - (double)minSatVerbal));
+					 //gets the distance between the university parameter and the university object's SAT Math score
+					 double sum4 =+ (Math.abs((double)u.getSatMath()-(double)uni.getSatMath())) / (Math.abs((double)maxSatMath - (double)minSatMath));
+					 //gets the distance between the university parameter and the university object's Expenses
+					 double sum5 =+ (Math.abs(u.getExpenses()-uni.getExpenses())) / (Math.abs(maxExpenses - minExpenses));
+					 //gets the distance between the university parameter and the university object's % financial Aid
+					 double sum6 =+ (Math.abs(u.getFinancialAid()-uni.getFinancialAid())) / (Math.abs(maxFinancialAid - minFinancialAid));
+					 //gets the distance between the university parameter and the university object's number of applicants
+					 double sum7 =+ (Math.abs((double)u.getNumberOfApplicants()-(double)uni.getNumberOfApplicants())) / (Math.abs((double)maxNumberOfApplicants - (double)minNumberOfApplicants));
+					 //gets the distance between the university parameter and the university object's % admitted
+					 double sum8 =+ (Math.abs(u.getPercentAdmitted()-uni.getPercentAdmitted())) / (Math.abs(maxPercentAdmitted - minPercentAdmitted));
+					 //gets the distance between the university parameter and the university object's % enrolled
+					 double sum9 =+ (Math.abs(u.getPercentEnrolled()-uni.getPercentEnrolled())) / (Math.abs(maxPercentEnrolled - minPercentEnrolled));
+					 //gets the distance between the university parameter and the university object's Academic Scale
+					 double sum10 =+ (Math.abs((double)u.getAcademicScale()-(double)uni.getAcademicScale())) / (Math.abs((double)maxAcademicScale - (double)minAcademicScale));
+					 //gets the distance between the university parameter and the university object's Social Scale
+					 double sum11 =+ (Math.abs((double)u.getSocialScale()-(double)uni.getSocialScale())) / (Math.abs((double)maxSocialScale - (double)minSocialScale));
+					 //gets the distance between the university parameter and the university object's Quality of life
+					 double sum12 =+ (Math.abs((double)u.getQualityOfLife()-(double)uni.getQualityOfLife())) / (Math.abs((double)maxQualityOfLife - (double)minQualityOfLife));
+					
+					 sum = sum+sum1+sum2+sum3+sum4+sum5+sum6+sum7+sum8+sum9+sum10+sum11+sum12;
+					 distance[i][0] = uni.getUniversityName();
+					 distance[i][1] = Double.toString(sum);
+					 i++;
+				 }
 			 }
-		 }
-		 //Sorts the distance array by the second column. It compares
-		 //The two strings and then puts them in the correct order
-		 Arrays.sort(distance, new Comparator<String[]>() {
-		 @Override
-		 public int compare(final String[] x, final String[] y) {
-			 final String distance1 = x[1];
-		     final String distance2 = y[1];
-		     return distance1.compareTo(distance2);
-		     }
-		 });
+			 //Sorts the distance array by the second column. It compares
+			 //The two strings and then puts them in the correct order
+			 Arrays.sort(distance, new Comparator<String[]>() {
+			 @Override
+			 public int compare(final String[] x, final String[] y) {
+				 final String distance1 = x[1];
+			     final String distance2 = y[1];
+			     return distance1.compareTo(distance2);
+			     }
+			 });
 		 
-		 //Displays the sorted Distances, just for testing purposes
-		 //System.out.print("\nSORTED DISTANCES \n");
-	     //for (final String[] s : distance) {
-		     //System.out.println(s[0] + " " + s[1]);}
-		 
-		 //gets the 5 top schools in the sorted list, and then puts them in an 
-		 //array list of university objects
-		 for(i=0;i<5;i++){
-			 University x = d.getAUniversity(distance[i][0]);
-			 matches.add(x);
+			 //Displays the sorted Distances, just for testing purposes
+			 //System.out.print("\nSORTED DISTANCES \n");
+		     //for (final String[] s : distance) {
+			     //System.out.println(s[0] + " " + s[1]);}
+			 
+			 //gets the 5 top schools in the sorted list, and then puts them in an 
+			 //array list of university objects
+			 for(i=0;i<5;i++){
+				 University x = d.getAUniversity(distance[i][0]);
+				 matches.add(x);
+			 }
+			 return matches;
 		 }
 		 return matches;
 	 }

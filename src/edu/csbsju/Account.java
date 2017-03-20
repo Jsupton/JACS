@@ -1,7 +1,7 @@
 
 package edu.csbsju;
-
-
+ 
+ 
 /**
  * This class is the class that encompasses the similarities of a User 
  * and an Administrator. Account represents a user object, with corresponding
@@ -80,6 +80,7 @@ public class Account {
 	 }
 	
 	 /**
+	  * gets the username for the Account object
 	  * gets the username for the Account object
 	  * @return the username
 	  */

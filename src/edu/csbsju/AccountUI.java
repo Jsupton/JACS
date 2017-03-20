@@ -122,18 +122,6 @@ public class AccountUI {
 	 }
 	 
 	 /**
-	  * This method allows the user to be able to change Account attributes.
-	  * It takes in 3 parameters, which can contain null values, and uses those
-	  * values to update an Account object's attributes
-	  * @param p String representing an Account's password
-	  * @param ln String representing the Account's last name
-	  * @param fn String representing the Account's first name
-	  */
-	 public void editAccount(String p, String ln, String fn){
-		 accountFunc.editAccount(p,ln,fn);
-	 }
-	 
-	 /**
 	  * This method is a method that asks the user if they would like to 
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing

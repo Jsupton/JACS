@@ -75,13 +75,16 @@ public class SearchController {
 			 	double numberOfApplicantsLOWER, int numberOfApplicantsUPPER, double percentAdmittedLOWER,double percentAdmittedUPPER, 
 			 	double percentEnrolledLOWER,  double percentEnrolledUPPER, int academicScaleLOWER, int academicScaleUPPER, int socialScaleLOWER, 
 			 	int socialScaleUPPER, int qualityOfLifeLOWER, int qualityOfLifeUPPER, List<String> emphases){
-		
+		 int i = 0;
+		 for(String s:emphases){
+			 i++;
+		 }
 	  return ((universityName==null) && (state==null) && ( location==null) && ( control==null) && ( numberOfStudentsLOWER==0) && (numberOfStudentsUPPER==0) &&
 			  (percentFemaleLOWER==0.0) && ( percentFemaleUPPER==0.0) && ( satVerbalLOWER ==0) && ( satVerbalUPPER ==0) &&
 			 	( satMathLOWER==0) && (satMathUPPER==0) &&( expensesLOWER==0.0) && (expensesUPPER==0.0) &&  (financialAidLOWER==0.0) && (financialAidUPPER==0.0)&&  
 			 	( numberOfApplicantsLOWER==0) && ( numberOfApplicantsUPPER==0) && (percentAdmittedLOWER==0.0) && (percentAdmittedUPPER==0.0) && 
 			 	( percentEnrolledLOWER==0.0)  && (percentEnrolledUPPER==0.0) && (academicScaleLOWER==0) && (academicScaleUPPER==0) && (socialScaleLOWER==0) 
-			 	&& (socialScaleUPPER==0) && (qualityOfLifeLOWER==0) && (qualityOfLifeUPPER==0) && (emphases==null));
+			 	&& (socialScaleUPPER==0) && (qualityOfLifeLOWER==0) && (qualityOfLifeUPPER==0) && (i==0));
 	 }
 	
 	 /**
@@ -194,7 +197,7 @@ public class SearchController {
 				    satMathLOWER, satMathUPPER, expensesLOWER, expensesUPPER, financialAidLOWER, financialAidUPPER,  
 				 	numberOfApplicantsLOWER, numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
 				    percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
-				    socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER, emphases);
+				    socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER,emphases);
 		 if(bo){
 			 return s;
 		 }

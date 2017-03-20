@@ -69,7 +69,9 @@ public class UserFuncController {
 	}
 	
 	/**
-	 * searches for a users universities
+	 * searches for a users universities. Given the set of parameter values, this method
+	 * Calls the search method in the SearchController and which returns a list of schools
+	 * that satify the search criteria. 
 	 * @param universityName Univeristy name
 	 * @param state university state
 	 * @param location location of the university
@@ -118,7 +120,8 @@ public class UserFuncController {
 	
 	
 	/**
-	 * view student profile
+	 * view/displays a user profile
+	 * @return a user object
 	 */
 	public User displayStudentDetails()
 	{
@@ -127,15 +130,24 @@ public class UserFuncController {
 	}
 	
 	/**
-	 * edit a student profile	
+	 * Allows the current user to edit their profile. The can choose to edit their first name,
+	 * last name, or password. The three parameter values are the new value for the user. If a value 
+	 * if left null, the old value is kept.
+	 * @param firstName the first name of the user
+	 * @param lastName the last name of the user
+	 * @param password the password for the user's account
 	 */
-	public void editStudentProfile()
+	public void editStudentProfile(String firstName, String lastName, String password)
 	{
-		d.editAccount(u.getFirstName(),u.getLastName(),u.getPassword(),u.getType());
+		d.editAccount(firstName,lastName,password,u.getType());
+		u.setFirstName(firstName);
+		u.setLastName(lastName);
+		u.setPassword(password);
 	}
 	
 	/**
-	 * Displays the student's saved schools
+	 * Displays the names of the schools in the student's saved schools
+	 * @return A list of strings containing the names of the saved schools for the student
 	 */
 	public List<String> getSavedSchools(){
 		return d.getUserSavedSchools(u.getUsername());

@@ -65,7 +65,7 @@ public class CMCDriver {
 	    	Account acc = account.displayAccount();
 	    	User u = new User(acc.getFirstName(),acc.getLastName(),acc.getUsername(),acc.getPassword(),acc.getStatus(),acc.getType());
 	    	this.user = new UserUI(u);
-	    	do
+	    	do 
 	    	{
 	    		userMenu();
 	    		cmd = acceptCommand();
@@ -163,29 +163,35 @@ public class CMCDriver {
 	    	//Allows User to Manage his/her saved Schools
 	        //The user can view a specific school, or remove a school from their list
 	        case 'M': case 'm':
-	        	List<University> saved = user.getSavedSchools();
+	        	List<String> saved = user.getSavedSchools();
 	        	if(saved!=null){
-	        		for(University u: saved){
-	        			u.printString();
+	        		for(String u: saved){
+	        			System.out.println(u);
 	        		}
 	        	}
 	        	schoolMenu();
-	        	ch = acceptCommand();
-	        	if(ch == 'V'||ch=='v'){
-	        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
-	        		 u.printString();
+	        	do
+	        	{
+		        	ch = acceptCommand();
+		        	if(ch == 'V'||ch=='v'){
+		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
+		        		 u.printString();
+		        		 schoolMenu();
+		        	}
+		        	else if(ch == 'R'||ch=='r'){
+		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
+		        		 boolean b = user.removeUniversityFromSavedSchools(u);
+		        		 if(b){
+		        			 JOptionPane.showMessageDialog(null,"The university was successfully removed");
+		        		 }
+		        		 else
+		        			 JOptionPane.showMessageDialog(null,"UNSUCCESSFUL REMOVAL");
+		        		 schoolMenu();
+		        	}
 	        	}
-	        	else if(ch == 'R'||ch=='r'){
-	        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
-	        		 boolean b = user.removeUniversityFromSavedSchools(u);
-	        		 if(b){
-	        			 JOptionPane.showMessageDialog(null,"The university was successfully removed");
-	        		 }
-	        		 else
-	        			 JOptionPane.showMessageDialog(null,"UNSUCCESSFUL REMOVAL");
-	        	}
-	        	else
-	        		cmd = 'R';
+	        	while(ch!='Q');
+	        	
+	        	cmd = 'R';
 	        break;
 	        
 	        
@@ -200,6 +206,7 @@ public class CMCDriver {
 	    		nosl=nosu=svl=svu=sml=smu=noal=noau=asl=asu=ssl=ssu=qoll=qolu=0;
 	    		pfl=pfu=el=eu=fal=fau=pal=pau=pel=peu=0.0;
 	    		List<String> emphases = new ArrayList<String>();
+	    		JOptionPane.showMessageDialog(null,"To Browse All Schools, Search without any criteria.");
 	    		//This populates the variables in order for the person to search
 	    		do
 			    {
@@ -235,17 +242,17 @@ public class CMCDriver {
 			  	    	break;
 		    	    	//add Percent female
 		    	      case 'F': case 'f':
-		    	    	pfl = Double.parseDouble(JOptionPane.showInputDialog("Please Enter alower bound for the percent female: "));
-				  	    pfu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upperbound for the percent female: "));
+		    	    	pfl = Double.parseDouble(JOptionPane.showInputDialog("Please Enter alower bound for the percent female (0-100): "));
+				  	    pfu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upperbound for the percent female (0-100): "));
 				  	    //add SAT Verbal
 		    	      case 'G': case 'g':
-		    	    	svl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for verbal SAT scores: "));
-				  	    svu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter and upper bound for verbal SAT scores: "));	    	        
+		    	    	svl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for verbal SAT scores (0-800): "));
+				  	    svu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter and upper bound for verbal SAT scores (0-800): "));	    	        
 				  	    break;
 		    	    	//add SAT Math
 		    	      case 'H': case 'h':
-		    	    	sml = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for math sat scores: "));
-				  	    smu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for math sat scores: "));	    	        
+		    	    	sml = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for math sat scores (0-800): "));
+				  	    smu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for math sat scores (0-800): "));	    	        
 				  	    break;
 		    	    	//add Expenses
 		    	      case 'I': case 'i':
@@ -263,26 +270,26 @@ public class CMCDriver {
 				  	    break;
 		    	    	//add Percent Admitted
 		    	      case 'L': case 'l':
-		    	    	pal = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent admitted: "));
-				  	    pau = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent admitted: "));			  	    
+		    	    	pal = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent admitted (0-100): "));
+				  	    pau = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent admitted (0-100): "));			  	    
 				  	    // add percent enrolled
 		    	      case 'M': case 'm':
-		    	    	pel = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent enrolled: "));
-				  	    peu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent enrolled: "));	    	        
+		    	    	pel = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a lower bound for the percent enrolled (0-100): "));
+				  	    peu = Double.parseDouble(JOptionPane.showInputDialog("Please Enter an upper bound for the percent enrolled (0-100)  : "));	    	        
 				  	    break;
 		    	    	//add Academic Scale
 		    	      case 'O': case 'o':
-		    	    	asl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the academic scale: "));
-				  	    asu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the academic scale: "));			  	    
+		    	    	asl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the academic scale (0-5): "));
+				  	    asu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the academic scale (0-5): "));			  	    
 				  	    //Add Social Scale
 		    	      case 'p': case 'P':
-		    	    	ssl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the social scale: "));
-				  	    ssu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the social scale: "));	    	        
+		    	    	ssl = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the social scale (0-5): "));
+				  	    ssu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the social scale (0-5): "));	    	        
 				  	    break;
 		    	    	//add Quality of life
 		    	      case 'Q': case 'q':
-		    	    	qoll = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the quality of life: "));
-				  	    qolu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life: "));	    	        
+		    	    	qoll = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a lower bound for the quality of life (0-5): "));
+				  	    qolu = Integer.parseInt(JOptionPane.showInputDialog("Please Enter an upper bound for the quality of life (0-5): "));	    	        
 				  	    break;
 		    	      case 't': case 'T':
 			    	    e = (JOptionPane.showInputDialog("Please Enter an emphases: ")).toUpperCase();
@@ -344,7 +351,7 @@ public class CMCDriver {
 		        	}
 	        	}
 	           while((ch!='Q') && (ch!='q'));
-	           user.editAccount(p, ln, fn);
+	           user.editStudentProfile(fn,ln,p);
 		       break;
 	        
 	        
@@ -636,7 +643,7 @@ public class CMCDriver {
 		System.out.println();
 		System.out.println("-------------------------------------------------------------------------");
 	    System.out.println("\tSearch Options");
-	    System.out.println("\tA:  UniversityName");
+	    System.out.println("\tA: UniversityName");
 	    System.out.println("\tB: State");
 	    System.out.println("\tC: Location");
 	    System.out.println("\tD: Control");
@@ -718,10 +725,10 @@ public class CMCDriver {
   	    System.out.println("--------------------------------------------------------");
 	    System.out.println("\tF: First Name: "+ u.getFirstName());
 	    System.out.println("\tL: Last Name: "+ u.getLastName());
-	    System.out.println("\t   Username: "+ u.getUsername()+ "-- CANNOT EDIT --");
+	    System.out.println("\t   Username: "+ u.getUsername()+ "  <-- CANNOT EDIT --");
 	    System.out.println("\tP: Password: "+ u.getPassword());
 	    System.out.println("\tR: Reset ");
-	    System.out.println("\tQ: Save Changes ");
+	    System.out.println("\tQ: Save Changes/Return to main menu ");
 	    System.out.println();
 	}
 	
@@ -744,7 +751,7 @@ public class CMCDriver {
 		System.out.println();
 		System.out.println("-------------------------------------------------------------------------");
 	    System.out.println("\tUniversity Options");
-	    System.out.println("\t   UniversityName  -- CANNOT EDIT --");
+	    System.out.println("\t   UniversityName  <-- CANNOT EDIT --");
 	    System.out.println("\tB: State");
 	    System.out.println("\tC: Location");
 	    System.out.println("\tD: Control");

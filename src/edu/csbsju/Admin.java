@@ -1,10 +1,6 @@
-/**
- * 
- */
+
 package edu.csbsju;
-/**
- * 
- */
+
 import java.util.*;
 
 /**
@@ -16,36 +12,6 @@ import java.util.*;
  */
 public class Admin extends Account{
  private AdminFuncController a;
-   /**
-   * This instance variable is a String that represents the 
-   * first name of the Account object
-   */
-  private String firstName;
-  /**
-   * This instance variable is a String that represents the 
-   * last name of the Account object
-   */
-  private String lastName;
-  /**
-   * This instance variable is a String that represents the 
-   * username of the Account object
-   */
-  private String username;
-  /**
-   * This instance variable is a String that represents the 
-   * password of the Account object
-   */
-  private String password;
-  /**
-   * This instance variable is a String that represents the 
-   * status (active or deactive) of the Account object
-   */
-  protected char status;
-  /**
-   * This instance variable is a String that represents the 
-   * type (admin or user) of the Account object
-   */
-  protected char type;
   
  /**
   * this constructor creates an Admin object using the constructor
@@ -59,12 +25,6 @@ public class Admin extends Account{
   */
  public Admin(String firstName, String lastName, String username, String password, char status, char type) {
   super(firstName, lastName, username, password, type,status);
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.username = username;
-  this.password = password;
-  this.status = status;
-  this.type = type;
   this.a= new AdminFuncController();
  }
 
@@ -74,14 +34,33 @@ public class Admin extends Account{
   * @param firstName the name of an admin
   */
  public Admin(String firstName) {
-  super(firstName);
-  this.firstName = firstName;
-  this.lastName = null;
-    this.username = null;
-    this.password = null;
-    this.status = '\0';
-    this.type = '\0';
+    super(firstName);
     this.a= new AdminFuncController();
     
+ }
+ 
+ /**
+  * This method sets the status character to the parameter value
+  * @param a character indicating the status of the user
+  */
+ public void setStatus(char s){
+	 super.status = s;
+ }
+ 
+ /**
+  * This method sets the type character to the parameter value
+  * @param a character indicating the type of the user
+  */
+ public void setType(char t){
+	 super.type = t;
+ }
+ 
+ /**
+  * TEST MAIN METHOD 
+  * @param args
+  */
+ public static void main(String args[]){
+	 Admin a = new Admin("Jacob","Upton","Jsupton","114179",'a','Y');
+	 a.displayStudent();
  }
 }

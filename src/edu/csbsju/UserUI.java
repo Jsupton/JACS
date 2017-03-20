@@ -128,11 +128,16 @@ public class UserUI extends AccountUI{
 	}
 	
 	/**
-	 * edits the student profile
+	 * Allows the current user to edit their profile. The can choose to edit their first name,
+	 * last name, or password. The three parameter values are the new value for the user. If a value 
+	 * if left null, the old value is kept.
+	 * @param firstName the first name of the user
+	 * @param lastName the last name of the user
+	 * @param password the password for the user's account
 	 */
-	public void editStudentProfile()
+	public void editStudentProfile(String firstName, String lastName, String password)
 	{
-		userFunc.editStudentProfile();
+		userFunc.editStudentProfile(firstName, lastName, password);
 	}
 	
 	/**

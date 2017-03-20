@@ -44,7 +44,7 @@ public class AdminUI extends AccountUI{
  /**
   * This method is used to get all the universities that reside in the database.
   * This method will call the AdminFuncController.
-  * @return an array list of the universitys
+  * @return an array list of the universities
   */
  public ArrayList<University> getUniversities(){
   return super.getUniversities();
@@ -53,7 +53,6 @@ public class AdminUI extends AccountUI{
  /**
    * This method is responsible for displaying all of the universities
    * to the Admin.
-   * @param u an arrayList of University Objects
    */
   public void displayUniversities(){
    super.displayUniversities();
@@ -70,6 +69,7 @@ public class AdminUI extends AccountUI{
   /**
    * This is a method used to display the accounts of all of the Account
    * objects that are in the database.
+   * @return an array list of all the account objects in the database
    */
   public ArrayList<Account> getAccounts(){
    return adminFunc.getAccounts();
@@ -116,9 +116,12 @@ public class AdminUI extends AccountUI{
    * This Method displays all of the information about a specified Account object.
    * It gathers all of the attributes for an account object and then displays
    * that information for the user to see
+   * @param name a String representing a user's username
+   * @return an account object. this is null if an account witht he corresponding 
+   * username doesn't exist.
    */
-  public void viewAccount(String name){
-   adminFunc.findAccount(name);
+  public Account viewAccount(String name){
+   return adminFunc.findAccount(name);
   }
   /**
    * This method allows an admin to be able to edit a university object
@@ -149,7 +152,9 @@ public class AdminUI extends AccountUI{
   }
   
   /**
-   * This method is used to edit the account
+   * This method is used to edit the account. It takes all attributes of an account
+   * object in as parameters and then, using the username as a key, it finds the right account
+   * object in the database and then updates it
    * @param firstname the firstname of the account
    * @param lastname the lastname of the account
    * @param username the username of the account
@@ -162,7 +167,9 @@ public class AdminUI extends AccountUI{
   }
   
   /**
-   * This method is used to edit the account
+   * This method is used to add a new the account. It takes in all attributes
+   * of an account object and then uses those to create a new account. This method
+   * will fail if an account already exists with the same username
    * @param firstname the firstname of the new account
    * @param lastname the lastname of the new account
    * @param username the username of the new account

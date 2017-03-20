@@ -53,7 +53,7 @@ public class AdminFuncController {
    * @return an array list of the accounts
    */
   public ArrayList getAccounts(){
-    return d.getAccounts();;
+    return d.getAccounts();
   }
   
   /**
@@ -143,6 +143,8 @@ public class AdminFuncController {
    * This Method displays all of the information about a specified Account object.
    * It gathers all of the attributes for an account object and then displays
    * that information for the user to see
+   * @param name a string representing the username of an account
+   * @return an Account object. Null if the username doesn't exist in the system.
    */
   public Account viewAccount(String name){
     Account a = this.findAccount(name);
@@ -194,7 +196,9 @@ public class AdminFuncController {
   }
   
   /**
-   * This method is used to edit the account
+   * This method is used to edit the account. It takes all attributes of an account
+   * object in as parameters and then, using the username as a key, it finds the right account
+   * object in the database and then updates it
    * @param firstname the firstname of the account
    * @param lastname the lastname of the account
    * @param username the username of the account
@@ -204,16 +208,18 @@ public class AdminFuncController {
    */
   public void editAccount(String firstname, String lastname, String username, String password, char type, char status){
     boolean b = d.editAccount(firstname, lastname, password, type);
-   if(b){
-    System.out.println("Successful Change");
+    if(b){
+	   System.out.println("Successful Change");
+    }
+    else{
+	   System.out.println("The Change was unsuccessful");
+    }
    }
-   else{
-    System.out.println("The Change was unsuccessful");
-   }
-  }
   
   /**
-   * This method is used to edit the account
+   * This method is used to add a new the account. It takes in all attributes
+   * of an account object and then uses those to create a new account. This method
+   * will fail if an account already exists with the same username
    * @param firstname the firstname of the new account
    * @param lastname the lastname of the new account
    * @param username the username of the new account
@@ -222,7 +228,7 @@ public class AdminFuncController {
    * @param status the status of the new account
    */
   public void addAccount(String firstname, String lastname, String username, String password, char type, char status){
-    d.addAccount(firstname, lastname, username, password, type, status);
+     d.addAccount(firstname, lastname, username, password, type, status);
   }
   
   /**
@@ -235,7 +241,7 @@ public class AdminFuncController {
    * the specified emphasis already exists for the specified school
    * */
   public int addEmphases(String universityName,String emphases ){
-    return d.addEmphases(universityName, emphases);
+     return d.addEmphases(universityName, emphases);
     
   }
   
@@ -249,7 +255,6 @@ public class AdminFuncController {
    * the specified emphasis already exists for the specified school
    */
   public int removeEmphases(String universityName,String emphases ){
-    
     return d.removeEmphases(universityName, emphases);
   }
   

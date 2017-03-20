@@ -141,24 +141,6 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * This method allows the user to be able to change Account attributes.
-	  * It takes in 3 paramteres, which can contain null values, and uses those
-	  * values to update an Account object's attributes
-	  * @param p String representing an Account's password
-	  * @param ln String representing the Account's last name
-	  * @param fn String representing the Account's first name
-	  */
-	 public void editAccount(String p, String ln, String fn){
-		 boolean b = d.editAccount(fn, ln, p, a.getType());
-		 if(b){
-			 System.out.println("Successful Change");
-		 }
-		 else{
-			 System.out.println("The Change was unsuccessful");
-		 }
-	 } 
-	 
-	 /**
 	  * This method is a method that asks the user if they would like to 
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing

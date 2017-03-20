@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dblibrary.project.csci230.*;
 
 /**
@@ -292,7 +294,8 @@ public class DBController {
 	 public ArrayList<String> getUserSavedSchools(String username)
 	 {
 		 boolean found = false;
-		 int i=0; 
+		 int i=0;
+		 int j = 0;
 		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
 		 ArrayList<String> matchingSchools = new ArrayList<String>();
 		 

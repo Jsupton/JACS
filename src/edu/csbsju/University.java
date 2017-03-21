@@ -431,12 +431,12 @@ public class University {
 
 
 	public void printString() {
-		System.out.println( "University [universityName=" + universityName + "\nlocation=" + location + "\nstate=" + state
-				+ "\ncontrol=" + control + "\nnumberOfStudents=" + numberOfStudents + "\npercentFemale=" + percentFemale
-				+ "\nsatVerbal=" + satVerbal + "\nsatMath=" + satMath + "\nexpenses=" + expenses + "\nfinancialAid="
-				+ financialAid + "\nnumberOfApplicants=" + numberOfApplicants + "\npercentAdmitted=" + percentAdmitted
-				+ "\npercentEnrolled=" + percentEnrolled + "\nacademicScale=" + academicScale + "\nsocialScale="
-				+ socialScale + "\nqualityOfLife=" + qualityOfLife + "\nemphases=" + emphases + "]\n");
+		System.out.println( "Name: \t\t\t" + universityName + "\nLocation: \t\t" + location + "\nState: \t\t\t" + state
+				+ "\nControl: \t\t" + control + "\nNumber Of Students: \t" + numberOfStudents + "\nPercent Female: \t" + percentFemale
+				+ "\nSAT Verbal: \t\t" + satVerbal + "\nSAT Math: \t\t" + satMath + "\nExpenses: \t\t" + expenses + "\nfinancialAid: \t\t"
+				+ financialAid + "\nNumber Of Applicants: \t" + numberOfApplicants + "\nPercent Admitted: \t" + percentAdmitted
+				+ "\nPercen tEnrolled: \t" + percentEnrolled + "\nAcademic Scale: \t" + academicScale + "\nSocial Scale: \t\t"
+				+ socialScale + "\nQuality Of Life: \t" + qualityOfLife + "\nEmphases: \t\t" + emphases + "]\n");
 	}
 
 	//Fake main method to test Class

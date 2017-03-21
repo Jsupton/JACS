@@ -19,6 +19,10 @@ public class AdminFuncController {
    * This is a DBController object used to access the Database
    */
   private DBController d;
+  /**
+   * This is a universityController object used to access methods in the university Controller
+   */
+  private UniversityController uc;
   
   /**
    * This default constructor initiates the Admin to null
@@ -27,6 +31,7 @@ public class AdminFuncController {
     super();
     this.admin = null;
     this.d = new DBController();
+    this.uc = new UniversityController();
   }
   
   
@@ -39,6 +44,7 @@ public class AdminFuncController {
     super();
     this.admin = admin;
     this.d = new DBController();
+    this.uc = new UniversityController();
   }
   
   /**
@@ -46,7 +52,7 @@ public class AdminFuncController {
    * in the system. It then returns an arrayList of those accounts
    * @return an array list of the accounts
    */
-  public ArrayList getAccounts(){
+  public ArrayList<Account> getAccounts(){
     return d.getAccounts();
   }
   
@@ -76,7 +82,7 @@ public class AdminFuncController {
     University u = new University(universityName, state, location, control, numberOfStudents,
                     percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
                     percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife, null);
-    d.addUniversity(u);
+    uc.addUniversity(u);
   }
   
   /**
@@ -95,7 +101,7 @@ public class AdminFuncController {
    * in the system. It then returns an arrayList of those Universities
    * @return and array list of universities
    */
-  public ArrayList getUniversities(){
+  public ArrayList<University> getUniversities(){
     return d.getAllUniversities();
   }
   
@@ -169,24 +175,9 @@ public class AdminFuncController {
   public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
                              double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
                              double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
-   University u = d.getAUniversity(universityName);
-   u.setState(state);
-   u.setLocation(location);
-   u.setControl(control);
-   u.setNumberOfStudents(numberOfStudents);
-   u.setPercentFemale(percentFemale);
-   u.setSatVerbal(satVerbal);
-   u.setSatMath(satMath);
-   u.setExpenses(expenses);
-   u.setFinancialAid(financialAid);
-   u.setNumberOfApplicants(numberOfApplicants);
-   u.setPercentAdmitted(percentAdmitted);
-   u.setPercentEnrolled(percentEnrolled);
-   u.setAcademicScale(academicScale);
-   u.setSocialScale(socialScale);
-   u.setQualityOfLife(qualityOfLife);
-   d.editUniversity(u);
-                             
+   uc.editUniversity( universityName, state, location, control, numberOfStudents,
+           percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+           percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);                       
   }
   
   /**

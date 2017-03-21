@@ -71,7 +71,7 @@ public class CMCDriver {
 	    		cmd = acceptCommand();
 	    		doCommand(cmd);
 	    	}
-	    	while ((cmd != 'q') && (cmd != 'Q'));
+	    	while ((cmd != 'r') && (cmd != 'R'));
 	    }
 	    //if the account object is an admin this is followed
 	    else if(account.returnType()=='a' && a != null){
@@ -84,7 +84,7 @@ public class CMCDriver {
 	    		cmd = acceptCommand();
 	    		doCommand(cmd);
 	    	}
-	    	while ((cmd != 'q') && (cmd != 'Q'));
+	    	while ((cmd != 'r') && (cmd != 'R'));
 	    }
 	  }
 	
@@ -182,7 +182,7 @@ public class CMCDriver {
 		        			 JOptionPane.showMessageDialog(null,"THIS SCHOOL DOES NOT EXIST");
 		        			 schoolMenu();}
 		        	}
-		        	else if(ch == 'R'||ch=='r'){
+		        	else if(ch == 'S'||ch=='s'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
 		        		 if(u!=null){
 			        		 boolean b = user.removeUniversityFromSavedSchools(u);
@@ -200,7 +200,7 @@ public class CMCDriver {
 		        		 }
 		        	}
 	        	}
-	        	while(ch!='Q');
+	        	while(ch!='R' && ch!='r');
 	        	
 	        	cmd = 'R';
 	        break;
@@ -238,12 +238,13 @@ public class CMCDriver {
 			  	    	break;
 		    	    	//add location search criteria
 		    	      case 'C': case 'c':
-				  	    l = JOptionPane.showInputDialog("Please Enter the location of a desired university: ");
+				  	    l = JOptionPane.showInputDialog("Please Enter the location of a desired university: \n(urban ,suburban, small-city, -1 (for unknown)) ");
 				  	  	l = l.toUpperCase();
 				  	    break;
 				  	    //add Control
 		    	      case 'D': case 'd':
-		  	    	    c = JOptionPane.showInputDialog("Please Enter a Control: ");
+		  	    	    c = JOptionPane.showInputDialog("Please Enter a Control: \n(Private, state, city, -1 (for unknown))"
+		  	    	    		+ ": ");
 		  	    	    c = c.toUpperCase();
 		  	    	    break;
 		    	    	//add number of students
@@ -312,9 +313,14 @@ public class CMCDriver {
 				  	    //SEARCH
 		    	      case 'S': case 's':
 		    	    	//Prints the search results that the user entered
-		    	    	System.out.print("SEARCH CRITERIA ARE:\nName: " + un+"\nState: "+ s +"\nLocation: "+ l +"\nControl: "+ c +"\n# of Studnets:"+ nosl +" to "+ nosu +"\n% Female:"+ pfl +" to "+ pfu +"\nSAT Verbal: "+ svl +" to "+ svu +"\nSAT Math: "+ sml +" to "+ smu +"\nExpenses: "+
-		    	        el +" to "+ eu +"\nFinancial Aid: "+ fal +" to "+ fau +"\n# applicants: "+ noal +" to "+ noau +"\n% Accepted: "+ pal +" to "+ pau +"\n% Enrolled: "+pel +" to "+ peu +"\nAcademic Scale: "+asl +" to "+asu +"\nSocial Scale: "+ssl +" to "+ssu +"\nQualit of Life: "+
+		    	    	System.out.print("SEARCH CRITERIA ARE:\nName: \t\t\t" + un+"\nState: \t\t\t"+ s +"\nLocation: \t\t"+ l +"\nControl: \t\t"+ c +"\nNumber of Studnets: \t"+ nosl +" to "+ nosu +"\nPercent Female: \t"+ pfl +" to "+ pfu +"\nSAT Verbal: \t\t"+ svl +" to "+ svu +"\nSAT Math: \t\t"+ sml +" to "+ smu +"\nExpenses: \t\t"+
+		    	        el +" to "+ eu +"\nFinancial Aid: \t\t"+ fal +" to "+ fau +"\nNumber applicants: \t"+ noal +" to "+ noau +"\nPercent Accepted: \t"+ pal +" to "+ pau +"\nPercent Enrolled: \t"+pel +" to "+ peu +"\nAcademic Scale: \t"+asl +" to "+asu +"\nSocial Scale: \t\t"+ssl +" to "+ssu +"\nQualit of Life: \t"+
 		    	        qoll +" to "+qolu+"\n");
+		    	    	System.out.print("Emphases: ");
+		    	    	for(String em:emphases){
+		    	    		System.out.print(em +" ");
+		    	    	}
+		    	    	System.out.println();
 		    	    	//The search criteria is used to search through all the list
 		    	    	List<University> y = user.searchForSchools(un, s, l, c, nosl, nosu , pfl, pfu, svl, svu, sml, smu, el, eu, fal, fau,  noal, noau, pal, pau, pel, peu, asl, asu, ssl, ssu, qoll, qolu, emphases);
 		    	    	//The list is traversed and displayed
@@ -355,20 +361,21 @@ public class CMCDriver {
 		        		p = JOptionPane.showInputDialog("Please Enter new password: ");
 		        	}
 		        	if(ch == 'R'||ch=='r'){
-		        		fn = u.getFirstName();
-		    	        ln = u.getLastName();
-		    	        p = u.getPassword();
-		    	        JOptionPane.showMessageDialog(null,"The changes were reset");
+		    	        JOptionPane.showMessageDialog(null,"No changes were saved");
+		        	}
+		        	if(ch == 's' || ch == 'S'){
+		        		user.editStudentProfile(fn,ln,p);
+		    	        JOptionPane.showMessageDialog(null,"Successful Save");
+		    	        ch = 'R';
 		        	}
 	        	}
-	           while((ch!='Q') && (ch!='q'));
-	           user.editStudentProfile(fn,ln,p);
+	           while((ch!='r') && (ch!='R'));
 		       break;
 	        
 	        
 	      
 		  //Allows for the user to quit out
-	      case 'q': case 'Q':
+	      case 'r': case 'R':
 	    	  JOptionPane.showMessageDialog(null,"Logging Out of the System");
 	    	  break;
 	      default:
@@ -386,22 +393,22 @@ public class CMCDriver {
 	 * @param ch a character telling what command to perform
 	 */
 	private void editAndAddAccount(char ch){
-		String first,last,pass;
-    	first = last = pass = null;
+		String first,last,pass, username;
+    	first = last = pass = username = null;
     	char type,status, cmd;
     	type = status = '\0';
 		if(ch == 'A'||ch == 'a'){
 			Account a = admin.viewAccount(JOptionPane.showInputDialog("Please enter an Account username: "));
-        	first = a.getFirstName();
+        	username = a.getUsername();
+			first = a.getFirstName();
         	last = a.getLastName();
         	pass = a.getPassword();
         	type = a.getType();
         	status = a.getStatus();
-        	a.displayStudent();
         	accountEditMenu(a);
 		}
 		else if(ch == 'B'||ch == 'b'){
-			String username = JOptionPane.showInputDialog("Please enter an Account username: ");
+			username = JOptionPane.showInputDialog("Please enter an Account username: ");
         	Account otherA = new Account(username);
         	first = otherA.getUsername();
             type = 'u';
@@ -437,7 +444,7 @@ public class CMCDriver {
 				  	break;
 			      //save changes
 			    case 'Q': case 'q':
-				    admin.editAccount(first, last, first, pass, type, status);
+				    admin.editAccount(first, last, username, pass, type, status);
 			    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
 			    	cmd = 'R';
 				    break;
@@ -604,7 +611,7 @@ public class CMCDriver {
     	    	    String input = JOptionPane.showInputDialog("Please enter wether you would like to Add an Emphases (x) or remove an emphases (y): ");
     	    	    cmd = input.charAt(0);
     	    	    if(cmd == ('x')){
-    	    	    	emp = JOptionPane.showInputDialog("Please Enter an emphases to Add: ").toUpperCase();
+    	    	    	emp = (JOptionPane.showInputDialog("Please Enter an emphases to Add: ")).toUpperCase();
     	    	    	input = JOptionPane.showInputDialog("Are You sure You want to Add This Ephases? (y/n)");
         	    	    cmd = input.charAt(0);
         	    	    if(cmd == 'y'){
@@ -612,8 +619,10 @@ public class CMCDriver {
         	    	    	if(i==-1){
             	    	    	JOptionPane.showMessageDialog(null,"There was an error adding the Emphases");
         	    	    	}
-        	    	    	else
+        	    	    	else{
             	    	    	JOptionPane.showMessageDialog(null,"The Emphases was added successfully");
+            	    	    	emphases.add(emp);
+        	    	    	}
         	    	    }
     	    	    }
     	    	    else if(cmd == ('y')){
@@ -621,22 +630,29 @@ public class CMCDriver {
     	    	    	input = JOptionPane.showInputDialog("Are You sure You want to Remove This Ephases? (y/n)");
         	    	    cmd = input.charAt(0);
         	    	    if(cmd == 'y'){
-        	    	    	int i = admin.addEmphases(un, emp);
+        	    	    	int i = admin.removeEmphases(un, emp);
         	    	    	if(i==-1){
-            	    	    	JOptionPane.showMessageDialog(null,"There was an error adding the Emphases");
+            	    	    	JOptionPane.showMessageDialog(null,"There was an error removing the Emphases");
         	    	    	}
-        	    	    	else
-            	    	    	JOptionPane.showMessageDialog(null,"The Emphases was added successfully");
+        	    	    	else{
+            	    	    	JOptionPane.showMessageDialog(null,"The Emphases was removed successfully");
+            	    	    	for(String empha:emphases){
+            	    	    		if(empha.equals(emp)){
+            	    	    			emphases.remove(empha);
+            	    	    		}
+            	    	    	}
+        	    	    	}
         	    	    }
     	    	    }
     	    	break;
     	      case 'S': case 's':
     	    	admin.editUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
+    	    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
     	    	cmd = 'R';
     	    	break;
     	      case 'T': case 't':
-    	    	System.out.print("SCHOOL PREVIEW:\nName: " + un+"\nState: "+ s +"\nLocation: "+ l +"\nControl: "+ c +"\n# of Studnets:"+ nos +"\n% Female:"+ pf +"\nSAT Verbal: "+ sv +"\nSAT Math: "+ sm +"\nExpenses: "+
-  		    	e +"\nFinancial Aid: "+ fa +"\n# applicants: "+ noa +"\n% Accepted: "+ pa +"\n% Enrolled: "+pe +"\nAcademic Scale: "+as +"\nSocial Scale: "+ss +"\nQualit of Life: "+ qol +"\n");
+    	    	System.out.print("SCHOOL PREVIEW:\nName: \t\t\t" + un+"\nState: \t\t\t"+ s +"\nLocation: \t\t"+ l +"\nControl: \t\t"+ c +"\nNumber of Students: \t"+ nos +"\nPercent Female: \t"+ pf +"\nSAT Verbal: \t\t"+ sv +"\nSAT Math: \t\t"+ sm +"\nExpenses: \t\t"+
+  		    	e +"\nFinancial Aid: \t\t"+ fa +"\nNumber of applicants: \t"+ noa +"\nPercent Accepted: \t"+ pa +"\nPercent Enrolled: \t"+pe +"\nAcademic Scale: \t"+as +"\nSocial Scale: \t\t"+ss +"\nQuality of Life: \t"+ qol +"\n");
     	    	System.out.print("Emphases: [");
     	    	if(emphases!=null){
     	    		for(String emph:emphases){
@@ -707,7 +723,7 @@ public class CMCDriver {
 	    System.out.println("\tS: Search For Schools");
 	    System.out.println("\tM: Manage My Saved Schools");
 	    System.out.println("\tP: Manage My Profile");
-	    System.out.println("\tQ: To Quit");
+	    System.out.println("\tR: To Quit");
 	    System.out.println();
 	}
 	
@@ -719,7 +735,7 @@ public class CMCDriver {
   	    System.out.println("--------------------------------------------------------");
 	    System.out.println("\tU: Manage Universities");
 	    System.out.println("\tZ: Manage Users");
-	    System.out.println("\tQ: To Quit");
+	    System.out.println("\tR: To Quit");
 	    System.out.println();
 	}
 	
@@ -729,9 +745,9 @@ public class CMCDriver {
 	private void schoolMenu(){
 		System.out.println();
   	    System.out.println("--------------------------------------------------------");
-	    System.out.println("\tR: Remove school");
+	    System.out.println("\tS: Remove school");
 	    System.out.println("\tV: View School");
-	    System.out.println("\tQ: Return to main menu");
+	    System.out.println("\tR: Return to main menu");
 	    System.out.println();
 	}
 	
@@ -745,8 +761,8 @@ public class CMCDriver {
 	    System.out.println("\tL: Last Name: "+ u.getLastName());
 	    System.out.println("\t   Username: "+ u.getUsername()+ "  <-- CANNOT EDIT --");
 	    System.out.println("\tP: Password: "+ u.getPassword());
-	    System.out.println("\tR: Reset ");
-	    System.out.println("\tQ: Save Changes/Return to main menu ");
+	    System.out.println("\tR: Return to main menu ");
+	    System.out.println("\tS: Save Changes");
 	    System.out.println();
 	}
 	
@@ -758,7 +774,7 @@ public class CMCDriver {
   	    System.out.println("--------------------------------------------------------");
 	    System.out.println("\tE: Edit a University");
 	    System.out.println("\tA: Add a University");
-	    System.out.println("\tQ: Return to main menu");
+	    System.out.println("\tR: Return to main menu");
 	}
 	
 	
@@ -819,7 +835,7 @@ public class CMCDriver {
 	    System.out.println("\tP: Password: "+ a.getPassword());
 	    System.out.println("\t   Status: "+ a.getStatus()+ "  -- CANNOT EDIT FROM HERE --");
 	    System.out.println("\tT: Type: "+ a.getType());
-	    System.out.println("\tR: Reset/Return to main menu ");
+	    System.out.println("\tR: Return to main menu ");
 	    System.out.println("\tQ: Save Changes ");
 	    System.out.println();
 	}

@@ -475,6 +475,8 @@ public class DBController {
 		 //for(University u: p){
 		//	 u.printString();
 		// }
+		 University u = d.getAUniversity("x");
+		 u.printString();
 		 
 		 
 	 }

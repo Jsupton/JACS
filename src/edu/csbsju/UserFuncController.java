@@ -140,9 +140,7 @@ public class UserFuncController {
 	public void editStudentProfile(String firstName, String lastName, String password)
 	{
 		d.editAccount(u.getUsername(),firstName,lastName,password,u.getType(), u.getStatus());
-		u.setFirstName(firstName);
-		u.setLastName(lastName);
-		u.setPassword(password);
+		u.editStudentProfile(firstName,lastName,password);
 	}
 	
 	/**

@@ -37,12 +37,12 @@ public class Account {
 	  * This instance variable is a String that represents the 
 	  * status (active or deactive) of the Account object
 	  */
-	 protected char status;
+	 private char status;
 	 /**
 	  * This instance variable is a String that represents the 
 	  * type (admin or user) of the Account object
 	  */
-	 protected char type;
+	 private char type;
 	 
 	 /**
 	  * This constructor takes in the 6 parameters of an Account object from the user
@@ -185,8 +185,8 @@ public class Account {
 	  * This method acts like a toString method.
 	  */
 	 public void displayStudent(){
-	  System.out.println("FirstName=" + firstName + "\nLastName=" + lastName + 
-	    "\nUsername=" + username + "\nPassword=" + password+"\nType=" + type + "\nStatus=" + status);
+	  System.out.println("[FirstName=" + firstName + ", LastName=" + lastName + 
+	    ", Username=" + username + ", Password=" + password+", Type=" + type + ", Status=" + status+"]\n");
 	 }
 	 
 	 /**
@@ -223,6 +223,32 @@ public class Account {
 	  */
 	 public void displayLoginError(){
 		 System.out.println("There was an error Loggin in. Please Try again.");
+	 }
+	 
+	 /**
+	  * This method determines if the current account object is active or not
+	  * Each account object has an attribute that states whether the Account is
+	  * active or deactivated. If the account if Active this method will return 
+	  * true, otherwise it will return false.
+	  * @return Boolean, true if the Account object is active
+	  */
+	 public boolean isActive(){
+		 if(this.getType() == ('Y'))
+			 return true;
+		 else
+			 return false;
+	 }
+	 
+	 /**
+	  * This method takes an Account object as a parameter. The method uses the
+	  * Account object and gets the type of that Account object. It acts as a 
+	  * transfer method to transfer the Account type to display the correct UI 
+	  * for the Account user. The method returns the type of the Account.
+	  * @param a Account object
+	  * @return char a character representing the type of the Account
+	  */
+	 public char returnType(){
+		 return this.getType();
 	 }
 	 
 

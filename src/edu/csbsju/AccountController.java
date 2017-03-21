@@ -143,6 +143,7 @@ public class AccountController {
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
+	  * @return boolean, if it is confirmed it is true
 	  */
 	 public boolean confirmEdit(){
 		  String answer = JOptionPane.showInputDialog("Are You sure you want to confirm change? (Y/N)");
@@ -163,25 +164,9 @@ public class AccountController {
 	  * @return Boolean, true if the Account object is active
 	  */
 	 public boolean isActive(){
-		 if(a.getType() == ('Y'))
-			 return true;
-		 else
-			 return false;
+		 return a.isActive();
 	 }
 	 
-	 /**
-	  * This method if a void method that takes an account object in as a parameter
-	  * It uses the account object and changes the status of the Account object to 
-	  * deactivated.
-	  * @param a Account object
-	  */
-	 public void deactivate(){
-		 char x = a.getStatus();
-		 if(x == 'Y')
-			 d.deactivate(a);
-		 else
-			 System.out.println("The Account is already deactivated");
-	 }
 	 
 	 /**
 	  * This method takes an Account object as a parameter. The method uses the
@@ -192,15 +177,13 @@ public class AccountController {
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){
-		 if(a!=null){
-		     return a.getType();}
-		 else 
-			 return '\0';
+		 return a.returnType();
 	 }
 	 
 	 /**
 	  * displays the account
 	  * @param args
+	  * @return An account object
 	  */
 	 public Account displayAccount(){
 		 return a;

@@ -17,6 +17,9 @@ public class UniversityController {
 	 */
 	private DBController d;
 	
+	public UniversityController(){
+		this.d = new DBController();
+	}
 	
 	/**
 	 * Adds a university to the database
@@ -31,8 +34,25 @@ public class UniversityController {
 	 * Allows changes to be made to details of a university
 	 * @param u University to be edited
 	 */
-	public void editUniversity(University u)
-	{
+	public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+            double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+            double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+		University u = d.getAUniversity(universityName);
+		   u.setState(state);
+		   u.setLocation(location);
+		   u.setControl(control);
+		   u.setNumberOfStudents(numberOfStudents);
+		   u.setPercentFemale(percentFemale);
+		   u.setSatVerbal(satVerbal);
+		   u.setSatMath(satMath);
+		   u.setExpenses(expenses);
+		   u.setFinancialAid(financialAid);
+		   u.setNumberOfApplicants(numberOfApplicants);
+		   u.setPercentAdmitted(percentAdmitted);
+		   u.setPercentEnrolled(percentEnrolled);
+		   u.setAcademicScale(academicScale);
+		   u.setSocialScale(socialScale);
+		   u.setQualityOfLife(qualityOfLife);
 		d.editUniversity(u);
 	}
 	

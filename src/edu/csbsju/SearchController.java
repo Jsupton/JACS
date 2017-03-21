@@ -195,86 +195,97 @@ public class SearchController {
 			 boolean b = true;
 			 if(universityName !=null && b == true)
 				 b = university.getUniversityName().contains(universityName);
-			 else if(state!=null && b == true)
+			 if(state!=null && b == true)
 				 b = university.getState().equals(state);
-			 else if(location!=null && b == true)
+			 if(location!=null && b == true)
 				 b = university.getLocation().equals(location);
-			 else if(control!=null && b == true)
+			 if(control!=null && b == true)
 				 b = university.getControl().equals(control);
-			 else if(numberOfStudentsLOWER !=0 && b == true){
+			 if(numberOfStudentsLOWER !=0 && b == true){
 				 if(numberOfStudentsUPPER !=0){
 					 b = (university.getNumberOfStudents()>=numberOfStudentsLOWER && university.getNumberOfStudents()<=numberOfStudentsUPPER);
 				 }
-				 b = (university.getNumberOfStudents() >= numberOfStudentsLOWER);
+				 else
+					 b = (university.getNumberOfStudents() >= numberOfStudentsLOWER);
 			 }
-			 else if(percentFemaleLOWER!= 0.0 && b == true){
+			 if(percentFemaleLOWER!= 0.0 && b == true){
 				 if(percentFemaleUPPER !=0){
 					 b = (university.getPercentFemale()>=percentFemaleLOWER && university.getPercentFemale()<=percentFemaleUPPER);
 				 }
-				 b = (university.getPercentFemale() >= percentFemaleLOWER);
+				 else
+					 b = (university.getPercentFemale() >= percentFemaleLOWER);
 			 }	
-			 else if(satVerbalLOWER != 0 && b == true){
+			 if(satVerbalLOWER != 0 && b == true){
 				 if(satVerbalUPPER !=0){
 					 b = (university.getSatVerbal()>=satVerbalLOWER && university.getSatVerbal()<=satVerbalUPPER);
 				 }
-				 b = (university.getSatVerbal() >= satVerbalLOWER);
+				 else 
+					 b = (university.getSatVerbal() >= satVerbalLOWER);
 			 }	
-			 else if(satMathLOWER!= 0 && b == true){
-				 if(satMathUPPER !=0){
+			 if(satMathLOWER!= 0 && b == true){
+				 if(satMathUPPER !=0 && satMathUPPER>=satMathLOWER){
 					 b = (university.getSatMath()>=satMathLOWER && university.getSatMath()<=satMathUPPER);
 				 }
-				 b = (university.getSatMath() >= satMathLOWER);
+				 else
+					 b = (university.getSatMath() >= satMathLOWER);
 			 }	
-			 else if(expensesLOWER!= 0 && b == true){
+			 if(expensesLOWER!= 0 && b == true){
 				 if(expensesUPPER !=0){
 					 b = (university.getExpenses()>=expensesLOWER && university.getExpenses()<=expensesUPPER);
 				 }
-				 b = (university.getExpenses() >= expensesLOWER);
+				 else
+					 b = (university.getExpenses() >= expensesLOWER);
 			 }
-			 else if(financialAidLOWER != 0.0 && b == true){
+			 if(financialAidLOWER != 0.0 && b == true){
 				 if(financialAidUPPER !=0.0){
-					 b = (university.getFinancialAid()>=financialAidLOWER && university.getFinancialAid()<=financialAidLOWER);
+					 b = (university.getFinancialAid()>=financialAidLOWER && university.getFinancialAid()<=financialAidUPPER);
 				 }
-				 b = (university.getFinancialAid() >= financialAidLOWER);
+				 else
+					 b = (university.getFinancialAid() >= financialAidLOWER);
 			 }	
-			 else if(numberOfApplicantsLOWER != 0 && b == true){
+			 if(numberOfApplicantsLOWER != 0 && b == true){
 				 if(numberOfApplicantsUPPER !=0){
 					 b = (university.getNumberOfApplicants()>=numberOfApplicantsLOWER && university.getNumberOfApplicants()<=numberOfApplicantsUPPER);
 				 }
-				 b = (university.getNumberOfApplicants() >= numberOfApplicantsLOWER);
+				 else
+					 b = (university.getNumberOfApplicants() >= numberOfApplicantsLOWER);
 			 }
-			 else if(percentAdmittedLOWER != 0 && b == true){
+			 if(percentAdmittedLOWER != 0 && b == true){
 				 if(percentAdmittedUPPER !=0){
 					 b = (university.getPercentAdmitted()>=percentAdmittedLOWER && university.getPercentAdmitted()<=percentAdmittedUPPER);
 				 }
-				 b = (university.getPercentAdmitted() >= percentAdmittedLOWER);
+				 else
+					 b = (university.getPercentAdmitted() >= percentAdmittedLOWER);
 			 }
-			 else if(percentEnrolledLOWER!=0.0 && b == true){
+			 if(percentEnrolledLOWER!=0.0 && b == true){
 				 if(percentEnrolledUPPER !=0.0){
 					 b = (university.getPercentEnrolled()>=percentEnrolledLOWER && university.getPercentEnrolled()<=percentEnrolledUPPER);
 				 }
-				 b = (university.getPercentEnrolled() >= percentEnrolledLOWER);
+				 else
+					 b = (university.getPercentEnrolled() >= percentEnrolledLOWER);
 			 }
-			 else if(academicScaleLOWER!= 0 && b == true){
+			 if(academicScaleLOWER!= 0 && b == true){
 				 if(academicScaleUPPER !=0){
 					 b = (university.getAcademicScale()>=academicScaleLOWER && university.getAcademicScale()<=academicScaleUPPER);
 				 }
-				 b = (university.getAcademicScale() >= academicScaleLOWER);
+				 else
+					 b = (university.getAcademicScale() >= academicScaleLOWER);
 			 }
-			 else if(socialScaleLOWER!= 0 && b == true){
+			 if(socialScaleLOWER!= 0 && b == true){
 				 if(socialScaleUPPER !=0){
 					 b = (university.getSocialScale()>=socialScaleLOWER && university.getSocialScale()<=socialScaleUPPER);
 				 }
-				 b = (university.getSocialScale() >= socialScaleLOWER);
+				 else
+					 b = (university.getSocialScale() >= socialScaleLOWER);
 			 }
-			 else if(emphases!=null && b == true){
-				 b = false;
-				 for(String x : emphases){
-					 for(String y: university.getEmphases()){
-						 if(x.equals(y)){
-						 	b = true;
-						 }
-					 }
+			 if(emphases!=null && b == true){
+				for(String x : emphases){
+					for(String y: university.getEmphases()){
+						if(!(x.equals(y))){
+							b = false;
+							break;
+						}
+					}
 				 }
 			 }
 			 if(b == true){

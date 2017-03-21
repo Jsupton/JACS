@@ -11,7 +11,14 @@ import java.util.*;
  * @version 02-26-17
  */
 public class Admin extends Account{
- private AdminFuncController a;
+	/**
+	 * This instance variable represents the status of an Admin
+	 */
+	private char status;
+	/**
+	 * This instance variable represents the type of an Admin
+	 */
+	private char type;
   
  /**
   * this constructor creates an Admin object using the constructor
@@ -25,7 +32,8 @@ public class Admin extends Account{
   */
  public Admin(String firstName, String lastName, String username, String password, char status, char type) {
   super(firstName, lastName, username, password, type,status);
-  this.a= new AdminFuncController();
+  this.status = status;
+  this.type = type;
  }
 
  /**
@@ -34,9 +42,9 @@ public class Admin extends Account{
   * @param firstName the name of an admin
   */
  public Admin(String firstName) {
-    super(firstName);
-    this.a= new AdminFuncController();
-    
+    super(firstName);    
+    this.status = '\0';
+    this.type = '\0';
  }
  
  /**
@@ -44,7 +52,7 @@ public class Admin extends Account{
   * @param a character indicating the status of the user
   */
  public void setStatus(char s){
-	 super.status = s;
+	 this.status = s;
  }
  
  /**
@@ -52,7 +60,7 @@ public class Admin extends Account{
   * @param a character indicating the type of the user
   */
  public void setType(char t){
-	 super.type = t;
+	 this.type = t;
  }
  
  /**

@@ -1,9 +1,13 @@
 package edu.csbsju;
 
 /**
- * Class used to manage universities
+ * Class used to manage universities. This class deals with editing and 
+ * adding universities to the database. It is also in charge of adding
+ * and removing emphases from a university object. It calls a university 
+ * instance variable to access a univeristy object and a DBController
+ * variable to save the changes to the database
  * @author ajdehn
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class UniversityController {
 	
@@ -17,44 +21,102 @@ public class UniversityController {
 	 */
 	private DBController d;
 	
+	/**
+	 * Default controller, this controller sets the DBController instance
+	 * variable to a new DBController object
+	 */
 	public UniversityController(){
 		this.d = new DBController();
 	}
 	
 	/**
-	 * Adds a university to the database
-	 * @param u New University to be added to the database
-	 */
-	public void addUniversity(University u)
-	{
-		d.addUniversity(u);
-	}
+	   * This method allows an admin to be able to add a university object
+	   * The changes are sent to the Database to save the changes
+	   * @param universityName The name of a university
+	   * @param location The location of a university
+	   * @param u University to be editedram state The state of a university
+	   * @param control The control of a university
+	   * @param numberOfStudents the number of students at a university
+	   * @param percentFemale the percent female of a university
+	   * @param satVerbal SAT of a university
+	   * @param satMath SAT of a university
+	   * @param expenses The Expenses of a university
+	   * @param financialAid the Financial aid at a university
+	   * @param numberOfApplicants Number of Applicants of a university
+	   * @param percentAdmitted The percent admitted of a university
+	   * @param percentEnrolled The percent Enrolled of a university
+	   * @param academicScale The academic scale of a university
+	   * @param socialScale Social scale of a university
+	   * @param qualityOfLife Quality of life of a university
+	   */
+	  public void addUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+	                            double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+	                            double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+		  University u = university.addUniversity(universityName, state, location, control, numberOfStudents, percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		  d.addUniversity(u);
+	  }
 	
 	/**
-	 * Allows changes to be made to details of a university
-	 * @param u University to be edited
+	 * Allows changes to be made to details of a university. These changes
+	 * are then sent to the DBController in order to save them in the Database
+	 * @param universityName The name of a university
+	   * @param location The location of a university
+	   * @param state The state of a university
+	   * @param control The control of a university
+	   * @param numberOfStudents the number of students at a university
+	   * @param percentFemale the percent female of a university
+	   * @param satVerbal SAT of a university
+	   * @param satMath SAT of a university
+	   * @param expenses The Expenses of a university
+	   * @param financialAid the Financial aid at a university
+	   * @param numberOfApplicants Number of Applicants of a university
+	   * @param percentAdmitted The percent admitted of a university
+	   * @param percentEnrolled The percent Enrolled of a university
+	   * @param academicScale The academic scale of a university
+	   * @param socialScale Social scale of a university
+	   * @param qualityOfLife Quality of life of a university
 	 */
 	public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
             double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
             double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
 		University u = d.getAUniversity(universityName);
-		   u.setState(state);
-		   u.setLocation(location);
-		   u.setControl(control);
-		   u.setNumberOfStudents(numberOfStudents);
-		   u.setPercentFemale(percentFemale);
-		   u.setSatVerbal(satVerbal);
-		   u.setSatMath(satMath);
-		   u.setExpenses(expenses);
-		   u.setFinancialAid(financialAid);
-		   u.setNumberOfApplicants(numberOfApplicants);
-		   u.setPercentAdmitted(percentAdmitted);
-		   u.setPercentEnrolled(percentEnrolled);
-		   u.setAcademicScale(academicScale);
-		   u.setSocialScale(socialScale);
-		   u.setQualityOfLife(qualityOfLife);
-		d.editUniversity(u);
+		u.editUniversity( universityName, state, location, control, numberOfStudents,
+	             percentFemale, satVerbal,  satMath, expenses, financialAid, numberOfApplicants,
+	             percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		d.editUniversity(universityName, state, location, control, numberOfStudents,
+	             percentFemale, satVerbal,  satMath, expenses, financialAid, numberOfApplicants,
+	             percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
 	}
+	
+	/**
+	   * This adds an emphases for the specified university object.
+	   * The parameter string is then added to the University's emphases
+	   * @param universityName
+	   * @param emphases
+	   * @return an integer indicating the number of database records 
+	   * inserted or -1 if an invalid school name is specified or if 
+	   * the specified emphasis already exists for the specified school
+	   * */
+	  public int addEmphases(String universityName,String emphases ){
+		  University u = d.getAUniversity(universityName);
+		  u.addEmphases(emphases);
+	     return d.addEmphases(universityName, emphases);
+	  }
+	  
+	  /**
+	   * This removes an emphases for the specified university object.
+	   * The parameter string is then removed to the University's emphases
+	   * @param universityName
+	   * @param emphases
+	   * @return an integer indicating the number of database records 
+	   * inserted or -1 if an invalid school name is specified or if 
+	   * the specified emphasis already exists for the specified school
+	   */
+	  public int removeEmphases(String universityName,String emphases ){
+		University u = d.getAUniversity(universityName);
+		u.removeEmphases(emphases);
+	    return d.removeEmphases(universityName, emphases);
+	  }
 	
 	/**
 	 * Shows details of a university

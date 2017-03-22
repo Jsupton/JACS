@@ -10,12 +10,13 @@ import javax.swing.JOptionPane;
  * Class does the techinical work and deals with interchanging data
  * in order to follow out a user's command
  * @author jsupton
- * @verson 02-26-17
+ * @verson 03-21-17
  */
 public class AccountController {
 
 	/**
-	 * This is an Account object instance variable
+	 * This is an Account object instance variable, used to 
+	 * keep track of the current account object
 	 */
 	private Account a;
 	/**
@@ -24,7 +25,8 @@ public class AccountController {
 	private DBController d;
 	
 	 /**
-	  * This is a default constructor
+	  * This is a default constructor, sets the account object to
+	  * null and creates a new DBController object
 	  */
 	 public AccountController() {
 		 super();
@@ -33,7 +35,8 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * This is a default constructor
+	  * This is the first constructor. It takes in an account object 
+	  * and sets that parameter to the account instance variable.
 	  * @param a Account object parameter 
 	  */
 	 public AccountController(Account a) {
@@ -43,7 +46,9 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * This is a default constructor
+	  * This is a Second constructor, it takes both an account object
+	  * and a databaseController object in as parameters and then sets them
+	  * to their corresponding instance variable
 	  * @param a Account object parameter 
 	  * @param DBCOntroller object
 	  */
@@ -58,6 +63,8 @@ public class AccountController {
 	  * and uses them to log the Account object into the system
 	  * @param u String, a username for the Account object
 	  * @param p String, a password for the Account object
+	  * @return an account object for the account being logged in. This is
+	  * null if there is no account found.
 	  */
 	 public Account logOn(String u, String p){
 		 boolean b = d.checkUsername(u);
@@ -173,7 +180,6 @@ public class AccountController {
 	  * Account object and gets the type of that Account object. It acts as a 
 	  * transfer method to transfer the Account type to display the correct UI 
 	  * for the Account user. The method returns the type of the Account.
-	  * @param a Account object
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){
@@ -181,8 +187,8 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * displays the account
-	  * @param args
+	  * gets the account instance variable that is in this controller and 
+	  * returns that to the UI to be used.
 	  * @return An account object
 	  */
 	 public Account displayAccount(){
@@ -190,7 +196,8 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * MAIN METHOD
+	  * MAIN METHOD, this is used to test the function of the methods
+	  * in this individual class ALONE
 	  * @param args
 	  */
 	 public static void main(String args[]){

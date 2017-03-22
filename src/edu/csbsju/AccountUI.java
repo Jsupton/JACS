@@ -10,17 +10,19 @@ import javax.swing.JOptionPane;
  * and to pass back data to the user. This class deals with displaying information
  * to the User.
  * @author jsupton 
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class AccountUI {
 
 	/**
-	 * This is an AccountController Object instance variable
+	 * This is an AccountController Object instance variable. Used
+	 * to be able to access methods in the Account function controller
 	 */
 	private AccountController accountFunc;
 	
 	 /**
-	  * Default Constructor
+	  * Default Constructor. The accountFunc instance variable is set to 
+	  * a new AccountController object
 	  */
 	 public AccountUI() {
 		 super();
@@ -28,7 +30,9 @@ public class AccountUI {
 	 }
 	 
 	 /**
-	  * Default Constructor
+	  * First Constructor. The accountFunc instance variable is set to
+	  * a new account controller object that uses the Account parameter
+	  * @param a Account object
 	  */
 	 public AccountUI(Account a) {
 		 super();
@@ -36,7 +40,8 @@ public class AccountUI {
 	 }
 	 
 	 /**
-	  * Default Constructor
+	  * Second Constructor. The accountFunc instance variable is set to
+	  * the AccountController parameter 
 	  * @param a AccountController parameter
 	  */
 	 public AccountUI(AccountController a) {
@@ -49,6 +54,8 @@ public class AccountUI {
 	  * and uses them to log the Account object into the system
 	  * @param u String, a username for the Account object
 	  * @param p String, a password for the Account object
+	  * @return an account object of the user signing in. This is null
+	  * if no user was found with the username and password combination
 	  */
 	 public Account logOn(String u, String p){
 		 Account a = accountFunc.logOn(u,p);
@@ -65,7 +72,6 @@ public class AccountUI {
 	  * Account object and gets the type of that Account object. It acts as a 
 	  * transfer method to transfer the Account type to display the correct UI 
 	  * for the Account user. The method returns the type of the Account.
-	  * @param a Account object
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){
@@ -126,14 +132,16 @@ public class AccountUI {
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
+	  * @return a boolean. True if the user confirms the edit they are about 
+	  * to perform
 	  */
 	 public boolean confirmEdit(){
 		 return accountFunc.confirmEdit();
 	 }
 	 
 	 /**
-	  * displays the account
-	  * @param args
+	  * displays the current account object
+	  * @return an account object representing the current object
 	  */
 	 public Account displayAccount(){
 		 Account a = accountFunc.displayAccount();

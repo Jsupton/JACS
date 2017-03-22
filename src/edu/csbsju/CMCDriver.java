@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.lang.*;
 
 /**
- * Driver for the CMC Class
+ * Driver for the CMC Class. It is used to simulate the CMC system that 
+ * we will be creating with HTML later on. 
  * @author jsupton
  * @version 03-02-17
  */
@@ -26,7 +27,8 @@ public class CMCDriver {
 	private AdminUI admin;
 	
 	/**
-	 * Default Constructor
+	 * Default Constructor. New UserUI, AccountUI, and AdminUI objects
+	 * are created and set to the appropriate instance vairables.
 	 */
 	public CMCDriver(){
 		this.user = new UserUI();
@@ -35,8 +37,9 @@ public class CMCDriver {
 	}
 	
 	/**
-	 * This constructor takes in an Account object 
-	 * @param a
+	 * This constructor takes in an Account object. This account object is 
+	 * used as a parameter for each of the new objects. 
+	 * @param a an Account object.
 	 */
 	public CMCDriver(Account a){
 		this.user = new UserUI((User)a);
@@ -48,16 +51,19 @@ public class CMCDriver {
 	 * This is the main system that runs the basis of the CMC Program. It
 	 * Starts by logging in the user, and depending on if the account is a user
 	 * or an admin it takes them to their perspective screen.
-	 * @throws ClassNotFoundException
+	 * @throws ClassNotFoundException, this exception os thrown if the class is not found.
 	 */
 	public void runSystem() throws ClassNotFoundException {
-		
-		//User enters a username and password
+	//USE CASE: U1
+	//This is where the Login Use Case begins. The person Enters 
+	//A Username and a password. The Username is then checked in the system,
+	//then the password is check with the Account object that the username is linked to.
+	//Then, if the password is correct, the person is logged into the system.
+	//This system then checks to see what type of an Account it is and then brings
+	//the person to the appropriate menu.
 		String username = JOptionPane.showInputDialog("Please Enter Username: ");
 		String password = JOptionPane.showInputDialog("Please Enter Password: ");
-		//An account object is returned using the username and password when logging in
 	    Account a = account.logOn(username,password);
-	    //The accountUI is initialized with that new account object
 	    this.account = new AccountUI(a);
 	    char cmd = '\0';
 	    //If the Account object is a user this is followed
@@ -107,12 +113,13 @@ public class CMCDriver {
 	 * This method is responsible for performing the action that the User/Admin wanted
 	 * to perform. If he is a user he can search, manage profile, or manage his saved schools.
 	 * If he is an admin, he can manage universities or manage users.
-	 * @param cmd
-	 * @throws ClassNotFoundException
+	 * @param cmd a character that represents the command that the Account wants to do.
+	 * @throws ClassNotFoundException, thrown if the approriate class isn't found
 	 */
 	private void doCommand(char cmd)throws ClassNotFoundException  {
 	    switch (cmd)
 	    {
+	    	//USE CASE: U5
 	    	//Allows admin to Manage Universities
 	        case 'U': case 'u':
 		        List<University> univer = admin.getUniversities();
@@ -121,18 +128,19 @@ public class CMCDriver {
 		        }
 		        manageUniversityMenu();
 		        char ch = acceptCommand();
+		        //USE CASE: U12 (Continued in the editAndAddUniversity Class)
 		        //If the user wants to edit an existing university
 	        	if(ch == 'E'||ch=='e'){
 	   		 		editAndAddUniversity(ch);
 	        	}
+	        	//USE CASE: U13 (Continued in the editAndAddUniversity Class)
 	        	//If the user wants to add a new university
 	        	else if(ch =='A' || ch=='a'){
 	        		editAndAddUniversity(ch);
 	        	}
 	        break;
 	        
-	        
-	 
+	        //USE CASE: U6
 	    	//Allows admin to Manage Users
 	        case 'Z': case 'z':
 	        	char type = '\0';
@@ -142,15 +150,18 @@ public class CMCDriver {
 		   		}
 		        editAccountMenu();
 		        ch = acceptCommand();
-		        //If the admin wants to edit a user
+		     //USE CASE: U15  (Continued in the editAndAddAccont Class)
+		     //If the admin wants to edit a user
 		        if(ch=='A'||ch=='a'){
 		        	editAndAddAccount(ch); 	 	
 		        }
-		        //If the admin wants to add a new user
+		     //USE CASE: U14   (Continued in the editAndAddAccont Class)
+		     //If the admin wants to add a new user
 		        else if(ch=='B'||ch=='b'){
 		        	editAndAddAccount(ch); 	
 		        }
-		        //If the admin wants to deactivate a user     
+		     //USE CASE: U16 
+		     //If the admin wants to deactivate a user     
 		        else if(ch=='C'||ch=='c'){
 		        	Account a = admin.viewAccount(JOptionPane.showInputDialog("Please enter an Account username: "));
 		        	admin.deactivate(a);
@@ -159,7 +170,7 @@ public class CMCDriver {
 	        break;
 	        
 	        
-	        
+	        //USE CASE: U4
 	    	//Allows User to Manage his/her saved Schools
 	        //The user can view a specific school, or remove a school from their list
 	        case 'M': case 'm':
@@ -173,6 +184,8 @@ public class CMCDriver {
 	        	do
 	        	{
 		        	ch = acceptCommand();
+		        	//USE CASE: U11
+		        	//Allows the user to view a specified school in their saved schools
 		        	if(ch == 'V'||ch=='v'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
 		        		 if(u!=null){
@@ -182,10 +195,12 @@ public class CMCDriver {
 		        			 JOptionPane.showMessageDialog(null,"THIS SCHOOL DOES NOT EXIST");
 		        			 schoolMenu();}
 		        	}
+		        	//USE CASE: U10
+		        	//Allows the User to remove a specified school to their saved schools
 		        	else if(ch == 'S'||ch=='s'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
 		        		 if(u!=null){
-			        		 boolean b = user.removeUniversityFromSavedSchools(u);
+			        		 boolean b = user.removeUniversityFromSavedSchools(u.getUniversityName());
 			        		 if(b){
 			        			 JOptionPane.showMessageDialog(null,"The university was successfully removed");
 			        		 }
@@ -206,8 +221,10 @@ public class CMCDriver {
 	        break;
 	        
 	        
-	        
-	        //Allows User to Manage search for Schools
+	        //USE CASE: U2
+	        //Allows User to Manage search for Schools. This part of the method takes
+	        //in parameter values from the user and uses those values to search through
+	        //all of the schools in the system.
 	        case 's': case 'S':
 		    	searchMenu();
 	    		String un,s,l,c,e;
@@ -331,6 +348,8 @@ public class CMCDriver {
 		    	    	}
 		    	    	displayOptions();
 		    	  	    ch = acceptCommand();
+		    	  	    //This method allows the user to have the option to view a school
+		    	  	    //more in depth or to save that school to their saved schools
 		    	  		viewAndSave(ch);
 		    	  		cmd = 'R';
 		    	    }
@@ -339,7 +358,7 @@ public class CMCDriver {
 	        break;
 	        
 	        
-	        
+	      //USE CASE: U3
 	      //Allows User to Manage his/her profile
 	      case 'p': case 'P':
 	    	  String fn,ln,p = null;
@@ -363,6 +382,8 @@ public class CMCDriver {
 		        	if(ch == 'R'||ch=='r'){
 		    	        JOptionPane.showMessageDialog(null,"No changes were saved");
 		        	}
+		        //USE CASE: U9
+		        //Allows the user to save their changes to their profile to the Database
 		        	if(ch == 's' || ch == 'S'){
 		        		user.editStudentProfile(fn,ln,p);
 		    	        JOptionPane.showMessageDialog(null,"Successful Save");
@@ -373,10 +394,11 @@ public class CMCDriver {
 		       break;
 	        
 	        
-	      
-		  //Allows for the user to quit out
+	      //USE CASE: U17
+		  //Allows for the user to Logout of the System.
 	      case 'r': case 'R':
 	    	  JOptionPane.showMessageDialog(null,"Logging Out of the System");
+	    	  account.logout();
 	    	  break;
 	      default:
 	        System.out.println("Invalid command--try again");
@@ -397,6 +419,7 @@ public class CMCDriver {
     	first = last = pass = username = null;
     	char type,status, cmd;
     	type = status = '\0';
+    //USE CASE: U15      (Continued)
 		if(ch == 'A'||ch == 'a'){
 			Account a = admin.viewAccount(JOptionPane.showInputDialog("Please enter an Account username: "));
         	username = a.getUsername();
@@ -407,6 +430,7 @@ public class CMCDriver {
         	status = a.getStatus();
         	accountEditMenu(a);
 		}
+	//USE CASE: U14    (Continued)
 		else if(ch == 'B'||ch == 'b'){
 			username = JOptionPane.showInputDialog("Please enter an Account username: ");
         	Account otherA = new Account(username);
@@ -462,8 +486,10 @@ public class CMCDriver {
 	 * @param cmd, a character telling what command to perform
 	 */
 	private void viewAndSave(char cmd){
-		//The user can view a school that was just searched for. If they view a school, the getFiveMatches
-		//Method is used on it to get the 5 schools that are close to it
+		//USE CASE: U7
+		//After the search results, the user can view a school that was just searched for. 
+		//If they view a school, the getFiveMatches Method is used on it to get the 
+		//5 schools that are close to it.
 		if(cmd=='V' || cmd=='v'){
 			 String school = (JOptionPane.showInputDialog("Enter A Name of the University: ")).toUpperCase();
 			 University u = user.getAUniversity(school); 
@@ -483,12 +509,15 @@ public class CMCDriver {
 			 char ch = acceptCommand();
 			 viewAndSave(ch); 
 		  }
+		//USE CASE: U8
+		//After the search results, the user can choose to save a school to their 
+		//saved schools.
 		  else if(cmd=='A' || cmd=='a'){
 			 String school = JOptionPane.showInputDialog("Enter A Name of the University you would like to save: ");
 		     school = school.toUpperCase();
 			 University u = user.getAUniversity(school); 
 			 if(u!=null){
-				 user.addUniversityToSavedSchools(u);
+				 user.addUniversityToSavedSchools(u.getUniversityName());
 				 JOptionPane.showMessageDialog(null,"School Successfully Saved to Saved Schools List");}
 			 else{
 				 JOptionPane.showMessageDialog(null,"School not found, there was an error adding " + school + " to your saved schools list");}
@@ -515,6 +544,7 @@ public class CMCDriver {
     	pf=e=fa=pa=pe=0.0;
     	char cmd;
     	List<String> emphases = null;
+    	//USE CASE: U12      (Continued)
     	if(ch == 'E'|| ch == 'e'){
     			University univ = user.getAUniversity(JOptionPane.showInputDialog("Please enter a university name: ").toUpperCase());
 		 		un = univ.getUniversityName(); 
@@ -535,9 +565,11 @@ public class CMCDriver {
 		 		pe = univ.getPercentEnrolled();
 		 		emphases = univ.getEmphases();
 		 		System.out.println();
+		//USE CASE:  U11
    		 		univ.printString();
    		 		universityMenu();
     	}
+    	//USE CASE:  U13  (Continued)
     	else if(ch == 'A'||ch == 'a'){
     		universityMenu();
     		cmd = '\0';
@@ -671,7 +703,9 @@ public class CMCDriver {
 	
 	
 	/**
-	 * SEARCH MENU, displayed when the user wants to perform a command after logging in
+	 * SEARCH MENU (USER)
+	 * displayed when the user wants to perform a command after logging in
+	 * This menu is displayed when the user initiates a the search functionality
 	 */
 	private void searchMenu(){
 		System.out.println();
@@ -701,6 +735,7 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * OPTIONS AFTER SEARCHING (USER)
 	 * This method displays options for a student to view a school
 	 * more in depth or to add that to their saved schools
 	 */
@@ -715,7 +750,8 @@ public class CMCDriver {
 	}
 	
 	/**
-	 * USER MENU, displayed when the user wants to perform a command after logging in
+	 * USER MENU
+	 * displayed when the user wants to perform a command after logging in
 	 */
 	private void userMenu(){
 		System.out.println();
@@ -728,7 +764,8 @@ public class CMCDriver {
 	}
 	
 	/**
-	 * ADMIN MENU, displayed when the admin wants to perform a command after logging in
+	 * ADMIN MENU
+	 * displayed when the admin wants to perform a command after logging in
 	 */
 	private void adminMenu(){
 		System.out.println();
@@ -740,6 +777,7 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * MANAGE SAVED SCHOOLS (USER)
 	 * This is the menu for Users to deal with their saved schools list
 	 */
 	private void schoolMenu(){
@@ -752,7 +790,9 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * MANAGE PROFILE (USER)
 	 * This is displayed when a user is editing their profile
+	 * @param u a user object to display their details
 	 */
 	private void userEditMenu(User u){
 		System.out.println();
@@ -767,6 +807,7 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * MANAGE UNIVERSITIES (ADMIN)
 	 * This menu is displayed for admins when dealing with universities
 	 */
 	private void manageUniversityMenu(){
@@ -779,7 +820,8 @@ public class CMCDriver {
 	
 	
 	/**
-	 * this is a menu displayed for Admins adding a university
+	 * UNIVERSITY OPTIONS (ADMIN)
+	 * this is a menu displayed for Admins editing or adding a university
 	 */
 	private void universityMenu(){
 		System.out.println();
@@ -810,6 +852,7 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * MANAGE ACCOUNTS (ADMIN)
 	 * This is the menu for an admin to see their options for dealing with accounts
 	 */
 	private void editAccountMenu(){
@@ -824,7 +867,9 @@ public class CMCDriver {
 	}
 	
 	/**
+	 * ACCOUNT OPTIONS (ADMIN)
 	 * This is the menu for an admin to edit an account
+	 * @param a an account object to display their details
 	 */
 	private void accountEditMenu(Account a){
 		System.out.println();

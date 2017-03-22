@@ -12,21 +12,26 @@ import java.util.List;
 public class UserFuncController {
 
 	/**
-	 * This instance variable is a User object
+	 * This instance variable is a User object. This is used to access
+	 * methods inside of the User class
 	 */
 	 private User u;
 	 /**
-	  * This instance variable is a DatabaseController Object
+	  * This instance variable is a DatabaseController Object. Used to access
+	  * the DBController in order to make edits to the Database
 	  */
 	 private DBController d;
 	 /**
-	  * searchController instance varibale
+	  * searchController instance variable. This used in order to allow
+	  * the user to search.
 	  */
 	 private SearchController s;
 	 
 	
 	/**
-	 * default constructor
+	 * default constructor, Sets the user instance variable to null, and then
+	 * sets the DBController and SearchController instance variables to new
+	 * objects.
 	 */
 	public UserFuncController() {
 		super();
@@ -36,7 +41,10 @@ public class UserFuncController {
 	}
 	
 	/**
-	 * constructor creates a user object
+	 * constructor creates a user object. Uses the user object in the parameter
+	 * to set it to the user instance variable. then
+	 * sets the DBController and SearchController instance variables to new
+	 * objects.
 	 * @param u user object
 	 */
 	public UserFuncController(User u) {
@@ -47,32 +55,32 @@ public class UserFuncController {
 	}
 	
 	/**
-	 * adds a university to saved schools list
+	 * adds a university to saved schools list.
 	 * @param uni university object
 	 * @return boolean, true if the addition was successful
 	 */
-	public boolean addUniversityToSavedSchools(University uni)
+	public boolean addUniversityToSavedSchools(String uni)
 	{
-		 d.addUniversityToSavedSchools(uni,u);
+		 d.addUniversityToSavedSchools(uni,u.getUsername());
 		 return true;
 	}
 	
 	/**
-	 * removes university from saved schools list
+	 * removes university from saved schools list.
 	 * @param uni university object to remove
 	 * @return boolean, true if the removal was successful
 	 */
-	public boolean removeUniversityFromSavedSchools(University uni)
+	public boolean removeUniversityFromSavedSchools(String uni)
 	{
-		d.removeUniversityFromSavedSchools(uni,u);
+		d.removeUniversityFromSavedSchools(uni,u.getUsername());
 		return true; 
 	}
 	
 	/**
 	 * searches for a users universities. Given the set of parameter values, this method
 	 * Calls the search method in the SearchController and which returns a list of schools
-	 * that satify the search criteria. 
-	 * @param universityName Univeristy name
+	 * that satisfy the search criteria. 
+	 * @param universityName University name
 	 * @param state university state
 	 * @param location location of the university
 	 * @param control control of the university

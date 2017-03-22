@@ -13,12 +13,14 @@ import java.util.List;
 public class UserUI extends AccountUI{
 
 	/**
-	 * This is a UserFuncController instance variable
+	 * This is a UserFuncController instance variable. This instance variable
+	 * is used in order to access the functions in the UnserFuncController Class
 	 */
 	private UserFuncController userFunc;
 	
 	/**
-	 * default constructor for a user interface
+	 * default constructor for a user interface. It sets the UserFuncController
+	 * variable to a new UserFuncController.
 	 */
 	public UserUI() {
 		super();
@@ -26,7 +28,9 @@ public class UserUI extends AccountUI{
 	}
 	
 	/**
-	 * default constructor for a user interface
+	 * First constructor for a user interface. It sets the UserFuncController
+	 * variable to a new UserFuncController using the user parameter object as
+	 * a parameter.
 	 */
 	public UserUI(User u) {
 		super();
@@ -34,7 +38,8 @@ public class UserUI extends AccountUI{
 	}
 	
 	/**
-	 * default constructor for a user interface
+	 * Second constructor for a user interface. Uses the UserFuncController parameter 
+	 * to set the Instance variable.
 	 * @param u UserFuncController object parameter 
 	 */
 	public UserUI(UserFuncController u) {
@@ -43,7 +48,8 @@ public class UserUI extends AccountUI{
 	}
 	
 	/**
-	 * allows user to logon
+	 * allows user to logon, it takes in a username and a password and then 
+	 * calls the logon function in the Account class
 	 * @param u string representing username
 	 * @param p string representing password
 	 */
@@ -62,7 +68,10 @@ public class UserUI extends AccountUI{
 	}
 	
 	/**
-	 * searches for a users universities
+	 * searches for a users universities. This function takes in all attributes of 
+	 * a university (with some extra specifying upper and lower bound for all of the 
+	 * attributes that are integers or doubles) and then uses those to search for universities
+	 * that match the criteria.
 	 * @param universityName Univeristy name
 	 * @param state university state
 	 * @param location location of the university
@@ -154,7 +163,7 @@ public class UserUI extends AccountUI{
 	 * @param uni school to save
 	 * @return boolean, true if the addition was successful
 	 */
-	public boolean addUniversityToSavedSchools(University uni)
+	public boolean addUniversityToSavedSchools(String uni)
 	{
 		userFunc.addUniversityToSavedSchools(uni);
 		return true;
@@ -165,7 +174,7 @@ public class UserUI extends AccountUI{
 	 * @param uni university object to remove
 	 * @return boolean, true if the removal was successful
 	 */
-	public boolean removeUniversityFromSavedSchools(University uni)
+	public boolean removeUniversityFromSavedSchools(String uni)
 	{
 		userFunc.removeUniversityFromSavedSchools(uni);
 		return true;

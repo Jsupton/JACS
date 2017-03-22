@@ -3,10 +3,12 @@ package edu.csbsju;
 import java.util.*;
 
 /**
- * This Class is a class that models a university object. I takes
- * the attributes specified below and created a university object from them
+ * This Class is a class that models a university object. It takes
+ * the attributes specified below and created a university object from them.
+ * The University object is made up of several attributes that pertain
+ * to a real University object.
  * @author ajdehn
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class University {
 	
@@ -97,7 +99,8 @@ public class University {
 	private List<String> emphases;
 	
 	/**
-	 * General Constructor making a University Object
+	 * General Constructor making a University Object. Sets each parameter value to
+	 * its corresponding instance variable.
 	 * @param universityName The name of a university
 	 * @param location The location of a university
 	 * @param state The state of a university
@@ -114,7 +117,7 @@ public class University {
 	 * @param academicScale The academic scale of a university
 	 * @param socialScale Social scale of a university
 	 * @param qualityOfLife Quality of life of a university
-	 * @param emphases empases of a university
+	 * @param emphases emphases of a university
 	 */
 	public University(String universityName, String state, String location, String control, int numberOfStudents,
 			double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
@@ -141,8 +144,10 @@ public class University {
 	}
 	
 	/**
-	 * The constructor that only takes the name of an object
-	 * @param universityName
+	 * The constructor that only takes the name of an object. The university Name
+	 * is set to the parameter value and the rest of the instance variables are 
+	 * either set to null (if they are Strings) or to 0 (if they are double or int)
+	 * @param universityName a name of a university
 	 */
 	public University(String universityName) {
 		super();
@@ -302,7 +307,7 @@ public class University {
 	}
 	
 	/**
-	 * sets the exepenses at a specified university
+	 * sets the expenses at a specified university
 	 * @param expenses the expenses to set
 	 */
 	public void setExpenses(double expenses) {
@@ -429,7 +434,10 @@ public class University {
 		return emphases;
 	}
 
-
+	/**
+	 * This is like a toString method. It prints out all of the 
+	 * attributes for a given University.
+	 */
 	public void printString() {
 		System.out.println( "Name: \t\t\t" + universityName + "\nLocation: \t\t" + location + "\nState: \t\t\t" + state
 				+ "\nControl: \t\t" + control + "\nNumber Of Students: \t" + numberOfStudents + "\nPercent Female: \t" + percentFemale
@@ -438,8 +446,135 @@ public class University {
 				+ "\nPercen tEnrolled: \t" + percentEnrolled + "\nAcademic Scale: \t" + academicScale + "\nSocial Scale: \t\t"
 				+ socialScale + "\nQuality Of Life: \t" + qualityOfLife + "\nEmphases: \t\t" + emphases + "]\n");
 	}
+	
+	/**
+	 * adds an emphases to the list
+	 * @param emphases String
+	 */
+	public void addEmphases(String emp){
+		emphases.add(emp);
+	}
+	
+	/**
+	 * adds an emphases to the list
+	 * @param emphases String
+	 */
+	public void removeEmphases(String emp){
+		for(String e:emphases){
+			if(emp.equals(e)){
+				emphases.remove(e);
+			}
+		}
+	}
+	
+	/**
+	   * This method allows an admin to be able to edit a university object
+	   * The changes are sent to the Database to save the changes
+	   * @param universityName The name of a university
+	   * @param location The location of a university
+	   * @param state The state of a university
+	   * @param control The control of a university
+	   * @param numberOfStudents the number of students at a university
+	   * @param percentFemale the percent female of a university
+	   * @param satVerbal SAT of a university
+	   * @param satMath SAT of a university
+	   * @param expenses The Expenses of a university
+	   * @param financialAid the Financial aid at a university
+	   * @param numberOfApplicants Number of Applicants of a university
+	   * @param percentAdmitted The percent admitted of a university
+	   * @param percentEnrolled The percent Enrolled of a university
+	   * @param academicScale The academic scale of a university
+	   * @param socialScale Social scale of a university
+	   * @param qualityOfLife Quality of life of a university
+	   * @param emphases emphases of a university
+	   * @return the newly changes university object
+	   */
+	  public University editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+	                             double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+	                             double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+		   if(state!=null){
+			   this.setState(state);
+		   }
+		   if(location!=null){
+			   this.setLocation(location);
+		   }
+		   if(control!=null){
+			   this.setControl(control);
+		   }
+		   if(numberOfStudents!=0){
+			   this.setNumberOfStudents(numberOfStudents);
+		   }
+		   if(percentFemale!=0.0){
+			   this.setPercentFemale(percentFemale);
+		   }
+		   if(satVerbal!=0){
+			   this.setSatVerbal(satVerbal);
+		   }
+		   if(satMath!=0){
+			   this.setSatMath(satMath);
+		   }
+		   if(expenses!=0.0){
+			   this.setExpenses(expenses);
+		   }
+		   if(financialAid!=0.0){
+			   this.setFinancialAid(financialAid);
+		   }
+		   if(numberOfApplicants!=0){
+			   this.setNumberOfApplicants(numberOfApplicants);
+		   }
+		   if(percentAdmitted!=0.0){
+			   this.setPercentAdmitted(percentAdmitted);
+		   }
+		   if(percentEnrolled!=0.0){
+			   this.setPercentEnrolled(percentEnrolled);
+		   }
+		   if(academicScale!=0.0){
+			   this.setAcademicScale(academicScale);
+		   }
+		   if(socialScale!=0.0){
+			   this.setSocialScale(socialScale);
+		   }
+		   if(qualityOfLife!=0.0){
+			   this.setQualityOfLife(qualityOfLife);
+		   }
+		   return this;
+	  }
+	  
+	  /**
+	   * This method allows an admin to be able to edit a university object
+	   * The changes are sent to the Database to save the changes
+	   * @param universityName The name of a university
+	   * @param location The location of a university
+	   * @param state The state of a university
+	   * @param control The control of a university
+	   * @param numberOfStudents the number of students at a university
+	   * @param percentFemale the percent female of a university
+	   * @param satVerbal SAT of a university
+	   * @param satMath SAT of a university
+	   * @param expenses The Expenses of a university
+	   * @param financialAid the Financial aid at a university
+	   * @param numberOfApplicants Number of Applicants of a university
+	   * @param percentAdmitted The percent admitted of a university
+	   * @param percentEnrolled The percent Enrolled of a university
+	   * @param academicScale The academic scale of a university
+	   * @param socialScale Social scale of a university
+	   * @param qualityOfLife Quality of life of a university
+	   * @return the newly added University object
+	   */
+	  public University addUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+	                            double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+	                            double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
+	    University u = new University(universityName, state, location, control, numberOfStudents,
+	                    percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
+	                    percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife, null);
+	   return u;
+	  }
 
-	//Fake main method to test Class
+	/**
+	 * Main METHOD, used in order to test to make sure that all methods
+	 * within this class alone perform their function correctly.
+	 * @param args
+	 */
 	public static void main(String args[]){
 		ArrayList<String> l = new ArrayList<String>();
 		l.add("Beer");

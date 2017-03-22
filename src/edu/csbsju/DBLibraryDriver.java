@@ -43,7 +43,9 @@ public class DBLibraryDriver {
 	  
 	  // editUniversity
 	  ourU.setState("MN");
-	  univDBlib.editUniversity(ourU);
+	 // univDBlib.editUniversity(ourU.getUniversityName(), ourU.getState(), ourU.getLocation, ourU.getControl(), ourU.getNumberOfStudents(),
+	  // ourU.getPercentFemale(), ourU.getSatVerbal(), ourU.getSatMath(), ourU.getExpenses(), ourU.getFinancialAid(), ourU.getNumberOfApplicants(),
+	  // ourU.getPercentAdmitted(), ourU.getPercentEnrolled(), ourU.getAcademicScale(), ourU.getSocialScale(), ourU.getQualityOfLife());
 	  University editU = univDBlib.getAUniversity("x");
 	  System.out.println("Should be MN: "+ editU.getState());
 	  

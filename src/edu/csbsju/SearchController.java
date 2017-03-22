@@ -9,7 +9,7 @@ import java.lang.*;
  * return to the user a list of universities that meet the Search criteria 
  * that the user entered 
  * @author jsupton
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class SearchController {
 	
@@ -19,7 +19,8 @@ public class SearchController {
 	private DBController d;
 	
 	 /**
-	  * Default Constructor
+	  * Default Constructor, This constructor creates a new DBContorller 
+	  * object and then sets that to the DBController instance variable.
 	  */
 	 public SearchController() {
 		 super();
@@ -27,7 +28,9 @@ public class SearchController {
 	 }
 	 
 	 /**
-	  * This method allows us to determine if the search criteria are empty or not
+	  * This method allows us to determine if the search criteria are empty or not.
+	  * If all the search criteria are either null (if they are strings) or 0 (if they
+	  * are double or int), then the method returns true.
 	  * @param universityName the name of the university
 	  * @param location the location (SUBURBAN,URBAN,SMALL-CITY or -1 for unknown)
 	  * @param state the state the university is in
@@ -57,7 +60,7 @@ public class SearchController {
 	  * @param qualityOfLifeLOWER the lower bound for the quality of life
 	  * @param qualityOfLifeUPPER the upper bound for the quality of life
 	  * @param emphases the emphases for a university
-	  * @return ArrayList<University>
+	  * @return boolean, if the search criteria are empty it returns true.
 	  */
 	 public boolean criteriaEmpty(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
 			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
@@ -301,6 +304,7 @@ public class SearchController {
 	  * the search criteria that the user input. The search criteria is used to search the 
 	  * Database. All universities that match the attributes of the search criteria are 
 	  * gathered into an arrayList.
+	  * @param u a username for an account
 	  * @return Account
 	  */
 	 public Account search(String u){
@@ -479,6 +483,11 @@ public class SearchController {
 		 return matches;
 	 }
 	 
+	 /**
+	  * A Main method that allows us to test if all of the methods in this class
+	  * are performing correctly by themselves. 
+	  * @param args
+	  */
 	 public static void main(String args[]){
 		 SearchController sc = new SearchController();
 		 ArrayList<String> l = new ArrayList<String>();

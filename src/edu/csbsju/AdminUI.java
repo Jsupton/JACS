@@ -6,17 +6,20 @@ import java.util.*;
  * controls what is displayed to the user at specific points in time.
  * The controller will send data back to this class to display to the Admin.
  * @author cjzins
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class AdminUI extends AccountUI{
 
  /**
-  * a AdminFuncController object instance variable
+  * a AdminFuncController object instance variable. Allows this class
+  * to be able to interact with the adminFunction Controller class
   */
  private AdminFuncController adminFunc;
  
  /**
-  * This default constructor initiates the Admin to null
+  * This default constructor initiates the Admin to null. It also makes
+  * a new AdminFuncController using the Admin parameter value.
+  * @param a an admin object
   */
  public AdminUI(Admin a) {
   super();
@@ -24,7 +27,8 @@ public class AdminUI extends AccountUI{
  }
  
  /**
-  * This default constructor initiates the Admin to null
+  * This default constructor initiates the Admin to null. It also sets
+  * the adminFun instance variable to a new AdminFuncController object.
   */
  public AdminUI() {
   super();
@@ -76,8 +80,10 @@ public class AdminUI extends AccountUI{
   }
   
   /**
-   * This method allows an admin to be able to edit a university object
-   * The changes are sent to the Database to save the changes
+   * This method allows an admin to be able to edit a university object.
+   * The parameters are used to update the values of the specified university
+   * in the Database. These changes are first sent to the UniversityController
+   * Class.Then the changes are sent to the Database to save the changes
    * @param universityName The name of a university
    * @param location The location of a university
    * @param state The state of a university

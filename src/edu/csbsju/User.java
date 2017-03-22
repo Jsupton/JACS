@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * different functionalities than an Admin can, thus this class allows 
  * User to perform those action.
  * @author saschmidgall
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class User extends Account {
 	
@@ -45,7 +45,8 @@ public class User extends Account {
 	}
 	
 	/**
-	 * displays error if displays fails
+	 * displays error if displays fails. If there is an error in getting the saved
+	 * Schools of a User, then this error is displayed
 	 */
 	public void displaySavedSchoolsError()
 	{
@@ -53,7 +54,8 @@ public class User extends Account {
 	}
 	
 	/**
-	 * displays search error
+	 * displays search error. If there is an error in searching, then this error
+	 * is displayed to the user.
 	 */
 	public void displaySearchError()
 	{

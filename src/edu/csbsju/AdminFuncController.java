@@ -7,12 +7,13 @@ import java.util.*;
  * This class deals with shifting data and calling the Database, as well
  * as sending data back to the UserInterface to display to the Admin. 
  * @author cjzins
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class AdminFuncController {
   
   /**
-   * a Admin object variable
+   * a Admin object instance variable. Used to store the current
+   * admin object, and to be able to access methods in the Admin class
    */
   private Admin admin;
   /**
@@ -20,12 +21,15 @@ public class AdminFuncController {
    */
   private DBController d;
   /**
-   * This is a universityController object used to access methods in the university Controller
+   * This is a universityController object used to access methods 
+   * in the university Controller
    */
   private UniversityController uc;
   
   /**
-   * This default constructor initiates the Admin to null
+   * This default constructor initiates the Admin to null. It creates
+   * a new DBController object as well as a new UniversityController object
+   * and sets those equal to their corresponding instance variable
    */
   public AdminFuncController() {
     super();
@@ -34,11 +38,12 @@ public class AdminFuncController {
     this.uc = new UniversityController();
   }
   
-  
   /**
    * This constructor initiates the Admin instance variable
-   * to a specific Admin object
-   * @param admin
+   * to a specific Admin object. It creates a new DBController object as well 
+   * as a new UniversityController object and sets those equal to their 
+   * corresponding instance variable
+   * @param admin an admin object
    */
   public AdminFuncController(Admin admin) {
     super();
@@ -79,10 +84,9 @@ public class AdminFuncController {
   public void addUniversity(String universityName, String state, String location, String control, int numberOfStudents,
                             double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
                             double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
-    University u = new University(universityName, state, location, control, numberOfStudents,
+    uc.addUniversity(universityName, state, location, control, numberOfStudents,
                     percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants,
-                    percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife, null);
-    uc.addUniversity(u);
+                    percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
   }
   
   /**
@@ -120,7 +124,7 @@ public class AdminFuncController {
    * This method if a void method that takes an account object in as a parameter
    * It uses the account object and changes the status of the Account object to 
    * deactivated.
-   * @param a Account object
+   * @param a an Account object
    */
   public void deactivate(Account a){
     d.deactivate(a);
@@ -132,7 +136,7 @@ public class AdminFuncController {
    * the method returns null, otherwise the method returns the Account object with 
    * that specified username.
    * @param u String, a username of an Account
-   * @return Account object
+   * @return an Account object of the username parameter
    */
   public Account findAccount(String u){
     Account a = d.findAccount(u);
@@ -152,8 +156,9 @@ public class AdminFuncController {
   }
   
   /**
-   * This method allows an admin to be able to edit a university object
-   * The changes are sent to the Database to save the changes
+   * This method allows an admin to be able to edit a university object.
+   * The parameters are used to update the specific university object.
+   * The changes are sent to the Database to save the changes.
    * @param universityName The name of a university
    * @param location The location of a university
    * @param state The state of a university
@@ -170,7 +175,7 @@ public class AdminFuncController {
    * @param academicScale The academic scale of a university
    * @param socialScale Social scale of a university
    * @param qualityOfLife Quality of life of a university
-   * @param emphases empases of a university
+   * @param emphases emphases of a university
    */
   public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
                              double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
@@ -193,6 +198,7 @@ public class AdminFuncController {
    */
   public void editAccount(String firstname, String lastname, String username, String password, char type, char status){
     boolean b = d.editAccount(username, firstname, lastname, password, type, status);
+    admin.editAccount(username, firstname, lastname, password, type, status);
     if(b){
 	   System.out.println("Successful Change");
     }
@@ -213,34 +219,35 @@ public class AdminFuncController {
    * @param status the status of the new account
    */
   public void addAccount(String firstname, String lastname, String username, String password, char type, char status){
-     d.addAccount(firstname, lastname, username, password, type, status);
+     Account a = admin.addAccount(firstname, lastname, username, password, type, status);
+     d.addAccount(a.getFirstName(),a.getLastName(),a.getUsername(),a.getPassword(),a.getType(),a.getStatus());
   }
   
   /**
    * This adds an emphases for the specified university object.
    * The parameter string is then added to the University's emphases
-   * @param universityName
-   * @param emphases
+   * @param universityName a name of a university
+   * @param emphases an emphases for a university
    * @return an integer indicating the number of database records 
    * inserted or -1 if an invalid school name is specified or if 
    * the specified emphasis already exists for the specified school
    * */
   public int addEmphases(String universityName,String emphases ){
-     return d.addEmphases(universityName, emphases);
+     return uc.addEmphases(universityName, emphases);
     
   }
   
   /**
    * This removes an emphases for the specified university object.
    * The parameter string is then removed to the University's emphases
-   * @param universityName
-   * @param emphases
+   * @param universityName a name for the specified university
+   * @param emphases an emphases for the specified university
    * @return an integer indicating the number of database records 
    * inserted or -1 if an invalid school name is specified or if 
    * the specified emphasis already exists for the specified school
    */
   public int removeEmphases(String universityName,String emphases ){
-    return d.removeEmphases(universityName, emphases);
+    return uc.removeEmphases(universityName, emphases);
   }
   
 }

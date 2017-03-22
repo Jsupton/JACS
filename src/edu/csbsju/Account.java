@@ -9,7 +9,7 @@ package edu.csbsju;
  * attributes allow the user to log into the system. This Class has two 
  * subclasses, which are User and Administrator.
  * @author jsupton 
- * @version 02-25-17
+ * @version 03-21-17
  */
 public class Account {
  
@@ -81,7 +81,6 @@ public class Account {
 	
 	 /**
 	  * gets the username for the Account object
-	  * gets the username for the Account object
 	  * @return the username
 	  */
 	 public String getUsername() {
@@ -114,7 +113,7 @@ public class Account {
 	 
 	 /**
 	  * Gets the firstname of the account
-	  * @return firstname 
+	  * @return the first name of the account object
 	  */
 	public String getFirstName() {
 		return firstName;
@@ -122,7 +121,7 @@ public class Account {
 
 	/**
 	 * Sets the firstname of the account
-	 * @param firstName the firstname of the account
+	 * @param firstName the first name of the account
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -155,7 +154,7 @@ public class Account {
 	
 	 /**
 	  * The method allows the user to log out of the system
-	  * The Current Account information is cleared
+	  * The Current Account information is cleared from this system.
 	  */
 	 public void logOff(){
 		 this.username = null;
@@ -170,6 +169,7 @@ public class Account {
 	  * The method allows the user to log into the system
 	  * The current user's Account information creates a new Account
 	  * object and their detailed information is loaded into the instance variables
+	  * @param a an account object to log into the system
 	  */
 	 public void logOn(Account a){
 		 this.username = a.getUsername();
@@ -193,7 +193,7 @@ public class Account {
 	  * This method displays the correct menu to the user when he or she
 	  * logs into the system. Depending on if the user is an admin or student,
 	  * They will be brought to their prospective screen
-	  * @param t char, The type (admin or user) of the Account object
+	  * @param t char The type (admin or user) of the Account object
 	  */
 	 public void displayMenu(char t){
 		 if(t == 'u'){
@@ -240,11 +240,9 @@ public class Account {
 	 }
 	 
 	 /**
-	  * This method takes an Account object as a parameter. The method uses the
-	  * Account object and gets the type of that Account object. It acts as a 
+	  * The method uses the current Account object and gets the type of that Account object. It acts as a 
 	  * transfer method to transfer the Account type to display the correct UI 
 	  * for the Account user. The method returns the type of the Account.
-	  * @param a Account object
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){

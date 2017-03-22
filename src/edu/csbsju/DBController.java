@@ -9,9 +9,13 @@ import javax.swing.JOptionPane;
 import dblibrary.project.csci230.*;
 
 /**
- * Class used to communicate with the Database
+ * Class used to communicate with the Database. this class is called by
+ * Contorller classes that are in need of accessing the DBLibrary. In general,
+ * this class is used when these controller classes want to save edited information,
+ * add an account object or university object, or display data that is in the
+ * DBLibrary
  * @author ajdehn
- * @version 02-26-17
+ * @version 03-21-17
  */
 public class DBController {
 	
@@ -22,7 +26,9 @@ public class DBController {
 	private UniversityDBLibrary univDBlib;
 	
 	/**
-	 * Default Constructor
+	 * Default Constructor, It creates a new UniversityDBLibrary object
+	 * with the specified login information for our group. This new object
+	 * is set to the univDBlib instance variable
 	 */
 	 public DBController(){
 		 this.univDBlib = new UniversityDBLibrary("jacs","jacs","csci230");
@@ -31,16 +37,17 @@ public class DBController {
 	 /**
 	  * This constructor takes in the 3 necessities that are required to log onto
 	  * the UniversityDBLibrary class
-	  * @param a Database
-	  * @param b Username
-	  * @param c Password
+	  * @param a Database name that our group was given
+	  * @param b Username that our group was given
+	  * @param c Password that was assigned to our group
 	  */
 	 public DBController(String a, String b, String c){
 		 this.univDBlib = new UniversityDBLibrary(a,b,c);
 	 }
 	 
 	 /**
-	  * Checks if a specific username exists in the database
+	  * Checks if a specific username exists in the database. If the username
+	  * does, then this method returns true.
 	  * @param u the name of the username
 	  * @return returns true if user with that name exists in the database
 	  */
@@ -62,7 +69,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Finds the password
+	  * Finds the password with a corresponding username. The username
+	  * is passed as a parameter and the password for that account
+	  * is then returned.
 	  * @param u Username that we need the password for
 	  * @return Password of the User with specified username
 	  */
@@ -84,7 +93,8 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Returns the type of an account
+	  * Returns the type of an account object that is passed as a parameter
+	  * to this method.
 	  * @param a Account being checked
 	  * @return type of account (Admin or User)
 	  */
@@ -94,8 +104,10 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Obtain a list of all users in the database
-	  * @return A list of all Users that exist in the database
+	  * Obtain a list of all users in the database. This accesses the
+	  * DBLibrary to get a 2D array list of all Accounts, then this
+	  * method converts that into an array list of Account objects
+	  * @return An arrayList of all Users that exist in the database
 	  */
 	 public ArrayList<Account> getAccounts()
 	 {
@@ -118,7 +130,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Provides a list all universities in the database
+	  * Provides a list all universities in the database.This accesses the
+	  * DBLibrary to get a 2D array list of all universities, then this
+	  * method converts that into an array list of University objects
 	  * @return List of all universities that are in the database
 	  */
 	 public ArrayList<University> getAllUniversities()
@@ -162,7 +176,9 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Returns an account related to a username
+	  * Returns an account related to a username. The username is taken
+	  * in as a parameter and the corresponding Account is returned. If no
+	  * account matches this, the method returns null.
 	  * @param username User name to be searched in the database.
 	  * @return Account object related to provided user name.
 	  */
@@ -194,7 +210,10 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Returns a university object with that specific name
+	  * Returns a university object with that specific name. The name of a 
+	  * university is taken in as a parameter and then used to find a 
+	  * specific university. if a university with the specified name isn't found,
+	  * the method returns null.
 	  * @param name name of university being searched for.
 	  * @return University object
 	  */
@@ -211,7 +230,10 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Edits the account details of a provided account
+	  * Edits the account details of a provided account. The parameters are
+	  * used to update the account object that is specified by the username
+	  * If such account doesn't exist, the method returns false, indicating that
+	  * the edit did not properly work.
 	  * @param u user name of the user
 	  * @param fn Fist name of the user
 	  * @param ln Last name of the user
@@ -233,7 +255,7 @@ public class DBController {
 	  * Adds a university to the database, using the university object,
 	  * It gets all the attributes for the new university and then calls the DBController
 	  * to update the database with the new university
-	  * @param u Object to be added to the database
+	  * @param u University Object to be added to the database
 	  */
 	 public void addUniversity(University u)
 	 {
@@ -274,7 +296,7 @@ public class DBController {
 	  * This method gets a list of all users and their saved schools from
 	  * the DBLibrary. Then, it goes through that list and finds the desired
 	  * user. Then it adds all of their saved schools to an array list
-	  * @param username
+	  * @param username the username for a specific student
 	  * @return List<String> of all university names of all the saved schools
 	  */
 	 public List<String> getUserSavedSchools(String username)
@@ -290,10 +312,8 @@ public class DBController {
 		 {
 			 return matchingSchools;
 		 }
-		 
 		 while(i<savedSchools.length)
 		 {
-
 			 if(username.equals(savedSchools[i][0]))
 			 {
 				 for(j = 1; j<savedSchools[i].length; j++)
@@ -303,12 +323,13 @@ public class DBController {
 			 }
 			 i++;
 		 }
-		 
 		 return matchingSchools;
 	 }
 	 
 	 /**
-	  * Add a university to a Users saved list
+	  * Add a university to a Users saved list. The username parameter
+	  * is used to find the desired Account object and the school name
+	  * is used to add that school to the Account.
 	  * @param school String object to be saved
 	  * @param userName String that this university is to be saved to
 	  */
@@ -317,20 +338,11 @@ public class DBController {
 		 String uppercase = school.toUpperCase();
 		 univDBlib.user_saveSchool(userName, uppercase);
 	 }
-	 /**
-	  * Add a university to a Users saved list
-	  * @param u University object to be saved
-	  * @param a Account that this university is to be saved to
-	  */
-	 public void addUniversityToSavedSchools(University u, Account a)
-	 {
-		 String school = u.getUniversityName();
-		 String userName = a.getUsername();
-		 univDBlib.user_saveSchool(userName, school);
-	 }
 	 
 	 /**
-	  * Remove a saved university from a specific account
+	  * Remove a saved university from a specific account. The username parameter
+	  * is used to find the desired Account object and the school name
+	  * is used to remove that school from the Account.
 	  * @param u String University name of school to be removed
 	  * @param a String username that to remove school
 	  */
@@ -342,22 +354,12 @@ public class DBController {
 	 }
 	 
 	 /**
-	  * Remove a saved university from a specific account
-	  * @param u University object that needs to be removed
-	  * @param a Account that needs to be added 
-	  */
-	 public void removeUniversityFromSavedSchools(University u ,Account a)
-	 {
-		 String school = u.getUniversityName();
-		 String userName = a.getUsername();
-		 univDBlib.user_removeSchool(userName, school);
-	 }
-	 
-	 /**
 	  * This method is a method that asks the user if they would like to 
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
+	  * @return boolean, a boolean indicating whether or not the user confirms
+	  * that they want to edit
 	  */
 	 public boolean confirmEdit(){
 		  String answer = JOptionPane.showInputDialog("Are You sure you want to confirm change? (Y/N)");
@@ -408,31 +410,33 @@ public class DBController {
 		 univDBlib.user_addUser(firstName, lastName, username, password, type);
 	 }
 	 
-	 /**
-	  * This method allows an admin to be able to edit a university object
-	  * The changes are sent to the Database to save the changes
-	  * @param u, a university object
-	  */
-	 public void editUniversity(University u)
-	 {
-		 String school = u.getUniversityName();
-		 String state = u.getState();
-		 String location = u.getLocation();
-		 String control = u.getControl();
-		 int numberOfStudents = u.getNumberOfStudents();
-		 double percentFemale = u.getPercentFemale();
-		 int satVerbal = u.getSatVerbal();
-		 int satMath = u.getSatMath();
-		 double expenses = u.getExpenses();
-		 double financialAid = u.getFinancialAid();
-		 int numberOfApplicants = u.getNumberOfApplicants();
-		double percentAdmitted = u.getPercentAdmitted();
-		double percentEnrolled = u.getPercentEnrolled();
-		int academicScale = u.getAcademicScale();
-		int socialScale = u.getSocialScale();
-		int qualityOfLife = u.getQualityOfLife();
+	 
+	   /**
+		* Allows changes to be made to details of a university. The Specified parameter
+		* values are used to call to the DBLibrary and edit the University with the 
+		* specified University Name.
+		* @param universityName The name of a university
+		* @param location The location of a university
+		* @param state The state of a university
+		* @param control The control of a university
+		* @param numberOfStudents the number of students at a university
+		* @param percentFemale the percent female of a university
+		* @param satVerbal SAT of a university
+		* @param satMath SAT of a university
+		* @param expenses The Expenses of a university
+		* @param financialAid the Financial aid at a university
+		* @param numberOfApplicants Number of Applicants of a university
+	    * @param percentAdmitted The percent admitted of a university
+	    * @param percentEnrolled The percent Enrolled of a university
+	    * @param academicScale The academic scale of a university
+	    * @param socialScale Social scale of a university
+	    * @param qualityOfLife Quality of life of a university
+	    */
+		public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
+	            double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
+	            double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
 		
-		univDBlib.university_editUniversity(school, state, location, control, numberOfStudents, percentFemale,
+		univDBlib.university_editUniversity(universityName, state, location, control, numberOfStudents, percentFemale,
 				satVerbal, satMath, expenses, financialAid, numberOfApplicants,
 				 percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
 		

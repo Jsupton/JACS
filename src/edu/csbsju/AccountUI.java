@@ -87,24 +87,6 @@ public class AccountUI {
 	 }
 	 
 	 /**
-	  * This method calls the Database and returns a list of all the 
-	  * universities for the user to view or for an admin to edit.
-	  * @return ArrayList<University> An array list of university objects
-	  */
-	 public ArrayList<University> getUniversities(){
-		 return accountFunc.getUniversities();
-	 }
-	 
-	 /**
-	  * This method displays all of the aspects of all university objects.
-	  * It gets all attributes from the university objects and then displays
-	  * them on the screen for the user.
-	  */
-	 public void displayUniversities(){
-		 accountFunc.displayUniversities();
-	 }
-	 
-	 /**
 	  * This method takes a university name as a parameter and uses that
 	  * to search the database and then it returns either null if the university
 	  * was not found in the system, or it creates a university object out of the
@@ -121,7 +103,7 @@ public class AccountUI {
 	  * This method displays all of the aspects of a given university object.
 	  * It gets all attributes from the university object and then displays
 	  * those on the screen for the user.
-	  * @param u University object
+	  * @param name University object
 	  */
 	 public void displayUniversity(String name){
 		 accountFunc.displayUniversity(name);

@@ -52,7 +52,7 @@ public class Admin extends Account{
  
  /**
   * This method sets the status character to the parameter value
-  * @param a character indicating the status of the user
+  * @param s character indicating the status of the user
   */
  public void setStatus(char s){
 	 this.status = s;
@@ -60,7 +60,7 @@ public class Admin extends Account{
  
  /**
   * This method sets the type character to the parameter value
-  * @param a character indicating the type of the user
+  * @param t character indicating the type of the user
   */
  public void setType(char t){
 	 this.type = t;
@@ -96,6 +96,7 @@ public class Admin extends Account{
   * @param password the password of the new account
   * @param type the type of the new account
   * @param status the status of the new account
+  * @return a new Account object
   */
  public Account addAccount(String firstname, String lastname, String username, String password, char type, char status){
 	 Account a = new Account(firstname,lastname,username,password,type,status);
@@ -105,7 +106,7 @@ public class Admin extends Account{
  /**
   * TEST MAIN METHOD. This main method has been used to ensure that the 
   * methods in this call alone work and perform their function correctly 
-  * @param args
+  * @param args this is parameter value for the main method
   */
  public static void main(String args[]){
 	 Admin a = new Admin("Jacob","Upton","Jsupton","114179",'a','Y');

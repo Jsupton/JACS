@@ -449,7 +449,7 @@ public class University {
 	
 	/**
 	 * adds an emphases to the list
-	 * @param emphases String
+	 * @param emp String representing the emphases
 	 */
 	public void addEmphases(String emp){
 		emphases.add(emp);
@@ -457,7 +457,7 @@ public class University {
 	
 	/**
 	 * adds an emphases to the list
-	 * @param emphases String
+	 * @param emp String representing the emphases
 	 */
 	public void removeEmphases(String emp){
 		for(String e:emphases){
@@ -486,7 +486,6 @@ public class University {
 	   * @param academicScale The academic scale of a university
 	   * @param socialScale Social scale of a university
 	   * @param qualityOfLife Quality of life of a university
-	   * @param emphases emphases of a university
 	   * @return the newly changes university object
 	   */
 	  public University editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
@@ -573,7 +572,7 @@ public class University {
 	/**
 	 * Main METHOD, used in order to test to make sure that all methods
 	 * within this class alone perform their function correctly.
-	 * @param args
+	 * @param args the parameter value for the main method 
 	 */
 	public static void main(String args[]){
 		ArrayList<String> l = new ArrayList<String>();

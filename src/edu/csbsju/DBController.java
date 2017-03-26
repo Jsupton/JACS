@@ -301,7 +301,6 @@ public class DBController {
 	  */
 	 public List<String> getUserSavedSchools(String username)
 	 {
-		 boolean found = false;
 		 int i=0;
 		 int j = 0;
 		 String[][] savedSchools = univDBlib.user_getUsernamesWithSavedSchools();
@@ -399,8 +398,8 @@ public class DBController {
 	  * This method is used to add an account. It takes in all the attributes of 
 	  * an account object, and then uses those to create a new account object in the
 	  * database
-	  * @param firstname the firstname of the new account
-	  * @param lastname the lastname of the new account
+	  * @param firstName the firstname of the new account
+	  * @param lastName the lastname of the new account
 	  * @param username the username of the new account
 	  * @param password the password of the new account
 	  * @param type the type of the new account
@@ -445,8 +444,8 @@ public class DBController {
 	 /**
 	  * This adds an emphases for the specified university object.
 	  * The parameter string is then added to the University's emphases
-	  * @param universityName
-	  * @param emphases
+	  * @param universityName the name of a university
+	  * @param emphases the emphases desired to add to the university
 	  * @return an integer indicating the number of database records 
 	  * inserted or -1 if an invalid school name is specified or if 
 	  * the specified emphasis already exists for the specified school
@@ -459,8 +458,8 @@ public class DBController {
 	 /**
 	  * This removes an emphases for the specified university object.
 	  * The parameter string is then removed to the University's emphases
-	  * @param universityName
-	  * @param emphases
+	  * @param universityName the name of a university
+	  * @param emphases desired emphases to remove from a university
 	  * @return an integer indicating the number of database records 
 	  * inserted or -1 if an invalid school name is specified or if 
 	  * the specified emphasis already exists for the specified school
@@ -469,6 +468,10 @@ public class DBController {
 		 return univDBlib.university_removeUniversityEmphasis(universityName, emphases);
 	 }
 	
+	 /**
+	  * This is the MAIN METHOD
+	  * @param args the parameter for the main method
+	  */
 	 public static void main(String args[]){
 		 DBController d = new DBController();
 		 ArrayList<University> p = d.getAllUniversities();

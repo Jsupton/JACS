@@ -51,7 +51,7 @@ public class CMCDriver {
 	 * This is the main system that runs the basis of the CMC Program. It
 	 * Starts by logging in the user, and depending on if the account is a user
 	 * or an admin it takes them to their perspective screen.
-	 * @throws ClassNotFoundException, this exception os thrown if the class is not found.
+	 * @throws ClassNotFoundException this exception is thrown if the class is not found.
 	 */
 	public void runSystem() throws ClassNotFoundException {
 	//USE CASE: U1
@@ -434,7 +434,6 @@ public class CMCDriver {
 		else if(ch == 'B'||ch == 'b'){
 			username = JOptionPane.showInputDialog("Please enter an Account username: ");
         	Account otherA = new Account(username);
-        	first = otherA.getUsername();
             type = 'u';
             status = 'Y';
         	accountEditMenu(otherA);
@@ -445,21 +444,25 @@ public class CMCDriver {
 	    	cmd = x.charAt(0);
 	    	switch (cmd)
 	    	{
-	    	    	//add state
+	    	    	//add new name
 	    		case 'F': case 'f':
 		  	    	first = JOptionPane.showInputDialog("Please enter a new name for the Account ");
 		  	    	break;
-	    	    	//add location search criteria
+	    	    	//add last name
 	    	    case 'L': case 'l':
 			  	    last = JOptionPane.showInputDialog("Please Enter a new lastname for the account ");
 			  	    break;
-			  	    //add Control
+			  	    //add password
 	    	    case 'P': case 'p':
 	  	    	    pass = JOptionPane.showInputDialog("Please Enter a new password for the acount ");
 	  	    	    break;
-	    	    	//add number of students
+	    	    	//add type
 	    	    case 'T': case 't':
 		  	    	type = (JOptionPane.showInputDialog("Please Enter a type for the account: ")).charAt(0);
+		  	    	break;
+		  	    //add status
+	    	    case 'J': case 'j':
+		  	    	status = (JOptionPane.showInputDialog("Please Enter a status for the account: ")).charAt(0);
 		  	    	break;
 		  	    	//QUIT
 			    case 'R': case 'r':
@@ -468,9 +471,15 @@ public class CMCDriver {
 				  	break;
 			      //save changes
 			    case 'Q': case 'q':
-				    admin.editAccount(first, last, username, pass, type, status);
-			    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
-			    	cmd = 'R';
+			    	if(ch == 'a'|| ch == 'A'){
+					    admin.editAccount(first, last, username, pass, type, status);
+				    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
+				    	cmd = 'R';}
+			    	else if(ch =='b'||ch=='B'){
+			    		admin.addAccount(first, last, username, pass, type, status);
+				    	JOptionPane.showMessageDialog(null,"The new Account was added successfully");
+				    	cmd = 'R';
+			    	}
 				    break;
 	    	    }
 		    }
@@ -587,11 +596,11 @@ public class CMCDriver {
 	  	    	break;
     	    	//add location search criteria
     	      case 'C': case 'c':
-		  	    l = JOptionPane.showInputDialog("Please Enter the location of a desired university: ").toUpperCase();
+		  	    l = JOptionPane.showInputDialog("Please Enter the location of a desired university(URBAN, SUBURBAN, SMALL-CITY, -1): ").toUpperCase();
 		  	    break;
 		  	    //add Control
     	      case 'D': case 'd':
-  	    	    c = JOptionPane.showInputDialog("Please Enter a Control: ").toUpperCase();
+  	    	    c = JOptionPane.showInputDialog("Please Enter a Control (PRIVATE, CITY, STATE, -1): ").toUpperCase();
   	    	    break;
     	    	//add number of students
     	      case 'E': case 'e':
@@ -599,22 +608,23 @@ public class CMCDriver {
 	  	    	break;
     	    	//add Percent female
     	      case 'F': case 'f':
-		  	    pf = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a percent Female: "));
+		  	    pf = Double.parseDouble(JOptionPane.showInputDialog("Please Enter a percent Female (0-100): "));
 		  	    break;
 		  	    //add SAT Verbal
     	      case 'G': case 'g':
-    	    	sv = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a verbal sat score: "));	    	        
+    	    	sv = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a verbal sat score (0-800): "));	    	        
 		  	    break;
     	    	//add SAT Math
     	      case 'H': case 'h':
-    	    	sm = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a math sat score: "));   	        
+    	    	sm = Integer.parseInt(JOptionPane.showInputDialog("Please Enter a math sat score (0-800): "));   	        
 		  	    break;
     	    	//add Expenses
     	      case 'I': case 'i':
     	    	e = Double.parseDouble(JOptionPane.showInputDialog("Please Enter expenses: "));
-    	        // add financial Aid
+    	        break;
+    	    	// add financial Aid
     	      case 'J': case 'j':
-    	    	fa = Double.parseDouble(JOptionPane.showInputDialog("Please Enter financial aid: "));	    	        
+    	    	fa = Double.parseDouble(JOptionPane.showInputDialog("Please Enter financial aid (0-100): "));	    	        
 		  	    break;
     	    	//add Number of applicants
     	      case 'K': case 'k':
@@ -623,7 +633,8 @@ public class CMCDriver {
     	    	//add Percent Admitted
     	      case 'L': case 'l':
     	    	pa = Double.parseDouble(JOptionPane.showInputDialog("Please Enter percent admitted: "));			  	    
-		  	    // add percent enrolled
+		  	    break;
+    	    	// add percent enrolled
     	      case 'M': case 'm':
     	        pe = Double.parseDouble(JOptionPane.showInputDialog("Please Enter percent enrolled: "));	    	        
 		  	    break;
@@ -678,9 +689,14 @@ public class CMCDriver {
     	    	    }
     	    	break;
     	      case 'S': case 's':
-    	    	admin.editUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
-    	    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
-    	    	cmd = 'R';
+    	    	  if(ch == 'e' || ch == 'E'){
+	    	    	admin.editUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
+	    	    	JOptionPane.showMessageDialog(null,"The Changes were saved successfully");
+	    	    	cmd = 'R';}
+    	    	  else if (ch=='a'|| ch=='A'){
+    	    		admin.addUniversity(un, s, l, c, nos, pf, sv,sm,e,fa,noa,pa,pe,as,ss,qol);
+  	    	    	JOptionPane.showMessageDialog(null,"The New school was successfully added");
+  	    	    	cmd = 'R';}
     	    	break;
     	      case 'T': case 't':
     	    	System.out.print("SCHOOL PREVIEW:\nName: \t\t\t" + un+"\nState: \t\t\t"+ s +"\nLocation: \t\t"+ l +"\nControl: \t\t"+ c +"\nNumber of Students: \t"+ nos +"\nPercent Female: \t"+ pf +"\nSAT Verbal: \t\t"+ sv +"\nSAT Math: \t\t"+ sm +"\nExpenses: \t\t"+
@@ -724,7 +740,6 @@ public class CMCDriver {
 	    System.out.println("\tK: Number of Applicants");
 	    System.out.println("\tL: Percent Admitted");
 	    System.out.println("\tM: Percent Enrolled");
-	    System.out.println("\tN: Percent Admitted");
 	    System.out.println("\tO: Academic Scale");
 	    System.out.println("\tP: Social Scale");
 	    System.out.println("\tQ: Quality of Life");
@@ -840,7 +855,7 @@ public class CMCDriver {
 	    System.out.println("\tK: Number of Applicants");
 	    System.out.println("\tL: Percent Admitted");
 	    System.out.println("\tM: Percent Enrolled");
-	    System.out.println("\tN: Percent Admitted");
+
 	    System.out.println("\tO: Academic Scale");
 	    System.out.println("\tP: Social Scale");
 	    System.out.println("\tQ: Quality of Life");
@@ -888,8 +903,8 @@ public class CMCDriver {
 	
 	/**
 	 * Main method for the CMC System
-	 * @param args
-	 * @throws ClassNotFoundException
+	 * @param args the parameter for the main method
+	 * @throws ClassNotFoundException if the class is not found
 	 */
 	public static void main(String args[])throws ClassNotFoundException{
 	    CMCDriver cmc = new CMCDriver();

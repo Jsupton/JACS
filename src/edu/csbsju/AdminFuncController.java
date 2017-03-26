@@ -175,7 +175,6 @@ public class AdminFuncController {
    * @param academicScale The academic scale of a university
    * @param socialScale Social scale of a university
    * @param qualityOfLife Quality of life of a university
-   * @param emphases emphases of a university
    */
   public void editUniversity(String universityName, String state, String location, String control, int numberOfStudents,
                              double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,

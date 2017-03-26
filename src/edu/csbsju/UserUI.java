@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is the UserInterface for a User. It allows
+ * The user to interact with the interface in order to call
+ * the Controller classes to make a desired task happen
  * @author saschmidgall
- *
+ * @version 03-21-17
  */
 public class UserUI extends AccountUI{
 
@@ -31,6 +34,7 @@ public class UserUI extends AccountUI{
 	 * First constructor for a user interface. It sets the UserFuncController
 	 * variable to a new UserFuncController using the user parameter object as
 	 * a parameter.
+	 * @param u A user object
 	 */
 	public UserUI(User u) {
 		super();
@@ -61,6 +65,7 @@ public class UserUI extends AccountUI{
 	
 	/**
 	 * display student details
+	 * @return a user object to display
 	 */
 	public User displayStudentDetails()
 	{

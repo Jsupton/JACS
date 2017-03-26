@@ -68,7 +68,7 @@ public class Account {
 	  * This constructor takes only a single parameter. All that is necessary for a successful
 	  * Account to be created is a unique username. Thus a username String is passed to the 
 	  * constructor and all other instance variables are set to a null value.
-	  * @param username String, The Username of the account object
+	  * @param userName String, The Username of the account object
 	  */
 	 public Account(String userName) {
 	  this.firstName = null;

@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * Class does the techinical work and deals with interchanging data
  * in order to follow out a user's command
  * @author jsupton
- * @verson 03-21-17
+ * @version 03-21-17
  */
 public class AccountController {
 
@@ -50,7 +50,7 @@ public class AccountController {
 	  * and a databaseController object in as parameters and then sets them
 	  * to their corresponding instance variable
 	  * @param a Account object parameter 
-	  * @param DBCOntroller object
+	  * @param d DBController object
 	  */
 	 public AccountController(Account a, DBController d) {
 		 super();
@@ -99,29 +99,6 @@ public class AccountController {
 	 }
 	 
 	 /**
-	  * This method calls the Database and returns a list of all the 
-	  * universities for the user to view or for an admin to edit.
-	  * @return ArrayList<University> An array list of university objects
-	  */
-	 public ArrayList<University> getUniversities(){
-		 ArrayList<University> l = new ArrayList<University>();
-		 l = d.getAllUniversities();
-		 return l;
-	 }
-	 
-	 /**
-	  * This method displays all of the aspects of all university objects.
-	  * It gets all attributes from the university objects and then displays
-	  * them on the screen for the user.
-	  */
-	 public void displayUniversities(){
-		 ArrayList<University> a = this.getUniversities();
-		 for(University u: a){
-			 u.printString();
-		 }
-	 }
-	 
-	 /**
 	  * This method takes a university name as a parameter and uses that
 	  * to search the database and then it returns either null if the university
 	  * was not found in the system, or it creates a university object out of the
@@ -138,7 +115,7 @@ public class AccountController {
 	  * This method displays all of the aspects of a given university object.
 	  * It gets all attributes from the university object and then displays
 	  * those on the screen for the user.
-	  * @param u University object
+	  * @param name University object
 	  */
 	 public void displayUniversity(String name){
 		 University u = this.getAUniversity(name);
@@ -198,7 +175,7 @@ public class AccountController {
 	 /**
 	  * MAIN METHOD, this is used to test the function of the methods
 	  * in this individual class ALONE
-	  * @param args
+	  * @param args parameter for the main method
 	  */
 	 public static void main(String args[]){
 		 Account a = new Account("Jacob","Upton","Jsupton","02101997",'U','Y');
@@ -208,7 +185,6 @@ public class AccountController {
 			 System.out.println("Active?: TRUE");
 		 else
 			 System.out.println("Active?: FALSE");
-		 ac.displayUniversities();
 	 }
 
 }

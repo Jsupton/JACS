@@ -80,63 +80,6 @@ public class SearchController {
 			 	&& (socialScaleUPPER==0) && (qualityOfLifeLOWER==0) && (qualityOfLifeUPPER==0) && (i==0));
 	 }
 	
-	 /**
-	  * This method allows the user to search for a specific university. It takes 
-	  * in a University object as a parameter. The attributes for the university object are
-	  * the search criteria that the user input. The search criteria is used to search the 
-	  * Database. All universities that match the attributes of the search criteria are 
-	  * gathered into an arrayList.
-	  * @return ArrayList<University>
-	  */
-	 public List<University> search(University u){
-		 List<University> matches = new ArrayList<University>();
- 		 List<University> s = new ArrayList<University>();
-		 s = d.getAllUniversities();
-		 for(University university:s){
-			 boolean b = true;
-			 if(u.getUniversityName()!=null && b == true)
-				 b = university.getUniversityName().contains(u.getUniversityName());
-			 else if(u.getState()!=null && b == true)
-				 b = university.getState().equals(u.getState());
-			 else if(u.getLocation()!=null && b == true)
-				 b = university.getLocation().equals(u.getLocation());
-			 else if(u.getControl()!=null && b == true)
-				 b = university.getControl().equals(u.getControl());
-			 else if(u.getNumberOfStudents()!=0 && b == true)
-				 b = university.getNumberOfStudents() == (u.getNumberOfStudents());
-			 else if(u.getPercentFemale()!= 0 && b == true)
-				 b = university.getPercentFemale() == (u.getPercentFemale());
-			 else if(u.getSatVerbal()!= 0 && b == true)
-				 b = university.getSatVerbal() == (u.getSatVerbal());
-			 else if(u.getExpenses()!= 0.0 && b == true)
-				 b = university.getExpenses() == (u.getExpenses());
-			 else if(u.getFinancialAid()!= 0.0 && b == true)
-				 b = university.getFinancialAid() == (u.getFinancialAid());
-			 else if(u.getNumberOfApplicants()!= 0 && b == true)
-				 b = university.getNumberOfApplicants() == (u.getNumberOfApplicants());
-			 else if(u.getPercentAdmitted()!= 0.0 && b == true)
-				 b = university.getPercentAdmitted() == (u.getPercentAdmitted());
-			 else if(u.getPercentEnrolled()!= 0.0 && b == true)
-				 b = university.getPercentEnrolled() == (u.getPercentEnrolled());
-			 else if(u.getAcademicScale()!= 0.0 && b == true)
-				 b = university.getAcademicScale() == (u.getAcademicScale());
-			 else if(u.getSocialScale()!= 0.0 && b == true)
-				 b = university.getSocialScale() == (u.getSocialScale());
-			 else if(u.getEmphases()!=null && b == true){
-				 b = false;
-				 for(String x : u.getEmphases()){
-					 for(String y: university.getEmphases()){
-						 if(x.equals(y))
-								 b = true;
-					 }
-				 }
-			 }
-			 if(b == true){
-				 matches.add(university);
-			 }
-		 }
-	  return matches;
-	 }
 	 
 	 /**
 	  * /**
@@ -174,7 +117,7 @@ public class SearchController {
 	  * @param qualityOfLifeLOWER the lower bound for the quality of life
 	  * @param qualityOfLifeUPPER the upper bound for the quality of life
 	  * @param emphases the emphases for a university
-	  * @return ArrayList<University>
+	  * @return ArrayList<University> a list of univeristy objects that match search criteria
 	  */
 	 public List<University> search(String universityName, String state, String location, String control, int numberOfStudentsLOWER,
 			 	int numberOfStudentsUPPER, double percentFemaleLOWER, double percentFemaleUPPER, int satVerbalLOWER, int satVerbalUPPER, 
@@ -298,24 +241,6 @@ public class SearchController {
 	  return matches;
 	 }
 	 
-	 /**
-	  * This method allows the user to search for a specific university. It takes 
-	  * in a University object as a parameter. The attributes for the university object are
-	  * the search criteria that the user input. The search criteria is used to search the 
-	  * Database. All universities that match the attributes of the search criteria are 
-	  * gathered into an arrayList.
-	  * @param u a username for an account
-	  * @return Account
-	  */
-	 public Account search(String u){
-		 ArrayList<Account> accounts = d.getAccounts();
-		 for(Account ac:accounts){
-			 if(u.equals(ac.getUsername())){
-				 return ac;
-			 }
-		 }
-	  return null;
-	 }
 	 
 	 /**
 	  * This method takes a university object in as a parameter, and then goes through every
@@ -486,7 +411,7 @@ public class SearchController {
 	 /**
 	  * A Main method that allows us to test if all of the methods in this class
 	  * are performing correctly by themselves. 
-	  * @param args
+	  * @param args the parameter value for the main method
 	  */
 	 public static void main(String args[]){
 		 SearchController sc = new SearchController();

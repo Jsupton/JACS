@@ -29,7 +29,7 @@ public class User extends Account {
 	/**
 	 * this constructor creates an user object using the constructor
 	 * from User, which user extends
-	 * @param firstName
+	 * @param firstName the name of a user to create a new User object
 	 */
 	public User(String firstName) {
 		super(firstName);
@@ -37,7 +37,6 @@ public class User extends Account {
 
 	/**
 	 * displays details of student
-	 * @param name string name of student to display
 	 */
 	public void displayStudent()
 	{
@@ -50,7 +49,7 @@ public class User extends Account {
 	 */
 	public void displaySavedSchoolsError()
 	{
-		System.out.println("There was an error with your saved schools. Please try again.");
+		System.out.println("There are no saved Schools in your Saved Schools List.");
 	}
 	
 	/**
@@ -59,7 +58,7 @@ public class User extends Account {
 	 */
 	public void displaySearchError()
 	{
-		System.out.println("There was an error in the search. Please try again.");
+		System.out.println("No schools were found. Please try again.");
 	}
 	
 	/**

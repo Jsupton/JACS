@@ -46,21 +46,22 @@ public class AdminUI extends AccountUI{
  }
 
  /**
-  * This method is used to get all the universities that reside in the database.
-  * This method will call the AdminFuncController.
-  * @return an array list of the universities
+  * This method calls the Database and returns a list of all the 
+  * universities for the user to view or for an admin to edit.
+  * @return ArrayList<University> An array list of university objects
   */
  public ArrayList<University> getUniversities(){
-  return super.getUniversities();
-  }
-  
+	 return adminFunc.getUniversities();
+ }
+ 
  /**
-   * This method is responsible for displaying all of the universities
-   * to the Admin.
-   */
-  public void displayUniversities(){
-   super.displayUniversities();
-  }
+  * This method displays all of the aspects of all university objects.
+  * It gets all attributes from the university objects and then displays
+  * them on the screen for the user.
+  */
+ public void displayUniversities(){
+	 adminFunc.displayUniversities();
+ }
   
   /**
    * This is a method used to display the accounts of all of the Account
@@ -190,8 +191,8 @@ public class AdminUI extends AccountUI{
   /**
    * This adds an emphases for the specified university object.
    * The parameter string is then added to the University's emphases
-   * @param universityName
-   * @param emphases
+   * @param universityName a name of a university 
+   * @param emphases the desired emphases to add to the university
    * @return an integer indicating the number of database records 
    * inserted or -1 if an invalid school name is specified or if 
    * the specified emphasis already exists for the specified school
@@ -203,8 +204,8 @@ public class AdminUI extends AccountUI{
   /**
    * This removes an emphases for the specified university object.
    * The parameter string is then removed to the University's emphases
-   * @param universityName
-   * @param emphases
+   * @param universityName a name of a university
+   * @param emphases the desired emphases to remove from the university
    * @return an integer indicating the number of database records 
    * inserted or -1 if an invalid school name is specified or if 
    * the specified emphasis already exists for the specified school

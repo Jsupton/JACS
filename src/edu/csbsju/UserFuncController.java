@@ -123,6 +123,9 @@ public class UserFuncController {
 			 	numberOfApplicantsLOWER,numberOfApplicantsUPPER, percentAdmittedLOWER, percentAdmittedUPPER, 
 			 	percentEnrolledLOWER, percentEnrolledUPPER, academicScaleLOWER, academicScaleUPPER, socialScaleLOWER, 
 			 	socialScaleUPPER, qualityOfLifeLOWER, qualityOfLifeUPPER,emphases);
+		if(x.size()<1){
+			u.displaySearchError();
+		}
 		return x;
 	}
 	
@@ -156,7 +159,11 @@ public class UserFuncController {
 	 * @return A list of strings containing the names of the saved schools for the student
 	 */
 	public List<String> getSavedSchools(){
-		return d.getUserSavedSchools(u.getUsername());
+		List<String> x = d.getUserSavedSchools(u.getUsername());
+		if(x.size()<1){
+			u.displaySavedSchoolsError();
+		}
+		return x;
 	}
 	
 	/**
@@ -166,22 +173,6 @@ public class UserFuncController {
 	 */
 	public List<University> getFiveMatches(University u){
 		return s.display5Schools(u);
-	}
-	
-	/**
-	 * prints the error if search fails
-	 */
-	public void getSearchError()
-	{
-		System.out.println("There was an error while searching.");
-	}
-	
-	/**
-	 * displays the error if display schools fails
-	 */
-	public void displaySavedSchoolsError()
-	{
-		System.out.println("there was an error displaying saved schools");
 	}
 	
 }

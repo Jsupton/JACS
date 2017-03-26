@@ -33,8 +33,8 @@ public class UniversityController {
 	   * This method allows an admin to be able to add a university object
 	   * The changes are sent to the Database to save the changes
 	   * @param universityName The name of a university
+	   * @param state The state of a university
 	   * @param location The location of a university
-	   * @param u University to be editedram state The state of a university
 	   * @param control The control of a university
 	   * @param numberOfStudents the number of students at a university
 	   * @param percentFemale the percent female of a university
@@ -52,7 +52,7 @@ public class UniversityController {
 	  public void addUniversity(String universityName, String state, String location, String control, int numberOfStudents,
 	                            double percentFemale, int satVerbal, int satMath, double expenses, double financialAid, int numberOfApplicants,
 	                            double percentAdmitted, double percentEnrolled, int academicScale, int socialScale, int qualityOfLife){
-		  University u = university.addUniversity(universityName, state, location, control, numberOfStudents, percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife);
+		  University u = new University(universityName, state, location, control, numberOfStudents, percentFemale, satVerbal, satMath, expenses, financialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicScale, socialScale, qualityOfLife,null);
 		  d.addUniversity(u);
 	  }
 	
@@ -91,8 +91,8 @@ public class UniversityController {
 	/**
 	   * This adds an emphases for the specified university object.
 	   * The parameter string is then added to the University's emphases
-	   * @param universityName
-	   * @param emphases
+	   * @param universityName the name of the university 
+	   * @param emphases the emphases desired to added to the university
 	   * @return an integer indicating the number of database records 
 	   * inserted or -1 if an invalid school name is specified or if 
 	   * the specified emphasis already exists for the specified school
@@ -106,8 +106,8 @@ public class UniversityController {
 	  /**
 	   * This removes an emphases for the specified university object.
 	   * The parameter string is then removed to the University's emphases
-	   * @param universityName
-	   * @param emphases
+	   * @param universityName the name of the university 
+	   * @param emphases the emphases desired to added to the university
 	   * @return an integer indicating the number of database records 
 	   * inserted or -1 if an invalid school name is specified or if 
 	   * the specified emphasis already exists for the specified school

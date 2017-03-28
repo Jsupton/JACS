@@ -38,9 +38,9 @@ public class User extends Account {
 	/**
 	 * displays details of student
 	 */
-	public void displayStudent()
+	public String displayStudent()
 	{
-		super.displayStudent();
+		return super.displayStudent();
 	}
 	
 	/**

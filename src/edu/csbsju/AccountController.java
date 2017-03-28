@@ -75,8 +75,12 @@ public class AccountController {
 				 for(Account x:l){
 					 if(x.getUsername().equals(u)){
 						 this.a = x;
-						 a.logOn(a);
-						 return a;
+						 boolean active = a.isActive();
+						 if(active){
+							 a.logOn(a);
+							 return a;}
+						 else
+							 return null;
 					 }
 				 }
 				 return null;

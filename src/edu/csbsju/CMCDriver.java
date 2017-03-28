@@ -433,10 +433,16 @@ public class CMCDriver {
 	//USE CASE: U14    (Continued)
 		else if(ch == 'B'||ch == 'b'){
 			username = JOptionPane.showInputDialog("Please enter an Account username: ");
-        	Account otherA = new Account(username);
-            type = 'u';
-            status = 'Y';
-        	accountEditMenu(otherA);
+			Account a = admin.viewAccount(username);
+			if(a==null){
+				Account otherA = new Account(username);
+            	type = 'u';
+            	status = 'Y';
+            	accountEditMenu(otherA);}
+			else{
+		    	JOptionPane.showMessageDialog(null,"This username is already used");
+		    	return;
+			}
 		}
         do
 	    {

@@ -152,21 +152,21 @@ public class University {
 	public University(String universityName) {
 		super();
 		this.universityName = universityName;
-		this.location = null;
-		this.state = null;
-		this.control = null;
-		this.numberOfStudents = 0;
-		this.percentFemale = 0;
-		this.satVerbal = 0;
-		this.satMath = 0;
-		this.expenses = 0.0;
-		this.financialAid = 0.0;
-		this.numberOfApplicants = 0;
-		this.percentAdmitted = 0.0;
-		this.percentEnrolled = 0.0;
-		this.academicScale = 0;
-		this.socialScale = 0;
-		this.qualityOfLife = 0;
+		this.location = "-1";
+		this.state = "-1";
+		this.control = "-1";
+		this.numberOfStudents = -1;
+		this.percentFemale = -1.0;
+		this.satVerbal = -1;
+		this.satMath = -1;
+		this.expenses = -1.0;
+		this.financialAid = -1.0;
+		this.numberOfApplicants = -1;
+		this.percentAdmitted = -1.0;
+		this.percentEnrolled = -1.0;
+		this.academicScale = -1;
+		this.socialScale = -1;
+		this.qualityOfLife = -1;
 		this.emphases = null;
 	}
 

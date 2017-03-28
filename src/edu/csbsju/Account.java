@@ -180,14 +180,24 @@ public class Account {
 		 this.type = a.getType();
 	 }
 	 
-	 /**
+	 /**void
 	  * This method gets all the details for the Account object
 	  * This method acts like a toString method.
 	  */
-	 public void displayStudent(){
-	  System.out.println("[FirstName=" + firstName + ", LastName=" + lastName + 
-	    ", Username=" + username + ", Password=" + password+", Type=" + type + ", Status=" + status+"]\n");
+	 //public void displayStudent(){
+	//  System.out.println("[FirstName=" + firstName + ", LastName=" + lastName + 
+	 //   ", Username=" + username + ", Password=" + password+", Type=" + type + ", Status=" + status+"]\n");
+	// }
+	 
+	 /**void
+	  * This method gets all the details for the Account object
+	  * This method acts like a toString method.
+	  */
+	 public String displayStudent(){
+	  return "[FirstName=" + firstName + ", LastName=" + lastName + 
+	    ", Username=" + username + ", Password=" + password+", Type=" + type + ", Status=" + status+"]\n";
 	 }
+	 
 	 
 	 /**
 	  * This method displays the correct menu to the user when he or she

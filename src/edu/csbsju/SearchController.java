@@ -224,6 +224,13 @@ public class SearchController {
 				 else
 					 b = (university.getSocialScale() >= socialScaleLOWER);
 			 }
+			 if(qualityOfLifeLOWER!= 0 && b == true){
+				 if(socialScaleUPPER !=0){
+					 b = (university.getQualityOfLife()>=qualityOfLifeLOWER && university.getQualityOfLife()<=qualityOfLifeUPPER);
+				 }
+				 else
+					 b = (university.getQualityOfLife() >= qualityOfLifeLOWER);
+			 }
 			 if(emphases!=null && b == true){
 				for(String x : emphases){
 					for(String y: university.getEmphases()){

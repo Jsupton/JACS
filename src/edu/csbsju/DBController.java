@@ -199,7 +199,7 @@ public class DBController {
 			 {
 				 firstName = users[count][0];
 				 lastName = users[count][1];
-				 password = users[count][2];
+				 password = users[count][3];
 				 type = users[count][4].charAt(0);
 				 status = users[count][5].charAt(0);
 			 }
@@ -388,7 +388,7 @@ public class DBController {
 	  */
 	 public void deactivate(Account a)
 	 {
-
+		 a.displayStudent();
 		 univDBlib.user_editUser(a.getUsername(), a.getFirstName(), a.getLastName(),
 				 a.getPassword(), a.getType(), 'N');
 
@@ -474,16 +474,19 @@ public class DBController {
 	  */
 	 public static void main(String args[]){
 		 DBController d = new DBController();
-		 ArrayList<University> p = d.getAllUniversities();
-		 ArrayList<Account> c = d.getAccounts();
-		 for(Account a: c){
-			 a.displayStudent();
-		 }
+		 Account a = new Account("Jacob","Upton","Jsu","upton",'u','Y');
+		 a.displayStudent();
+		// d.addAccount(a.getFirstName(), a.getLastName(), a.getUserName(), .password, type, status);
+		// ArrayList<University> p = d.getAllUniversities();
+		 //ArrayList<Account> c = d.getAccounts();
+		 //for(Account x: c){
+		//	 x.displayStudent();
+		// }
 		 //for(University u: p){
 		//	 u.printString();
 		// }
-		 University u = d.getAUniversity("x");
-		 u.printString();
+		// University u = d.getAUniversity("x");
+		// u.printString();
 		 
 		 
 	 }

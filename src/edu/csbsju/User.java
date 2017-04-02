@@ -37,6 +37,7 @@ public class User extends Account {
 
 	/**
 	 * displays details of student
+	 * @return String of the student
 	 */
 	public String displayStudent()
 	{

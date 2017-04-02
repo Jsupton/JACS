@@ -477,17 +477,19 @@ public class DBController {
 		 Account a = new Account("Jacob","Upton","Jsu","upton",'u','Y');
 		 a.displayStudent();
 		// d.addAccount(a.getFirstName(), a.getLastName(), a.getUserName(), .password, type, status);
-		// ArrayList<University> p = d.getAllUniversities();
+		 ArrayList<University> p = d.getAllUniversities();
+		 University u = d.getAUniversity("UNIVERSITY OF MINNESOTA");
+		 System.out.println(u.printString());
 		 //ArrayList<Account> c = d.getAccounts();
 		 //for(Account x: c){
 		//	 x.displayStudent();
 		// }
-		 //for(University u: p){
-		//	 u.printString();
-		// }
+		 ///for(University u: p){
+			//	 System.out.print(u.getUniversityName()+"\n");
+		//		 //System.out.println(u.printString());
+		 //}
 		// University u = d.getAUniversity("x");
 		// u.printString();
-		 
 		 
 	 }
 }

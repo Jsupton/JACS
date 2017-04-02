@@ -29,6 +29,18 @@ public class AccountTest {
 	@Test
 	public void testAccountStringStringStringStringCharChar() {
 		a = new Account("Jesse","Upton","JWU","jesse",'a','Y');
+		String p = a.getPassword();
+		assertEquals("Password is " + p,p, "jesse");
+		String u = a.getUsername();
+		assertEquals("UserName is " + u,u, "JWU");
+		String f = a.getFirstName();
+		assertEquals("First Name is " + f,f, "Jesse");
+		String l = a.getLastName();
+		assertEquals("Last Name is " + l,l, "Upton");
+		char t = a.getType();
+		assertEquals("Type is " + t,t, 'a');
+		char s = a.getStatus();
+		assertEquals("Status is " + s,s, 'Y');
 	}
 
 	/**
@@ -36,7 +48,19 @@ public class AccountTest {
 	 */
 	@Test
 	public void testAccountString() {
-		
+		a = new Account("JESSE");
+		String p = a.getPassword();
+		assertEquals("Password is " + p,p, null);
+		String u = a.getUsername();
+		assertEquals("UserName is " + u,u, "JESSE");
+		String f = a.getFirstName();
+		assertEquals("First Name is " + f,f, null);
+		String l = a.getLastName();
+		assertEquals("Last Name is " + l,l, null);
+		char t = a.getType();
+		assertEquals("Type is " + t,t, '\0');
+		char s = a.getStatus();
+		assertEquals("Status is " + s,s, '\0');
 	}
 
 	/**
@@ -129,7 +153,7 @@ public class AccountTest {
 		String expResult = "1111";
 		a.setPassword("1111");
 		String result = a.getPassword();
-		assertEquals("Password Name is " + expResult,expResult, result);
+		assertEquals("Password is " + expResult,expResult, result);
 	}
 
 	/**
@@ -137,15 +161,39 @@ public class AccountTest {
 	 */
 	@Test
 	public void testLogOff() {
-		
+		a.logOff();
+		String p = a.getPassword();
+		assertEquals("Password is " + p,p, null);
+		String u = a.getUsername();
+		assertEquals("UserName is " + u,u, null);
+		String f = a.getFirstName();
+		assertEquals("First Name is " + f,f, null);
+		String l = a.getLastName();
+		assertEquals("Last Name is " + l,l, null);
+		char t = a.getType();
+		assertEquals("Type is " + t,t, '\0');
+		char s = a.getStatus();
+		assertEquals("Status is " + s,s, '\0');
 	}
 
 	/**
 	 * Test method for {@link edu.csbsju.Account#logOn(edu.csbsju.Account)}.
 	 */
 	@Test
-	public void testLogOn() {
-		
+	public void testLogOnCase1() {
+		a.logOn(b);
+		String p = b.getPassword();
+		assertEquals("Password is " + p,p, "jesse");
+		String u = b.getUsername();
+		assertEquals("UserName is " + u,u, "JWU");
+		String f = b.getFirstName();
+		assertEquals("First Name is " + f,f, "Jesse");
+		String l = b.getLastName();
+		assertEquals("Last Name is " + l,l, "Upton");
+		char t = b.getType();
+		assertEquals("Type is " + t,t, 'a');
+		char s = b.getStatus();
+		assertEquals("Status is " + s,s, 'N');
 	}
 
 	/**
@@ -162,8 +210,30 @@ public class AccountTest {
 	 * Test method for {@link edu.csbsju.Account#displayMenu(char)}.
 	 */
 	@Test
-	public void testDisplayMenu() {
-		
+	public void testDisplayMenuCase1() {
+		String expResult = "\tS: Search For Schools\n\tM: Manage My Saved Schools\n\tP: Manage My Profile\n\tQ: To Quit\n";
+		String s = a.displayMenu(a.getType());
+		assertEquals("The User menu is: \n" + expResult, expResult, s );
+	}
+	
+	/**
+	 * Test method for {@link edu.csbsju.Account#displayMenu(char)}.
+	 */
+	@Test
+	public void testDisplayMenuCase2() {
+		String expResult ="\tU: Manage Universities\n\tZ: Manage Users\n\tQ: To Quit";
+		String s = a.displayMenu(b.getType());
+		assertEquals("The Admin menu is: \n" + expResult, expResult, s );
+	}
+	
+	/**
+	 * Test method for {@link edu.csbsju.Account#displayMenu(char)}.
+	 */
+	@Test
+	public void testDisplayMenuCase3() {
+		String expResult = null;
+		String s = a.displayMenu('z');
+		assertEquals("Null menu: \n" + expResult, expResult, s );
 	}
 
 	/**
@@ -171,23 +241,45 @@ public class AccountTest {
 	 */
 	@Test
 	public void testDisplayLoginError() {
-		
+		String expResult = "There was an error Loggin in. Please Try again.";
+		String x = a.displayLoginError();
+		assertEquals("Login Error is : \n" + expResult, expResult, x );
 	}
 
 	/**
 	 * Test method for {@link edu.csbsju.Account#isActive()}.
 	 */
 	@Test
-	public void testIsActive() {
-		
+	public void testIsActiveCase1() {
+		assertTrue("This Account is active", a.isActive());
+	}
+	
+	/**
+	 * Test method for {@link edu.csbsju.Account#isActive()}.
+	 */
+	@Test
+	public void testIsActiveCase2() {
+		assertFalse("This Account is not active",b.isActive());
 	}
 
 	/**
 	 * Test method for {@link edu.csbsju.Account#returnType()}.
 	 */
 	@Test
-	public void testReturnType() {
-		
+	public void testReturnTypeCase1() {
+		char x = a.returnType();
+		char expResult = 'u';
+		assertEquals("The expected Type is : \n" + expResult, expResult, x );
+	}
+	
+	/**
+	 * Test method for {@link edu.csbsju.Account#returnType()}.
+	 */
+	@Test
+	public void testReturnTypeCase2() {
+		char x = b.returnType();
+		char expResult = 'a';
+		assertEquals("The expected Type is : \n" + expResult, expResult, x );
 	}
 
 }

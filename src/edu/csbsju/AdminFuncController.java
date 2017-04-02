@@ -96,7 +96,7 @@ public class AdminFuncController {
   public void displayAccounts(){
     ArrayList<Account> a = this.getAccounts();
     for(Account u: a){
-      u.displayStudent();
+      System.out.println(u.displayStudent());
     }
   }
   
@@ -116,7 +116,7 @@ public class AdminFuncController {
   public void displayUniversities(){
     ArrayList<University> a = this.getUniversities();
     for(University u: a){
-      u.printString();
+      System.out.println(u.printString());
     }
   }
   

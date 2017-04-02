@@ -92,6 +92,9 @@ public class Account {
 	  * @return the password
 	  */
 	 public String getPassword() {
+		 if(password == null){
+			 throw new Error("There is no password for This user");
+		 }
 	  return password;
 	 }
 	
@@ -100,6 +103,9 @@ public class Account {
 	  * @return the type
 	  */
 	 public char getType() {
+		 if(type == '\0'){
+			 throw new Error("There is no type for This user");
+		 }
 	  return type;
 	 }
 	 
@@ -108,6 +114,9 @@ public class Account {
 	  * @return the status
 	  */
 	 public char getStatus() {
+		 if(status == '\0'){
+			 throw new Error("There is no status for This user");
+		 }
 		 return status;
 	 }
 	 
@@ -116,6 +125,9 @@ public class Account {
 	  * @return the first name of the account object
 	  */
 	public String getFirstName() {
+		if(firstName == null){
+			 throw new Error("There is no First name for This user");
+		 }
 		return firstName;
 	}
 
@@ -132,6 +144,9 @@ public class Account {
 	 * @return lastname
 	 */
 	public String getLastName() {
+		if(lastName == null){
+			 throw new Error("There is no lastName for This user");
+		 }
 		return lastName;
 	}
 
@@ -205,24 +220,14 @@ public class Account {
 	  * They will be brought to their prospective screen
 	  * @param t char The type (admin or user) of the Account object
 	  */
-	 public void displayMenu(char t){
+	 public String displayMenu(char t){
 		 if(t == 'u'){
-				System.out.println();
-		  	    System.out.println("--------------------------------------------------------");
-			    System.out.println("\tS: Search For Schools");
-			    System.out.println("\tM: Manage My Saved Schools");
-			    System.out.println("\tP: Manage My Profile");
-			    System.out.println("\tQ: To Quit");
-			    System.out.println();
+			 return"\tS: Search For Schools\n\tM: Manage My Saved Schools\n\tP: Manage My Profile\n\tQ: To Quit\n";
 		 }
 		 else if(t == 'a'){
-				System.out.println();
-		  	    System.out.println("--------------------------------------------------------");
-			    System.out.println("\tU: Manage Universities");
-			    System.out.println("\tZ: Manage Users");
-			    System.out.println("\tQ: To Quit");
-			    System.out.println();
+			    return("\tU: Manage Universities\n\tZ: Manage Users\n\tQ: To Quit");
 			}
+		 return null;
 	 }
 	 
 	 /**
@@ -231,8 +236,8 @@ public class Account {
 	  * when logging in. This error is often because the user input a wrong
 	  * username or password
 	  */
-	 public void displayLoginError(){
-		 System.out.println("There was an error Loggin in. Please Try again.");
+	 public String displayLoginError(){
+		 return "There was an error Loggin in. Please Try again.";
 	 }
 	 
 	 /**
@@ -243,7 +248,7 @@ public class Account {
 	  * @return Boolean, true if the Account object is active
 	  */
 	 public boolean isActive(){
-		 if(this.getType() == ('Y'))
+		 if(this.getStatus() == ('Y'))
 			 return true;
 		 else
 			 return false;
@@ -256,6 +261,7 @@ public class Account {
 	  * @return char a character representing the type of the Account
 	  */
 	 public char returnType(){
+
 		 return this.getType();
 	 }
 	 

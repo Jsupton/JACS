@@ -146,7 +146,7 @@ public class CMCDriver {
 	        	char type = '\0';
 		        ArrayList<Account> acc = admin.getAccounts();
 		        for(Account a: acc){
-		        	a.displayStudent();
+		        	System.out.println(a.displayStudent());
 		   		}
 		        editAccountMenu();
 		        ch = acceptCommand();
@@ -189,7 +189,7 @@ public class CMCDriver {
 		        	if(ch == 'V'||ch=='v'){
 		        		 University u = user.getAUniversity((JOptionPane.showInputDialog("Please enter a university name: ")).toUpperCase());
 		        		 if(u!=null){
-		        			 u.printString();
+		        			 System.out.println(u.printString());
 		        			 schoolMenu();}
 		        		 else{
 		        			 JOptionPane.showMessageDialog(null,"THIS SCHOOL DOES NOT EXIST");
@@ -364,6 +364,7 @@ public class CMCDriver {
 	    	  String fn,ln,p = null;
 	    	  System.out.println("ACCOUNT DETIALS:");	
 	    	  User u = user.displayStudentDetails();
+	    	  System.out.println(u.displayStudent());
 	    	  fn = u.getFirstName();
 	    	  ln = u.getLastName();
 	    	  p = u.getPassword();
@@ -511,10 +512,10 @@ public class CMCDriver {
 			 List<University> matches = user.getFiveMatches(u);
 			 System.out.println("-----------------------------------------------------");
 			 if(u!=null){
-					 u.printString();
+					 System.out.println(u.printString());
 				 System.out.println("-----------------5 SIMILAR SCHOOLS-------------------");
 				 for(University uni:matches){
-					 uni.printString();
+					 System.out.println(uni.printString());
 				 }
 			 }
 			 else if(u==null){
@@ -581,7 +582,7 @@ public class CMCDriver {
 		 		emphases = univ.getEmphases();
 		 		System.out.println();
 		//USE CASE:  U11
-   		 		univ.printString();
+   		 		System.out.println(univ.printString());
    		 		universityMenu();
     	}
     	//USE CASE:  U13  (Continued)

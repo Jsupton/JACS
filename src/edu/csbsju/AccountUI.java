@@ -104,9 +104,10 @@ public class AccountUI {
 	  * It gets all attributes from the university object and then displays
 	  * those on the screen for the user.
 	  * @param name University object
+	  * @return a strign containing the aspects of a university
 	  */
-	 public void displayUniversity(String name){
-		 accountFunc.displayUniversity(name);
+	 public String displayUniversity(String name){
+		 return accountFunc.displayUniversity(name);
 	 }
 	 
 	 /**
@@ -114,11 +115,12 @@ public class AccountUI {
 	  * continue on making the changes to this Account object, whether it is
 	  * a User changing their own account information or an Admin changing
 	  * another person's Account information.
+	  * @ param answer, String representing answer
 	  * @return a boolean. True if the user confirms the edit they are about 
 	  * to perform
 	  */
-	 public boolean confirmEdit(){
-		 return accountFunc.confirmEdit();
+	 public boolean confirmEdit(String answer){
+		 return accountFunc.confirmEdit(answer);
 	 }
 	 
 	 /**
